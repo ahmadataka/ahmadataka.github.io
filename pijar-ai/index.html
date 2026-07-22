@@ -70,7 +70,8 @@
       border-radius: 999px;
     }
 
-    .title-slide::before { display: none; }
+    .title-slide::before,
+    .plain-slide::before { display: none; }
 
     .pijar-logo {
       position: absolute;
@@ -78,6 +79,53 @@
       right: 74px;
       width: 112px;
       height: auto;
+    }
+
+    .meme-slide {
+      padding: 0;
+      display: none;
+      place-items: center;
+    }
+
+    .meme-slide.active { display: grid; }
+
+    .meme-slide img {
+      width: auto;
+      height: auto;
+      max-width: calc(100% - 96px);
+      max-height: min(620px, calc(100% - 72px));
+      object-fit: contain;
+      display: block;
+    }
+
+    .qr-slide {
+      text-align: center;
+      display: none;
+      place-items: center;
+      padding: 48px 72px;
+    }
+
+    .qr-slide.active { display: grid; }
+
+    .qr-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 34px;
+    }
+
+    .qr-wrap img {
+      width: min(395px, 58vh);
+      height: auto;
+      display: block;
+    }
+
+    .qr-link {
+      color: var(--navy);
+      font-family: SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 30px;
+      line-height: 1.2;
+      text-decoration: none;
     }
 
     .brand-tag {
@@ -411,6 +459,11 @@
     .overview .big-statement { margin-top: 28px; }
     .overview .big-statement .main { font-size: 16px; }
     .overview .big-statement .accent { font-size: 11px; }
+    .overview .meme-slide,
+    .overview .qr-slide { display: grid; padding: 0; }
+    .overview .qr-wrap { gap: 8px; }
+    .overview .qr-wrap img { width: 86px; }
+    .overview .qr-link { font-size: 8px; }
     .overview .controls, .overview .progress { display: none; }
 
     .help {
@@ -456,6 +509,10 @@
       .card-body, li { font-size: 22px; }
       .brand-tag { left: 64px; font-size: 16px; }
       .pijar-logo { width: 82px; top: 46px; right: 30px; }
+      .meme-slide { min-height: 100vh; padding: 0; }
+      .qr-slide { min-height: 100vh; padding: 40px 26px; }
+      .qr-wrap img { width: min(78vw, 390px); }
+      .qr-link { font-size: 20px; overflow-wrap: anywhere; }
     }
   </style>
 </head>
@@ -471,6 +528,17 @@
         <div class="meta">Audience variant for Yayasan Pijar Masa Depan<br>July 22, 2026</div>
       </div>
       <div class="footer"></div>
+    </section>
+
+    <section class="slide plain-slide meme-slide">
+      <img src="assets/pijar/microsoft-authenticator-joke.jpeg" alt="Microsoft Authenticator workplace joke">
+    </section>
+
+    <section class="slide plain-slide qr-slide">
+      <div class="qr-wrap">
+        <img src="assets/pijar/pijar-ai-qr.png" alt="QR code to Pijar AI slides">
+        <a class="qr-link" href="https://ahmadataka.github.io/pijar-ai/">ahmadataka.github.io/pijar-ai/</a>
+      </div>
     </section>
 
     <section class="slide">
