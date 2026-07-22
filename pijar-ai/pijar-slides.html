@@ -84,16 +84,17 @@
     .meme-slide {
       padding: 0;
       display: none;
-      place-items: center;
+      align-items: center;
+      justify-content: center;
     }
 
-    .meme-slide.active { display: grid; }
+    .meme-slide.active { display: flex !important; }
 
     .meme-slide img {
       width: auto;
-      height: auto;
-      max-width: calc(100% - 96px);
-      max-height: min(620px, calc(100% - 72px));
+      height: min(88vh, 640px);
+      max-width: calc(100vw - 96px);
+      max-height: calc(100vh - 72px);
       object-fit: contain;
       display: block;
     }
