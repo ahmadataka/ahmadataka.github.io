@@ -1,0 +1,1029 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dari Chatbot ke AI Agent - Pijar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;650;750;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0b2554;
+      --teal: #13b9b4;
+      --teal-2: #2fcad0;
+      --sky: #e8fbfc;
+      --line: #cbecef;
+      --ink: #10254b;
+      --muted: #667085;
+      --paper: #ffffff;
+      --soft: #f6fbfc;
+      --shadow: 0 18px 50px rgba(11, 37, 84, 0.13);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 8% 12%, rgba(19, 185, 180, 0.14), transparent 30%),
+        radial-gradient(circle at 96% 88%, rgba(47, 202, 208, 0.15), transparent 28%),
+        #f4fbfc;
+      color: var(--ink);
+      font-family: Plus Jakarta Sans, Avenir Next, Helvetica Neue, Helvetica, Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    a { color: var(--navy); }
+
+    .deck {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+
+    .slide {
+      display: none;
+      width: min(1280px, 100vw);
+      height: min(720px, 100vh);
+      padding: 56px 72px 52px;
+      margin: auto;
+      inset: 0;
+      position: absolute;
+      background: var(--paper);
+      border-radius: 0;
+      overflow: hidden;
+    }
+
+    .slide.active { display: block; }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      top: 112px;
+      left: 168px;
+      right: 168px;
+      height: 3px;
+      background: var(--teal);
+      border-radius: 999px;
+    }
+
+    .title-slide::before,
+    .plain-slide::before { display: none; }
+
+    .pijar-logo {
+      position: absolute;
+      top: 56px;
+      right: 74px;
+      width: 112px;
+      height: auto;
+    }
+
+    .meme-slide {
+      padding: 0;
+      display: none;
+      place-items: center;
+    }
+
+    .meme-slide.active { display: grid; }
+
+    .meme-slide img {
+      height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .qr-slide {
+      text-align: center;
+      display: none;
+      place-items: center;
+      padding: 48px 72px;
+    }
+
+    .qr-slide.active { display: grid; }
+
+    .qr-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 34px;
+    }
+
+    .qr-wrap img {
+      width: min(395px, 58vh);
+      height: auto;
+      display: block;
+    }
+
+    .qr-link {
+      color: var(--navy);
+      font-family: SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 30px;
+      line-height: 1.2;
+      text-decoration: none;
+    }
+
+    .brand-tag {
+      position: absolute;
+      top: 62px;
+      left: 96px;
+      color: var(--navy);
+      font-weight: 750;
+      letter-spacing: 0.02em;
+      font-size: 22px;
+    }
+
+    .brand-tag::before {
+      content: "";
+      width: 12px;
+      height: 72px;
+      background: var(--teal);
+      position: absolute;
+      left: -32px;
+      top: -18px;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      font-size: clamp(54px, 7vw, 94px);
+      line-height: 0.98;
+      color: var(--navy);
+      letter-spacing: -0.045em;
+      margin: 152px 0 22px;
+      font-weight: 800;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 42px;
+      color: var(--navy);
+      letter-spacing: -0.025em;
+      margin: 0 0 86px;
+      font-weight: 800;
+    }
+
+    .long-title h2 { font-size: 39px; }
+
+    .subtitle {
+      font-size: 31px;
+      color: #6a6f75;
+      font-weight: 650;
+      margin-bottom: 58px;
+    }
+
+    .author {
+      font-size: 28px;
+      color: var(--navy);
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .meta {
+      font-size: 24px;
+      color: #707070;
+      line-height: 1.35;
+    }
+
+    .center { text-align: center; }
+
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 36px;
+      align-items: start;
+    }
+
+    .columns.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .columns.four {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card, .callout, .mini-card {
+      background: var(--sky);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 10px 26px rgba(11, 37, 84, 0.04);
+      overflow: hidden;
+    }
+
+    .card-title {
+      background: var(--teal);
+      color: white;
+      font-size: 28px;
+      line-height: 1.12;
+      padding: 12px 18px;
+      font-weight: 800;
+    }
+
+    .card-title.navy { background: var(--navy); }
+
+    .card-body {
+      padding: 22px 26px 24px;
+      font-size: 27px;
+      line-height: 1.26;
+    }
+
+    .card-body.small { font-size: 21px; line-height: 1.3; }
+
+    .mini-card {
+      padding: 22px 18px;
+      min-height: 128px;
+      text-align: center;
+    }
+
+    .mini-card strong {
+      display: block;
+      color: var(--navy);
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .mini-card span {
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.28;
+    }
+
+    ul, ol {
+      margin: 0;
+      padding-left: 30px;
+    }
+
+    li {
+      margin: 0 0 13px;
+      font-size: 28px;
+      line-height: 1.22;
+    }
+
+    .small-list li { font-size: 21px; margin-bottom: 9px; }
+
+    li::marker { color: var(--teal); }
+
+    .big-statement {
+      width: min(860px, 88%);
+      margin: 120px auto 0;
+      text-align: center;
+    }
+
+    .big-statement .main {
+      color: var(--navy);
+      font-size: 58px;
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      margin-bottom: 32px;
+    }
+
+    .big-statement .accent {
+      color: var(--teal);
+      font-size: 34px;
+      line-height: 1.18;
+      font-weight: 900;
+      margin-bottom: 34px;
+    }
+
+    .quote-box {
+      border: 1px solid var(--line);
+      background: var(--sky);
+      border-radius: 20px;
+      padding: 34px;
+      font-size: 31px;
+      line-height: 1.24;
+      font-weight: 750;
+      color: var(--navy);
+      box-shadow: var(--shadow);
+    }
+
+    .tool-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+      margin-top: -16px;
+    }
+
+    .tool {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px 20px 24px;
+      min-height: 236px;
+      text-align: center;
+    }
+
+    .tool img {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+      margin-bottom: 13px;
+    }
+
+    .tool strong {
+      display: block;
+      color: var(--navy);
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    .tool p {
+      font-size: 17px;
+      color: #3c4f68;
+      line-height: 1.25;
+      margin: 0;
+    }
+
+    .code {
+      background: #061935;
+      color: #e9fcff;
+      border-radius: 18px;
+      padding: 28px 34px;
+      font-family: SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 22px;
+      line-height: 1.34;
+      white-space: pre-wrap;
+      box-shadow: var(--shadow);
+    }
+
+    .screenshot {
+      display: block;
+      max-width: 78%;
+      max-height: 420px;
+      margin: -14px auto 20px;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .note {
+      font-size: 17px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .footer {
+      position: absolute;
+      right: 40px;
+      bottom: 26px;
+      font-size: 18px;
+      color: #7a8290;
+    }
+
+    .progress {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      height: 5px;
+      width: 100%;
+      background: rgba(11, 37, 84, 0.08);
+      z-index: 20;
+    }
+
+    .bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--teal), var(--navy));
+      transition: width 220ms ease;
+    }
+
+    .controls {
+      position: fixed;
+      z-index: 30;
+      left: 24px;
+      bottom: 18px;
+      display: flex;
+      gap: 8px;
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+
+    body:hover .controls { opacity: 1; }
+
+    button, .button {
+      border: 1px solid rgba(11, 37, 84, 0.14);
+      background: rgba(255, 255, 255, 0.86);
+      color: var(--navy);
+      border-radius: 999px;
+      padding: 8px 13px;
+      font-weight: 800;
+      font-size: 13px;
+      text-decoration: none;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+    }
+
+    .overview {
+      overflow: auto;
+      background: #eef8fa;
+    }
+
+    .overview .deck {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      padding: 24px;
+      height: auto;
+      overflow: auto;
+    }
+
+    .overview .slide {
+      display: block;
+      position: relative;
+      width: 300px;
+      height: 169px;
+      transform: none;
+      padding: 18px;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      border-radius: 10px;
+    }
+
+    .overview .slide::before,
+    .overview .footer,
+    .overview .pijar-logo,
+    .overview .brand-tag { display: none; }
+
+    .overview h1 { font-size: 27px; margin: 30px 0 8px; }
+    .overview h2 { font-size: 18px; margin: 0 0 18px; }
+    .overview li, .overview .card-body, .overview .mini-card span { font-size: 8px; }
+    .overview .card-title { font-size: 10px; padding: 4px; }
+    .overview .card-body { padding: 8px; }
+    .overview .big-statement { margin-top: 28px; }
+    .overview .big-statement .main { font-size: 16px; }
+    .overview .big-statement .accent { font-size: 11px; }
+    .overview .meme-slide,
+    .overview .qr-slide { display: grid; padding: 0; }
+    .overview .qr-wrap { gap: 8px; }
+    .overview .qr-wrap img { width: 86px; }
+    .overview .qr-link { font-size: 8px; }
+    .overview .controls, .overview .progress { display: none; }
+
+    .help {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 16, 38, 0.72);
+      color: white;
+      z-index: 50;
+      display: none;
+      place-items: center;
+    }
+
+    .help.show { display: grid; }
+
+    .help-card {
+      width: min(680px, calc(100vw - 48px));
+      background: white;
+      color: var(--navy);
+      border-radius: 24px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .help-card h3 { font-size: 32px; margin-bottom: 18px; }
+    .help-card p { font-size: 19px; line-height: 1.45; }
+
+    @media (max-width: 900px) {
+      body { overflow: auto; }
+      .deck { height: auto; }
+      .slide {
+        display: block;
+        position: relative;
+        width: 100vw;
+        height: auto;
+        min-height: 100vh;
+        padding: 40px 26px 56px;
+      }
+      .slide:not(.active) { display: none; }
+      .slide::before { left: 32px; right: 32px; top: 94px; }
+      h1 { margin-top: 130px; font-size: 50px; }
+      h2 { font-size: 31px; margin-bottom: 54px; }
+      .columns, .columns.three, .columns.four, .tool-row { grid-template-columns: 1fr; }
+      .card-body, li { font-size: 22px; }
+      .brand-tag { left: 64px; font-size: 16px; }
+      .pijar-logo { width: 82px; top: 46px; right: 30px; }
+      .meme-slide { min-height: 100vh; padding: 0; }
+      .qr-slide { min-height: 100vh; padding: 40px 26px; }
+      .qr-wrap img { width: min(78vw, 390px); }
+      .qr-link { font-size: 20px; overflow-wrap: anywhere; }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck" id="deck">
+    <section class="slide title-slide active">
+      <div class="brand-tag">AGENTIC AI FOR PIJAR WORKFLOWS</div>
+      <img class="pijar-logo" src="assets/pijar/pijar-logo.png" alt="Pijar Foundation">
+      <div class="center">
+        <h1>Dari Chatbot ke AI Agent</h1>
+        <div class="subtitle">Agentic AI for Pijar Workplace Productivity</div>
+        <div class="author">Ahmad Ataka Awwalur Rizqi</div>
+        <div class="meta">Audience variant for Yayasan Pijar Masa Depan<br>July 22, 2026</div>
+      </div>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide plain-slide meme-slide">
+      <img src="assets/pijar/microsoft-authenticator-joke.jpeg" alt="Microsoft Authenticator workplace joke">
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide plain-slide qr-slide">
+      <div class="qr-wrap">
+        <img src="assets/pijar/pijar-ai-qr.png" alt="QR code to Pijar AI slides">
+        <a class="qr-link" href="https://ahmadataka.github.io/pijar-ai/">ahmadataka.github.io/pijar-ai/</a>
+      </div>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Pembuka</h2>
+      <div class="columns">
+        <div class="card">
+          <div class="card-title">Pertanyaan cepat</div>
+          <div class="card-body">
+            Siapa yang sudah pakai ChatGPT atau Gemini untuk kerja program?
+            <ul style="margin-top: 28px;">
+              <li>merapikan update mitra?</li>
+              <li>menyusun brief program?</li>
+              <li>membuat draft policy note?</li>
+              <li>tapi apakah workflow tim benar-benar berubah?</li>
+            </ul>
+          </div>
+        </div>
+        <div class="quote-box center">
+          Impact sudah jalan.<br>
+          <span style="color: var(--teal);">Workflow bisa makin cerdas.</span>
+          <p style="font-size: 24px; color: var(--muted); margin-top: 28px;">AI bukan gimmick,<br>tapi leverage untuk koordinasi.</p>
+        </div>
+      </div>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Pesan Utama Talk Ini</h2>
+      <div class="big-statement">
+        <div class="main">AI yang berguna bukan<br>yang paling canggih.</div>
+        <div class="accent">AI yang berguna adalah yang masuk ke ritme kerja program dengan aman dan jelas.</div>
+        <p class="meta">Fokus kita: mempercepat kerja lintas program, mitra, riset, komunikasi, dan evaluasi.</p>
+      </div>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide long-title">
+      <h2>Konteks Pijar: Banyak Knowledge, Banyak Koordinasi</h2>
+      <div class="columns">
+        <div class="card">
+          <div class="card-title">Dari konteks publik Pijar</div>
+          <div class="card-body small">
+            <ul>
+              <li>Pijar memosisikan diri sebagai katalis untuk Indonesia 2045.</li>
+              <li>Fokus tematiknya mencakup Future Talent dan Future Planet.</li>
+              <li>Program seperti Future Skills, Global Future X, dan Future Lestari membutuhkan orkestrasi multi-stakeholder.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title navy">Konsekuensi workflow</div>
+          <div class="card-body small">
+            <ul>
+              <li>Banyak catatan program, update mitra, data kegiatan, dan brief strategis.</li>
+              <li>Nilai AI muncul saat membantu menyambungkan dokumen, konteks, dan tindak lanjut.</li>
+              <li>Kuncinya bukan otomatisasi penuh, tetapi koordinasi yang lebih cepat dan konsisten.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="note" style="margin-top: 22px;">Disarikan dari laman publik Pijar Foundation dan publikasi program Future Talent Hub/Impact Leaders Fellowship.</p>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide long-title">
+      <h2>Hasil Review Referensi: Apa Lesson Learned-nya?</h2>
+      <div class="columns">
+        <div class="card">
+          <div class="card-title">Adopsi dan produktivitas</div>
+          <div class="card-body small">
+            <ul>
+              <li>McKinsey (2025): value muncul saat workflow, KPI, dan cara kerja ikut didesain ulang.</li>
+              <li>Microsoft WTI (2025): kerja bergeser ke human-agent teams.</li>
+              <li>BCG AI at Work (2025): adopsi naik, tetapi training dan trust masih jadi gap.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title navy">Cara pakai yang lebih aman</div>
+          <div class="card-body small">
+            <ul>
+              <li>NIST AI RMF: govern, map, measure, manage.</li>
+              <li>OpenAI guidance: use case jelas, konteks cukup, batas data, review manusia.</li>
+              <li>Benang merah: AI butuh konteks, batasan, dan evaluasi.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Dari Chatbot ke Agent: Mulai dari Obrolan</h2>
+      <div class="columns">
+        <div class="card">
+          <div class="card-title">Chatbot</div>
+          <div class="card-body">Pola: kita bertanya, AI menjawab.</div>
+        </div>
+        <div>
+          <div class="quote-box">“Tolong jelaskan cara membuat notulen yang baik.”</div>
+          <ul style="margin-top: 30px;">
+            <li>hasilnya informatif</li>
+            <li>belum tentu langsung siap pakai</li>
+            <li>kita masih mengerjakan langkah berikutnya</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Dari Chatbot ke Agent: Delegasi ke Asisten</h2>
+      <div class="columns">
+        <div class="card">
+          <div class="card-title">Agent</div>
+          <div class="card-body">Pola: kita memberi tujuan, konteks, batasan, lalu review hasilnya.</div>
+        </div>
+        <div>
+          <div class="quote-box" style="font-size: 27px;">“Baca catatan rapat ini, susun minutes, buat task list, tandai owner yang belum jelas, dan siapkan draft email follow-up.”</div>
+          <ul style="margin-top: 30px;">
+            <li>ada rangkaian langkah</li>
+            <li>ada output kerja</li>
+            <li>ada review manusia</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Kenapa Belum Optimal?</h2>
+      <div class="columns">
+        <div class="card">
+          <div class="card-title">Pola yang sering terjadi</div>
+          <div class="card-body">
+            <ul>
+              <li>dipakai hanya saat buntu</li>
+              <li>prompt terlalu umum</li>
+              <li>output langsung diterima</li>
+              <li>use case tidak dekat dengan role</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title navy">Akibatnya</div>
+          <div class="card-body">
+            <ul>
+              <li>hasil generik</li>
+              <li>sulit dipakai ulang</li>
+              <li>tidak ada standar tim</li>
+              <li>manfaatnya terasa acak</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Prinsip: AI Masuk ke Ritme Kerja</h2>
+      <div class="columns four">
+        <div class="mini-card"><strong>1. Repetitif</strong><span>mulai dari tugas yang sering diulang</span></div>
+        <div class="mini-card"><strong>2. Output jelas</strong><span>draft, tabel, checklist, ringkasan</span></div>
+        <div class="mini-card"><strong>3. Review manusia</strong><span>AI membantu, manusia memutuskan</span></div>
+        <div class="mini-card"><strong>4. Ukur</strong><span>waktu, kualitas, error, follow-up</span></div>
+      </div>
+      <div class="quote-box" style="margin-top: 56px; font-size: 29px;">Kalau tugasnya sering diulang, lintas dokumen, melibatkan banyak mitra, dan punya format output jelas, itu kandidat bagus untuk AI Agent.</div>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Contoh Praktik untuk Konteks Pijar</h2>
+      <div class="columns three">
+        <div class="card"><div class="card-title">Program</div><div class="card-body"><ul><li>weekly program brief</li><li>laporan kegiatan</li><li>ringkasan feedback</li><li>checklist tindak lanjut</li></ul></div></div>
+        <div class="card"><div class="card-title">Policy/Research</div><div class="card-body"><ul><li>policy memo</li><li>stakeholder map</li><li>synthesis desk research</li><li>issue brief</li></ul></div></div>
+        <div class="card"><div class="card-title">Partnership/Comms</div><div class="card-body"><ul><li>donor/partner update</li><li>email follow-up</li><li>event recap</li><li>narrative alignment</li></ul></div></div>
+      </div>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>4 Level Cara Kerja dengan AI</h2>
+      <div class="columns four">
+        <div class="mini-card"><strong>1. Ask AI</strong><span>bertanya sesekali</span></div>
+        <div class="mini-card"><strong>2. Assist Me</strong><span>draft, ringkas, revisi</span></div>
+        <div class="mini-card"><strong>3. Work With Me</strong><span>workflow berulang</span></div>
+        <div class="mini-card" style="border-color: var(--teal);"><strong>4. Delegate</strong><span>tujuan, batasan, review</span></div>
+      </div>
+      <div class="quote-box" style="margin-top: 70px;">Anda sekarang ada di level mana? Tim Anda mayoritas ada di level mana?</div>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Desain Workflow Agentic</h2>
+      <div class="columns four">
+        <div class="mini-card"><strong>Input</strong><span>data, catatan, dokumen</span></div>
+        <div class="mini-card"><strong>Steps</strong><span>baca, cek, susun, tandai</span></div>
+        <div class="mini-card"><strong>Output</strong><span>draft, task list, checklist</span></div>
+        <div class="mini-card"><strong>Review</strong><span>manusia cek dan putuskan</span></div>
+      </div>
+      <div class="columns" style="margin-top: 46px;">
+        <div class="card"><div class="card-title">Contoh: program brief mingguan</div><div class="card-body"><ul><li>data kegiatan</li><li>update mitra</li><li>target indikator</li></ul></div></div>
+        <div class="card"><div class="card-title navy">Batasan</div><div class="card-body">Jangan mengarang capaian. Tandai data, persetujuan, atau narasi yang belum final.</div></div>
+      </div>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Prompt yang Siap Dipakai</h2>
+      <div class="columns">
+        <div class="card"><div class="card-title">Struktur</div><div class="card-body"><ul><li><strong>Goal</strong>: hasil akhir</li><li><strong>Context</strong>: data/file/sumber</li><li><strong>Constraints</strong>: aturan dan batasan</li><li><strong>Done when</strong>: definisi selesai</li></ul></div></div>
+        <div class="quote-box">Minta AI menandai bagian yang tidak yakin, bukan menutupinya dengan bahasa yang rapi.</div>
+      </div>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Template Instruksi Agent</h2>
+      <div class="code">Goal:
+  Bantu saya membuat [output kerja].
+
+Context:
+  Gunakan [dokumen/data/catatan] berikut.
+
+Constraints:
+  - Jangan mengarang data.
+  - Tandai informasi yang belum lengkap.
+  - Gunakan bahasa [formal/ringkas/ramah].
+
+Done when:
+  Output berisi draft, checklist revisi,
+  dan daftar data yang masih perlu ditanyakan.</div>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Etika dan Safety Harian</h2>
+      <div class="columns">
+        <div class="card"><div class="card-title">Boleh</div><div class="card-body"><ul><li>ringkas dokumen umum</li><li>draft awal</li><li>cek konsistensi</li><li>buat alternatif kalimat</li></ul></div></div>
+        <div class="card"><div class="card-title navy">Hati-hati</div><div class="card-body"><ul><li>data pribadi/sensitif</li><li>keputusan keuangan/legal</li><li>klaim faktual tanpa sumber</li><li>output yang langsung dikirim</li></ul></div></div>
+      </div>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Tool Landscape: Pilih Sesuai Tugas</h2>
+      <div class="tool-row">
+        <div class="tool"><img src="assets/tool-logos/chatgpt-real.png" alt=""><strong>ChatGPT</strong><p>General assistant: ide, draft, tanya-jawab, analisis cepat.</p></div>
+        <div class="tool"><img src="assets/tool-logos/gemini-real.png" alt=""><strong>Gemini</strong><p>Kuat saat kerja dekat dengan Google Workspace dan pencarian.</p></div>
+        <div class="tool"><img src="assets/tool-logos/claude-real.png" alt=""><strong>Claude</strong><p>Dokumen panjang, reasoning, analisis kebijakan, editing naskah.</p></div>
+        <div class="tool"><img src="assets/tool-logos/codex-real.png" alt=""><strong>Codex</strong><p>Agentic workbench: file, folder, otomasi, build, render, test.</p></div>
+      </div>
+      <div class="quote-box" style="margin-top: 32px; font-size: 25px;">Ini bukan perbandingan apple-to-apple. Bandingkan berdasarkan jenis tugas.</div>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Codex dan Claude: Dua Mode Bantuan</h2>
+      <div class="columns">
+        <div class="card"><div class="card-title">Claude cocok untuk</div><div class="card-body"><ul><li>membaca dokumen panjang</li><li>analisis kebijakan</li><li>merapikan reasoning</li><li>menyusun argumen</li></ul></div></div>
+        <div class="card"><div class="card-title navy">Codex cocok untuk</div><div class="card-body"><ul><li>bekerja dengan folder/file</li><li>membuat template berulang</li><li>otomasi kecil</li><li>cek hasil lewat build/render/test</li></ul></div></div>
+      </div>
+      <p class="note" style="margin-top: 34px;">Codex efektif saat diperlakukan seperti teammate: diberi konteks, batasan, dan definisi selesai.</p>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Cara Membuka Codex</h2>
+      <div class="columns">
+        <div class="card"><div class="card-title">Untuk kebanyakan peserta</div><div class="card-body"><ol><li>Buka <code>chatgpt.com/download</code>.</li><li>Install ChatGPT desktop.</li><li>Login, lalu buka <strong>Codex</strong>.</li></ol></div></div>
+        <div class="card"><div class="card-title navy">Alternatif</div><div class="card-body">Buka <code>chatgpt.com/codex/</code> lewat browser. Pengguna teknis bisa memakai Codex CLI atau IDE extension.</div></div>
+      </div>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Tampilan Codex</h2>
+      <img class="screenshot" src="assets/screenshots/codex-real-public.png" alt="Tampilan Codex">
+      <p class="note">Contoh tampilan publik Codex. Intinya: beri task, hubungkan konteks kerja, lalu review output/diff/log sebelum dipakai.</p>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Instruksi Codex yang Baik</h2>
+      <div class="code">Goal: Buat template brief mingguan untuk tim program.
+
+Context: Gunakan update program, data kegiatan,
+catatan mitra, dan target indikator.
+
+Constraints: Bahasa ringkas untuk pimpinan,
+jangan mengarang angka atau approval.
+
+Done when: Ada brief markdown, action list,
+risiko, dan data yang masih kurang.</div>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Menu Demo</h2>
+      <div class="columns">
+        <div class="card"><div class="card-title">Demo ringan</div><div class="card-body"><ul><li>update mitra → action summary</li><li>catatan program → minutes</li><li>data kegiatan → program brief</li></ul></div></div>
+        <div class="card"><div class="card-title navy">Demo agentic</div><div class="card-body"><ul><li>mini-agent koordinasi program</li><li>template workflow</li><li>policy/partner brief helper</li></ul></div></div>
+      </div>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Demo 1: Minutes dan Task List</h2>
+      <div class="columns three">
+        <div class="card"><div class="card-title">Input</div><div class="card-body">Catatan rapat mentah</div></div>
+        <div class="card"><div class="card-title">Proses AI</div><div class="card-body">Kelompokkan keputusan dan tugas</div></div>
+        <div class="card"><div class="card-title navy">Output</div><div class="card-body">Minutes, owner, deadline, risiko</div></div>
+      </div>
+      <div class="quote-box" style="margin-top: 52px; font-size: 28px;">Data apa yang belum jelas? Siapa owner yang belum disebut? Deadline mana yang masih asumsi?</div>
+      <p class="note" style="margin-top: 22px;">
+        <a class="button" href="demo-materials/prompt-cards.md">Prompt 1</a>
+        <a class="button" href="demo-materials/01-program-update-raw.md">Bahan demo</a>
+      </p>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Demo 2: Draft Program Brief</h2>
+      <div class="columns">
+        <div class="card"><div class="card-title">Input</div><div class="card-body"><ul><li>data kegiatan</li><li>indikator program</li><li>catatan mitra/lapangan</li><li>risiko dan blocker</li></ul></div></div>
+        <div class="card"><div class="card-title navy">Output</div><div class="card-body"><ul><li>executive brief</li><li>capaian</li><li>kendala</li><li>data yang belum lengkap</li></ul></div></div>
+      </div>
+      <p class="note" style="margin-top: 30px;">
+        <a class="button" href="demo-materials/prompt-cards.md">Prompt 1</a>
+        <a class="button" href="demo-materials/01-program-update-raw.md">Update mentah</a>
+        <a class="button" href="demo-materials/03-program-activities.csv">Data kegiatan</a>
+        <a class="button" href="demo-materials/04-program-indicators.md">Indikator</a>
+      </p>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Demo 3: Mini-Agent untuk Koordinasi</h2>
+      <div class="quote-box" style="font-size: 29px; max-width: 860px; margin: 34px auto 0; text-align: left;">
+        <strong>Peran agent:</strong> Asisten koordinator program.<br>
+        <strong>Tugas:</strong> Mengubah update program, mitra, dan indikator menjadi prioritas minggu ini.<br>
+        <strong>Batasan:</strong> Jangan membuat keputusan final. Tandai risiko, approval, dan data kurang.<br>
+        <strong>Output:</strong> 5 prioritas, owner, deadline, blockers, pertanyaan follow-up.
+      </div>
+      <p class="note" style="margin-top: 24px;">
+        <a class="button" href="demo-materials/prompt-cards.md">Prompt 3</a>
+        <a class="button" href="demo-materials/01-program-update-raw.md">Update</a>
+        <a class="button" href="demo-materials/02-partner-email.md">Email mitra</a>
+        <a class="button" href="demo-materials/03-program-activities.csv">Data</a>
+        <a class="button" href="demo-materials/04-program-indicators.md">Indikator</a>
+      </p>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Checklist Mulai Besok</h2>
+      <ol style="max-width: 860px; margin: 0 auto;">
+        <li>Pilih satu tugas berulang.</li>
+        <li>Tulis output yang diinginkan.</li>
+        <li>Kumpulkan contoh input dan output lama.</li>
+        <li>Buat instruksi: Goal, Context, Constraints, Done when.</li>
+        <li>Uji 3 kali, revisi prompt, simpan template.</li>
+        <li>Sepakati bagian mana yang wajib dicek manusia.</li>
+      </ol>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Take-home Messages</h2>
+      <ol style="max-width: 900px; margin: 0 auto;">
+        <li>AI bukan sekadar tempat bertanya.</li>
+        <li>Nilainya muncul saat AI masuk ke ritme kerja program.</li>
+        <li>Pengguna produktif adalah pengarah AI Agent.</li>
+        <li>Tim perlu membuat contoh, template, dan kebiasaan review lintas program.</li>
+        <li>Manusia tetap bertanggung jawab atas kualitas, keputusan, dan etika.</li>
+      </ol>
+      <div class="footer"></div>
+    </section>
+
+    <section class="slide">
+      <h2>Materi dan Demo</h2>
+      <div class="columns">
+        <div class="card">
+          <div class="card-title">Akses cepat</div>
+          <div class="card-body">
+            <ul>
+              <li><a href="agentic-ai-workplace-pijar-talk.pdf">PDF slide Pijar</a></li>
+              <li><a href="demo-materials/prompt-cards.md">Prompt cards demo</a></li>
+              <li><a href="demo-materials/README.md">Demo materials</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title navy">Referensi Singkat</div>
+          <div class="card-body small">
+            Microsoft WTI 2025, McKinsey State of AI, BCG AI at Work 2025, NIST AI RMF, OpenAI Codex manual, dan laman publik Pijar Foundation.
+          </div>
+        </div>
+      </div>
+      <div class="footer"></div>
+    </section>
+  </main>
+
+  <div class="controls">
+    <button id="prevBtn">Prev</button>
+    <button id="nextBtn">Next</button>
+    <button id="overviewBtn">Overview</button>
+    <button id="helpBtn">Help</button>
+    <a class="button" href="agentic-ai-workplace-pijar-talk.pdf">PDF</a>
+  </div>
+
+  <div class="progress"><div class="bar" id="bar"></div></div>
+
+  <div class="help" id="help">
+    <div class="help-card">
+      <h3>Keyboard</h3>
+      <p><strong>→ / Space</strong>: next slide<br><strong>←</strong>: previous slide<br><strong>O</strong>: overview<br><strong>H / ?</strong>: help<br><strong>F</strong>: fullscreen<br><strong>Esc</strong>: close overlay</p>
+      <p>Peserta bisa membuka file ini langsung di browser. Link PDF dan demo materials ada di slide terakhir.</p>
+    </div>
+  </div>
+
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    const bar = document.getElementById('bar');
+    const help = document.getElementById('help');
+    let index = Math.max(0, Number(location.hash.replace('#', '')) - 1 || 0);
+
+    function render() {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+        const footer = slide.querySelector('.footer');
+        if (footer) footer.textContent = `${i + 1}/${slides.length}`;
+      });
+      bar.style.width = `${((index + 1) / slides.length) * 100}%`;
+      if (!document.body.classList.contains('overview')) {
+        history.replaceState(null, '', `#${index + 1}`);
+      }
+    }
+
+    function next() {
+      index = Math.min(slides.length - 1, index + 1);
+      render();
+    }
+
+    function prev() {
+      index = Math.max(0, index - 1);
+      render();
+    }
+
+    function toggleOverview() {
+      document.body.classList.toggle('overview');
+      if (!document.body.classList.contains('overview')) render();
+    }
+
+    slides.forEach((slide, i) => {
+      slide.addEventListener('click', () => {
+        if (document.body.classList.contains('overview')) {
+          index = i;
+          document.body.classList.remove('overview');
+          render();
+        }
+      });
+    });
+
+    document.getElementById('nextBtn').onclick = next;
+    document.getElementById('prevBtn').onclick = prev;
+    document.getElementById('overviewBtn').onclick = toggleOverview;
+    document.getElementById('helpBtn').onclick = () => help.classList.add('show');
+    help.addEventListener('click', () => help.classList.remove('show'));
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        help.classList.remove('show');
+        document.body.classList.remove('overview');
+        render();
+        return;
+      }
+      if (event.key === 'ArrowRight' || event.key === ' ' || event.key === 'PageDown') next();
+      if (event.key === 'ArrowLeft' || event.key === 'PageUp') prev();
+      if (event.key.toLowerCase() === 'o') toggleOverview();
+      if (event.key.toLowerCase() === 'h' || event.key === '?') help.classList.toggle('show');
+      if (event.key.toLowerCase() === 'f') document.documentElement.requestFullscreen?.();
+    });
+
+    render();
+  </script>
+</body>
+</html>
