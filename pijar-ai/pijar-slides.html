@@ -90,8 +90,10 @@
     .meme-slide.active { display: grid; }
 
     .meme-slide img {
-      height: 100%;
-      max-width: 100%;
+      width: auto;
+      height: auto;
+      max-width: calc(100% - 72px);
+      max-height: calc(100% - 36px);
       object-fit: contain;
       display: block;
     }
@@ -530,7 +532,6 @@
 
     <section class="slide plain-slide meme-slide">
       <img src="assets/pijar/microsoft-authenticator-joke.jpeg" alt="Microsoft Authenticator workplace joke">
-      <div class="footer"></div>
     </section>
 
     <section class="slide plain-slide qr-slide">
@@ -538,7 +539,6 @@
         <img src="assets/pijar/pijar-ai-qr.png" alt="QR code to Pijar AI slides">
         <a class="qr-link" href="https://ahmadataka.github.io/pijar-ai/">ahmadataka.github.io/pijar-ai/</a>
       </div>
-      <div class="footer"></div>
     </section>
 
     <section class="slide">
