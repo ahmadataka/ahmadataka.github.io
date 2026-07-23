@@ -526,10 +526,7 @@
       .slide.active { display: block !important; }
 
       .slide::before {
-        left: 22px;
-        right: 22px;
-        top: 72px;
-        height: 2px;
+        display: none;
       }
 
       .title-slide {
@@ -544,7 +541,9 @@
 
       h2 {
         font-size: clamp(27px, 8vw, 36px);
-        margin-bottom: 42px;
+        margin-bottom: 28px;
+        padding-bottom: 18px;
+        border-bottom: 2px solid var(--teal);
         line-height: 1.08;
       }
 
