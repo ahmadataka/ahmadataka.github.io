@@ -492,28 +492,105 @@
     .help-card p { font-size: 19px; line-height: 1.45; }
 
     @media (max-width: 900px) {
-      body { overflow: auto; }
-      .deck { height: auto; }
-      .slide {
-        display: block;
-        position: relative;
-        width: 100vw;
-        height: auto;
-        min-height: 100vh;
-        padding: 40px 26px 56px;
+      html, body {
+        overflow: auto;
+        min-height: 100%;
+        background:
+          radial-gradient(circle at 0% 0%, rgba(19, 185, 180, 0.16), transparent 34%),
+          #f4fbfc;
       }
-      .slide:not(.active) { display: none; }
-      .slide::before { left: 32px; right: 32px; top: 94px; }
-      h1 { margin-top: 130px; font-size: 50px; }
-      h2 { font-size: 31px; margin-bottom: 54px; }
+
+      .deck {
+        width: 100%;
+        height: auto;
+        padding: 14px 12px 28px;
+      }
+
+      .slide {
+        display: block !important;
+        position: relative;
+        inset: auto;
+        width: min(100%, 680px);
+        height: auto;
+        min-height: auto;
+        margin: 0 auto 18px;
+        padding: 30px 22px 34px;
+        overflow: visible;
+        border-radius: 22px;
+        box-shadow: 0 14px 34px rgba(11, 37, 84, 0.11);
+      }
+
+      .slide::before {
+        left: 22px;
+        right: 22px;
+        top: 72px;
+        height: 2px;
+      }
+
+      .title-slide {
+        min-height: 520px;
+      }
+
+      h1 {
+        margin-top: 132px;
+        font-size: clamp(42px, 14vw, 62px);
+        line-height: 1.02;
+      }
+
+      h2 {
+        font-size: clamp(27px, 8vw, 36px);
+        margin-bottom: 42px;
+        line-height: 1.08;
+      }
+
+      .long-title h2 { font-size: clamp(25px, 7vw, 33px); }
+      .subtitle { font-size: 22px; margin-bottom: 36px; }
+      .author { font-size: 20px; }
+      .meta { font-size: 17px; }
       .columns, .columns.three, .columns.four, .tool-row { grid-template-columns: 1fr; }
-      .card-body, li { font-size: 22px; }
+      .columns, .columns.three, .columns.four, .tool-row { gap: 18px; }
+      .card-title { font-size: 22px; padding: 11px 15px; }
+      .card-body, li { font-size: 20px; }
+      .card-body { padding: 18px 18px 20px; }
+      .card-body.small, .small-list li { font-size: 17px; }
+      li { margin-bottom: 9px; }
       .brand-tag { left: 64px; font-size: 16px; }
       .pijar-logo { width: 82px; top: 46px; right: 30px; }
-      .meme-slide { min-height: 100vh; padding: 0; }
-      .qr-slide { min-height: 100vh; padding: 40px 26px; }
-      .qr-wrap img { width: min(78vw, 390px); }
+      .big-statement { margin: 32px auto 0; width: 100%; }
+      .big-statement .main { font-size: 34px; }
+      .big-statement .accent { font-size: 23px; }
+      .quote-box { font-size: 24px; padding: 24px; }
+      .mini-card { min-height: auto; }
+      .tool-row { margin-top: 0; }
+      .tool { min-height: auto; padding: 22px 18px; }
+      .code { font-size: 15px; padding: 20px; overflow-x: auto; }
+      .screenshot { max-width: 100%; max-height: none; margin: 0 auto 18px; }
+      .note { font-size: 14px; }
+
+      .meme-slide {
+        min-height: auto;
+        padding: 16px !important;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .meme-slide img {
+        width: 100%;
+        height: auto;
+        max-width: 420px;
+        max-height: none;
+        border-radius: 18px;
+      }
+
+      .qr-slide {
+        min-height: auto;
+        padding: 42px 22px !important;
+      }
+
+      .qr-wrap { gap: 22px; }
+      .qr-wrap img { width: min(78vw, 360px); }
       .qr-link { font-size: 20px; overflow-wrap: anywhere; }
+      .footer, .controls, .progress { display: none; }
     }
   </style>
 </head>
