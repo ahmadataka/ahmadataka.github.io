@@ -493,8 +493,8 @@
 
     @media (max-width: 900px) {
       html, body {
-        overflow: auto;
-        min-height: 100%;
+        overflow: hidden;
+        min-height: 100dvh;
         background:
           radial-gradient(circle at 0% 0%, rgba(19, 185, 180, 0.16), transparent 34%),
           #f4fbfc;
@@ -502,23 +502,28 @@
 
       .deck {
         width: 100%;
-        height: auto;
-        padding: 14px 12px 28px;
+        height: 100dvh;
+        padding: 12px 12px 82px;
+        display: grid;
+        place-items: center;
       }
 
       .slide {
-        display: block !important;
+        display: none !important;
         position: relative;
         inset: auto;
         width: min(100%, 680px);
-        height: auto;
-        min-height: auto;
-        margin: 0 auto 18px;
-        padding: 30px 22px 34px;
-        overflow: visible;
+        height: calc(100dvh - 104px);
+        min-height: 0;
+        margin: 0 auto;
+        padding: 28px 22px 34px;
+        overflow-y: auto;
+        overscroll-behavior: contain;
         border-radius: 22px;
         box-shadow: 0 14px 34px rgba(11, 37, 84, 0.11);
       }
+
+      .slide.active { display: block !important; }
 
       .slide::before {
         left: 22px;
@@ -528,7 +533,7 @@
       }
 
       .title-slide {
-        min-height: 520px;
+        min-height: 0;
       }
 
       h1 {
@@ -568,29 +573,69 @@
       .note { font-size: 14px; }
 
       .meme-slide {
-        min-height: auto;
+        height: calc(100dvh - 104px);
         padding: 16px !important;
         align-items: center;
         justify-content: center;
+        overflow: hidden;
       }
+
+      .meme-slide.active { display: flex !important; }
 
       .meme-slide img {
         width: 100%;
         height: auto;
         max-width: 420px;
-        max-height: none;
+        max-height: calc(100dvh - 136px);
         border-radius: 18px;
       }
 
       .qr-slide {
-        min-height: auto;
+        height: calc(100dvh - 104px);
         padding: 42px 22px !important;
       }
 
       .qr-wrap { gap: 22px; }
       .qr-wrap img { width: min(78vw, 360px); }
       .qr-link { font-size: 20px; overflow-wrap: anywhere; }
-      .footer, .controls, .progress { display: none; }
+      .footer, .progress { display: none; }
+
+      .controls {
+        opacity: 1;
+        left: 50%;
+        right: auto;
+        bottom: max(14px, env(safe-area-inset-bottom));
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        padding: 8px;
+        border: 1px solid rgba(11, 37, 84, 0.12);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 12px 30px rgba(11, 37, 84, 0.16);
+        backdrop-filter: blur(10px);
+      }
+
+      .controls::before {
+        content: attr(data-progress);
+        align-self: center;
+        min-width: 48px;
+        color: var(--navy);
+        font-size: 14px;
+        font-weight: 800;
+        text-align: center;
+      }
+
+      .controls #overviewBtn,
+      .controls #helpBtn,
+      .controls .button {
+        display: none;
+      }
+
+      button {
+        font-size: 15px;
+        padding: 11px 18px;
+      }
     }
   </style>
 </head>
@@ -1051,6 +1096,7 @@ risiko, dan data yang masih kurang.</div>
         if (footer) footer.textContent = `${i + 1}/${slides.length}`;
       });
       bar.style.width = `${((index + 1) / slides.length) * 100}%`;
+      document.querySelector('.controls').dataset.progress = `${index + 1}/${slides.length}`;
       if (!document.body.classList.contains('overview')) {
         history.replaceState(null, '', `#${index + 1}`);
       }
