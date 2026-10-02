@@ -1,0 +1,1264 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Slide interaktif respons atas klaim bahwa keberadaan Tuhan memerlukan bukti empiris.">
+  <title>Keberadaan Tuhan Perlu Bukti Empiris?</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f4efe6;
+      --muted: #b8b3ab;
+      --dim: #77736d;
+      --night: #080a10;
+      --night-2: #10141d;
+      --paper: #171a22;
+      --line: rgba(244, 239, 230, .18);
+      --gold: #e8b86a;
+      --gold-2: #ffd998;
+      --cyan: #63d8d1;
+      --red: #ff7f73;
+      --green: #82d49a;
+      --violet: #b7a2ff;
+      --shadow: 0 32px 90px rgba(0, 0, 0, .42);
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Aptos", "Segoe UI", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+    body {
+      background: #040507;
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    button { font: inherit; }
+
+    #stage {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(80, 57, 135, .18), transparent 32%),
+        radial-gradient(circle at 84% 82%, rgba(19, 120, 125, .12), transparent 34%),
+        #050608;
+    }
+
+    #deck {
+      position: relative;
+      width: 1600px;
+      height: 900px;
+      transform-origin: center;
+      background: var(--night);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: none;
+      padding: 64px 78px 54px;
+      overflow: hidden;
+      background:
+        linear-gradient(115deg, rgba(255,255,255,.025), transparent 42%),
+        var(--night);
+      isolation: isolate;
+    }
+
+    .slide.active { display: flex; flex-direction: column; }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--gold), var(--cyan));
+      opacity: .9;
+      z-index: -1;
+    }
+
+    .cover {
+      justify-content: flex-end;
+      background-image:
+        linear-gradient(90deg, rgba(4, 5, 11, .96) 0%, rgba(4, 5, 11, .77) 48%, rgba(4, 5, 11, .18) 100%),
+        linear-gradient(0deg, rgba(4, 5, 11, .92) 0%, transparent 48%),
+        url("./assets/cover.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .cover::before { height: 7px; }
+    .cover-copy { max-width: 950px; margin-bottom: 84px; }
+    .eyebrow {
+      margin: 0 0 22px;
+      color: var(--gold-2);
+      font-size: 20px;
+      font-weight: 750;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 980px;
+      margin-bottom: 24px;
+      font-family: var(--serif);
+      font-size: 76px;
+      font-weight: 500;
+      line-height: 1.01;
+      letter-spacing: -.035em;
+    }
+    .cover h1 em { color: var(--gold-2); font-style: normal; }
+    .subtitle {
+      max-width: 820px;
+      color: #ded8cf;
+      font-family: var(--serif);
+      font-size: 32px;
+      line-height: 1.28;
+    }
+    .cover-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+    .cover-note kbd, .help kbd {
+      border: 1px solid rgba(255,255,255,.22);
+      border-bottom-width: 3px;
+      border-radius: 6px;
+      padding: 4px 8px;
+      background: rgba(0,0,0,.3);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: .88em;
+    }
+
+    .slide-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: start;
+      gap: 36px;
+      margin-bottom: 30px;
+    }
+    .slide-no {
+      padding-top: 8px;
+      color: var(--dim);
+      font-size: 18px;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: .12em;
+    }
+    h2 {
+      margin-bottom: 0;
+      font-family: var(--serif);
+      font-size: 47px;
+      font-weight: 500;
+      line-height: 1.07;
+      letter-spacing: -.025em;
+    }
+    h3 {
+      margin-bottom: 13px;
+      color: var(--gold-2);
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .lede {
+      max-width: 1200px;
+      color: #d5d0c8;
+      font-family: var(--serif);
+      font-size: 27px;
+      line-height: 1.35;
+    }
+    .accent { color: var(--gold-2); }
+    .cyan { color: var(--cyan); }
+    .red { color: var(--red); }
+    .green { color: var(--green); }
+    .violet { color: var(--violet); }
+    .muted { color: var(--muted); }
+    .small { font-size: .84em; }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 54px;
+      min-height: 0;
+      flex: 1;
+    }
+    .split.equal { grid-template-columns: 1fr 1fr; }
+    .split.wide-left { grid-template-columns: 1.22fr .78fr; }
+    .column { min-width: 0; }
+
+    .rule {
+      width: 100%;
+      height: 1px;
+      margin: 24px 0;
+      background: linear-gradient(90deg, var(--line), transparent);
+    }
+    .quote {
+      max-width: 1150px;
+      padding-left: 32px;
+      border-left: 5px solid var(--gold);
+      color: #f3ede4;
+      font-family: var(--serif);
+      font-size: 32px;
+      line-height: 1.32;
+    }
+    .big-statement {
+      max-width: 1310px;
+      margin: auto 0;
+      font-family: var(--serif);
+      font-size: 47px;
+      line-height: 1.24;
+      letter-spacing: -.015em;
+    }
+
+    .takeaway {
+      position: relative;
+      padding: 28px 0 28px 34px;
+      border-left: 5px solid var(--cyan);
+      color: #ece7de;
+      font-size: 27px;
+      line-height: 1.35;
+    }
+    .takeaway strong { color: var(--cyan); }
+
+    .argument-slide .slide-head { margin-bottom: 22px; }
+    .argument-grid {
+      display: grid;
+      grid-template-columns: 340px minmax(0, 1fr) 390px;
+      gap: 28px;
+      align-items: stretch;
+      flex: 1;
+      min-height: 0;
+      margin-bottom: 18px;
+    }
+    .argument-grid.two {
+      grid-template-columns: minmax(0, 1.38fr) minmax(0, .62fr);
+    }
+    .argument-intro,
+    .evaluation {
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+    .argument-slide .logic {
+      gap: 13px;
+      padding: 18px 24px;
+    }
+    .argument-slide .premise,
+    .argument-slide .conclusion {
+      padding-top: 14px;
+      padding-bottom: 14px;
+      font-size: 19px;
+      line-height: 1.3;
+    }
+    .argument-slide .premise .symbol,
+    .argument-slide .conclusion .symbol { top: 13px; }
+    .argument-slide .therefore { height: 14px; }
+    .argument-intro p,
+    .evaluation p,
+    .evaluation li {
+      color: #d6d0c7;
+      font-size: 20px;
+      line-height: 1.42;
+    }
+    .argument-intro p { font-family: var(--serif); font-size: 24px; }
+    .evaluation ul { margin: 0; padding-left: 22px; }
+    .evaluation li + li { margin-top: 11px; }
+    .verdict {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 6px 10px;
+      border-left: 4px solid currentColor;
+      color: var(--red);
+      background: rgba(255,255,255,.035);
+      font-size: 15px;
+      font-weight: 850;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .verdict.accept { color: var(--green); }
+    .verdict.revise { color: var(--gold-2); }
+
+    .logic {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+      min-width: 0;
+      padding: 22px 30px;
+      border: 1px solid rgba(255,255,255,.09);
+      background:
+        radial-gradient(circle at 92% 10%, rgba(99,216,209,.10), transparent 28%),
+        rgba(255,255,255,.025);
+    }
+    .logic-label {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      color: var(--dim);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .premise,
+    .conclusion {
+      position: relative;
+      padding: 17px 20px 17px 72px;
+      border-left: 3px solid var(--violet);
+      background: rgba(183,162,255,.07);
+      color: #f0ebe3;
+      font-size: 20px;
+      line-height: 1.36;
+    }
+    .premise .symbol,
+    .conclusion .symbol {
+      position: absolute;
+      left: 17px;
+      top: 16px;
+      display: grid;
+      width: 40px;
+      height: 30px;
+      place-items: center;
+      border: 1px solid currentColor;
+      border-radius: 18px;
+      color: var(--violet);
+      font-size: 12px;
+      font-weight: 850;
+    }
+    .conclusion {
+      border-left-color: var(--cyan);
+      background: rgba(99,216,209,.08);
+    }
+    .conclusion .symbol { color: var(--cyan); }
+    .therefore {
+      position: relative;
+      height: 20px;
+    }
+    .therefore::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: -4px;
+      width: 1px;
+      height: 18px;
+      background: var(--line);
+    }
+    .therefore::after {
+      content: "▼";
+      position: absolute;
+      left: calc(50% - 7px);
+      bottom: -5px;
+      color: var(--cyan);
+      font-size: 14px;
+    }
+
+    .source-link {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      min-height: 44px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .source-link span {
+      color: var(--dim);
+      font-size: 13px;
+      font-weight: 850;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+    .source-link a {
+      color: var(--gold-2);
+      text-decoration-color: rgba(255,217,152,.4);
+      text-underline-offset: 4px;
+    }
+    .source-link a:hover { color: #fff4dc; }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: 154px 1fr;
+      gap: 0 30px;
+      flex: 1;
+      min-height: 0;
+      margin-top: 6px;
+    }
+    .time-row { display: contents; }
+    .time {
+      position: relative;
+      padding: 17px 22px 17px 0;
+      border-right: 2px solid rgba(232,184,106,.4);
+      color: var(--gold-2);
+      font-size: 20px;
+      font-weight: 800;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    .time::after {
+      content: "";
+      position: absolute;
+      right: -8px;
+      top: 25px;
+      width: 14px;
+      height: 14px;
+      border: 3px solid var(--gold);
+      border-radius: 50%;
+      background: var(--night);
+    }
+    .time-copy {
+      padding: 15px 0 16px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      color: #d8d2ca;
+      font-size: 22px;
+      line-height: 1.35;
+    }
+    .time-copy strong { color: var(--ink); font-weight: 760; }
+
+    .map {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px 42px;
+      flex: 1;
+      align-items: center;
+    }
+    .map-item {
+      position: relative;
+      min-height: 146px;
+      padding: 24px 18px 18px 0;
+      border-top: 2px solid var(--line);
+    }
+    .map-item::before {
+      content: attr(data-n);
+      display: inline-grid;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 13px;
+      place-items: center;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      color: var(--gold-2);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    .map-item h3 {
+      margin-bottom: 7px;
+      color: var(--ink);
+      font-size: 21px;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .map-item p { color: var(--muted); font-size: 17px; line-height: 1.35; }
+
+    .logic-demo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      flex: 1;
+      align-items: center;
+    }
+    .logic-demo .logic { min-height: 420px; }
+    .logic-note {
+      display: grid;
+      gap: 22px;
+    }
+    .logic-note div {
+      padding: 22px 0 22px 28px;
+      border-left: 3px solid var(--line);
+    }
+    .logic-note strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--gold-2);
+      font-size: 23px;
+    }
+    .logic-note p { color: var(--muted); font-size: 20px; line-height: 1.4; }
+
+    .matrix {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 38px;
+      flex: 1;
+      min-height: 0;
+    }
+    .matrix-col {
+      padding-top: 20px;
+      border-top: 5px solid var(--green);
+    }
+    .matrix-col.revise { border-color: var(--gold); }
+    .matrix-col.reject { border-color: var(--red); }
+    .matrix-col h3 { color: var(--ink); font-size: 25px; letter-spacing: 0; text-transform: none; }
+    .matrix-col ol { margin: 22px 0 0; padding-left: 28px; }
+    .matrix-col li {
+      padding-left: 8px;
+      color: #d5d0c8;
+      font-size: 18px;
+      line-height: 1.36;
+    }
+    .matrix-col li + li { margin-top: 13px; }
+
+    .epistemic {
+      display: grid;
+      grid-template-columns: 1fr 100px 1fr 100px 1fr;
+      gap: 20px;
+      flex: 1;
+      align-items: center;
+    }
+    .ep-step {
+      min-height: 285px;
+      padding: 34px 28px;
+      border-top: 4px solid var(--gold);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), transparent);
+    }
+    .ep-step:nth-of-type(3) { border-color: var(--cyan); }
+    .ep-step:nth-of-type(5) { border-color: var(--violet); }
+    .ep-step .num {
+      margin-bottom: 36px;
+      color: var(--dim);
+      font-size: 18px;
+      font-weight: 800;
+    }
+    .ep-step h3 { color: var(--ink); font-size: 26px; letter-spacing: 0; text-transform: none; }
+    .ep-step p { color: var(--muted); font-size: 20px; line-height: 1.38; }
+    .ep-arrow {
+      color: var(--gold-2);
+      font-family: var(--serif);
+      font-size: 55px;
+      text-align: center;
+    }
+
+    .closing {
+      background-image:
+        linear-gradient(90deg, rgba(5,7,10,.97) 0%, rgba(5,7,10,.84) 54%, rgba(5,7,10,.3) 100%),
+        url("./assets/closing.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+    .closing-copy { max-width: 1050px; margin: auto 0; }
+    .closing .big-statement { font-size: 43px; }
+    .closing .source-link { max-width: 1000px; margin-top: 34px; }
+
+    .reading-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 56px;
+      margin-top: 10px;
+      counter-reset: readings;
+    }
+    .reading-list a {
+      position: relative;
+      display: block;
+      padding: 14px 0 14px 45px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      color: #ddd7ce;
+      font-family: var(--serif);
+      font-size: 20px;
+      line-height: 1.28;
+      text-decoration: none;
+      counter-increment: readings;
+    }
+    .reading-list a::before {
+      content: counter(readings, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 850;
+      letter-spacing: .08em;
+    }
+    .reading-list a:hover { color: var(--gold-2); }
+
+    .fragment {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .35s ease, transform .35s ease;
+    }
+    .fragment.visible { opacity: 1; transform: none; }
+
+    #progress {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 40;
+      width: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--cyan));
+      transition: width .28s ease;
+    }
+    #chrome {
+      position: fixed;
+      right: 20px;
+      bottom: 18px;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: .34;
+      transition: opacity .2s ease;
+    }
+    #chrome:hover, #chrome:focus-within { opacity: 1; }
+    #chrome button {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.17);
+      border-radius: 50%;
+      background: rgba(6,7,10,.72);
+      color: var(--ink);
+      cursor: pointer;
+    }
+    #chrome button:hover { border-color: var(--gold); color: var(--gold-2); }
+    #counter {
+      min-width: 70px;
+      color: var(--muted);
+      font-size: 14px;
+      font-variant-numeric: tabular-nums;
+      text-align: center;
+    }
+
+    #overview {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: none;
+      overflow: auto;
+      padding: 44px;
+      background: rgba(3,4,7,.97);
+    }
+    #overview.open { display: block; }
+    .overview-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      max-width: 1280px;
+      margin: 0 auto 28px;
+    }
+    .overview-head h2 { font-size: 34px; }
+    .overview-head button,
+    .help button {
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 9px 14px;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    #overview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 18px;
+      max-width: 1280px;
+      margin: auto;
+    }
+    .overview-card {
+      min-height: 155px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      background: var(--night-2);
+      color: var(--ink);
+      text-align: left;
+      cursor: pointer;
+    }
+    .overview-card:hover,
+    .overview-card.current { border-color: var(--gold); }
+    .overview-card small { color: var(--gold); font-weight: 800; }
+    .overview-card strong {
+      display: block;
+      margin-top: 20px;
+      font-family: var(--serif);
+      font-size: 21px;
+      line-height: 1.25;
+    }
+
+    .help {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      z-index: 90;
+      display: none;
+      width: min(620px, calc(100vw - 40px));
+      padding: 34px;
+      border: 1px solid var(--line);
+      background: #101219;
+      box-shadow: var(--shadow);
+      transform: translate(-50%, -50%);
+    }
+    .help.open { display: block; }
+    .help h2 { font-size: 34px; }
+    .help-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px 24px;
+      margin: 28px 0;
+      color: var(--muted);
+      align-items: center;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
+    }
+
+    @media (max-width: 900px) {
+      #stage { display: block; }
+      #deck {
+        width: 100vw;
+        height: 100vh;
+        transform: none !important;
+        box-shadow: none;
+      }
+      .slide {
+        padding: 30px 22px 86px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+      }
+      .cover { justify-content: center; background-position: 58% center; }
+      .cover-copy { margin-bottom: 0; }
+      .eyebrow { margin-bottom: 15px; font-size: 14px; }
+      h1 { margin-bottom: 18px; font-size: 43px; line-height: 1.04; }
+      .subtitle { font-size: 24px; }
+      .cover-note { align-items: flex-start; font-size: 15px; line-height: 1.45; }
+      .slide-head { gap: 12px; margin-bottom: 22px; }
+      h2 { font-size: 33px; line-height: 1.08; }
+      h3 { font-size: 15px; }
+      .slide-no { padding-top: 5px; font-size: 13px; }
+      .lede { font-size: 21px; }
+      .big-statement,
+      .closing .big-statement { margin: 24px 0; font-size: 29px; line-height: 1.28; }
+      .takeaway { padding: 20px 0 20px 20px; font-size: 20px; }
+      .split,
+      .split.equal,
+      .split.wide-left,
+      .argument-grid,
+      .argument-grid.two,
+      .logic-demo,
+      .matrix,
+      .epistemic,
+      .reading-list {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        flex: none;
+      }
+      .argument-grid { margin-bottom: 24px; }
+      .argument-intro p { font-size: 20px; }
+      .evaluation p,
+      .evaluation li { font-size: 17px; }
+      .logic,
+      .logic-demo .logic { min-height: 0; padding: 22px 16px; }
+      .logic-label {
+        position: static;
+        margin-bottom: 3px;
+        text-align: right;
+      }
+      .argument-slide .logic { padding: 22px 16px; }
+      .premise,
+      .conclusion,
+      .argument-slide .premise,
+      .argument-slide .conclusion {
+        padding: 15px 14px 15px 65px;
+        font-size: 17px;
+        line-height: 1.38;
+      }
+      .premise .symbol,
+      .conclusion .symbol,
+      .argument-slide .premise .symbol,
+      .argument-slide .conclusion .symbol { left: 13px; top: 14px; }
+      .source-link { margin-top: 12px; font-size: 14px; line-height: 1.35; }
+      .timeline { grid-template-columns: 88px 1fr; gap: 0 16px; flex: none; }
+      .time { padding: 15px 14px 15px 0; font-size: 14px; }
+      .time::after { top: 20px; }
+      .time-copy { padding: 12px 0 15px; font-size: 17px; }
+      .map { grid-template-columns: 1fr; gap: 14px; flex: none; }
+      .map-item { min-height: 0; padding-top: 18px; }
+      .logic-note strong { font-size: 20px; }
+      .logic-note p { font-size: 17px; }
+      .matrix-col li { font-size: 17px; }
+      .epistemic { align-items: stretch; }
+      .ep-step { min-height: 0; padding: 26px 22px; }
+      .ep-step .num { margin-bottom: 20px; }
+      .ep-step p { font-size: 17px; }
+      .ep-arrow { transform: rotate(90deg); font-size: 40px; }
+      .closing { background-position: 62% center; }
+      .closing-copy { margin: 0; }
+      .reading-list a { font-size: 18px; }
+      #chrome { right: 10px; bottom: 10px; opacity: .86; }
+      #chrome button { width: 36px; height: 36px; }
+      #counter { min-width: 58px; }
+      #overview { padding: 24px 16px; }
+      .overview-head { margin-bottom: 20px; }
+      .overview-head h2 { font-size: 28px; }
+      #overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .overview-card { min-height: 120px; padding: 14px; }
+      .overview-card strong { margin-top: 14px; font-size: 17px; }
+    }
+
+    @media print {
+      @page { size: 16in 9in; margin: 0; }
+      html, body { width: auto; height: auto; overflow: visible; background: white; }
+      #stage { position: static; display: block; background: none; }
+      #deck { width: 1600px; height: auto; transform: none !important; box-shadow: none; }
+      .slide, .slide.active {
+        position: relative;
+        display: flex !important;
+        width: 1600px;
+        height: 900px;
+        break-after: page;
+      }
+      .fragment { opacity: 1 !important; transform: none !important; }
+      #chrome, #progress, #overview, .help { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main id="stage" aria-live="polite">
+    <article id="deck">
+      <section class="slide cover active" data-title="Keberadaan Tuhan Perlu Bukti Empiris?">
+        <div class="cover-copy">
+          <p class="eyebrow">Respons argumentatif</p>
+          <h1>Keberadaan Tuhan Perlu <em>Bukti Empiris?</em></h1>
+          <p class="subtitle">Sains, logika, dan bukti keberadaan Tuhan</p>
+          <p class="cover-note"><kbd>→</kbd> untuk mulai · <kbd>O</kbd> untuk melihat seluruh slide</p>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Tesis respons">
+        <header class="slide-head">
+          <h2>Tesis respons</h2>
+          <span class="slide-no">01</span>
+        </header>
+        <p class="big-statement">Reel tersebut tepat ketika menolak mimpi pribadi sebagai bukti publik penentu agama. Masalah muncul ketika kritik itu berubah menjadi <span class="accent">empirisme eksklusif</span>, lalu Tuhan diperlakukan seperti benda di dalam alam yang seharusnya tertangkap teleskop.</p>
+        <div class="takeaway fragment"><strong>Fokus respons:</strong> uji bentuk qiyās, periksa setiap premis, lalu bedakan bukti saintifik dari burhān rasional.</div>
+      </section>
+
+      <section class="slide" data-title="Alur reel 00:00 sampai 01:08">
+        <header class="slide-head">
+          <h2>Alur reel: standar bukti</h2>
+          <span class="slide-no">02</span>
+        </header>
+        <div class="timeline">
+          <div class="time-row fragment"><div class="time">00:00–00:16</div><div class="time-copy"><strong>Syarat awal:</strong> kepercayaan kepada Tuhan memerlukan bukti empiris. Bukti metafisik dipertanyakan karena tidak memenuhi standar tersebut.</div></div>
+          <div class="time-row fragment"><div class="time">00:16–00:43</div><div class="time-copy"><strong>Mimpi yang bertentangan:</strong> pengalaman religius dapat mengarahkan orang kepada agama yang berbeda dan tidak dapat diperiksa orang lain.</div></div>
+          <div class="time-row fragment"><div class="time">00:43–01:08</div><div class="time-copy"><strong>Kriteria sains:</strong> bukti perlu dapat diulang, diperiksa, dan mungkin dibuktikan salah. Pengalaman metafisik dinilai gagal memenuhi kriteria itu.</div></div>
+        </div>
+        <footer class="source-link"><span>Sumber</span><a href="https://www.instagram.com/reel/DdpyiBjzikA/" target="_blank" rel="noopener">Instagram reel @callmeibraa</a></footer>
+      </section>
+
+      <section class="slide" data-title="Alur reel 01:08 sampai 02:53">
+        <header class="slide-head">
+          <h2>Alur reel: tantangan dan kesimpulan</h2>
+          <span class="slide-no">03</span>
+        </header>
+        <div class="timeline">
+          <div class="time-row fragment"><div class="time">01:08–01:38</div><div class="time-copy"><strong>Tantangan publik:</strong> siapa pun yang memiliki data empiris tentang Tuhan diminta mengirimkannya untuk paper dan publikasi besar.</div></div>
+          <div class="time-row fragment"><div class="time">01:38–01:59</div><div class="time-copy"><strong>Teori final:</strong> pembuktian Tuhan dianggap akan menjawab semua persoalan besar fisika. Bukti itu harus dapat diuji dan difalsifikasi.</div></div>
+          <div class="time-row fragment"><div class="time">01:59–02:28</div><div class="time-copy"><strong>Eksperimen JWST:</strong> Tuhan yang ingin berhubungan dapat mengirim pesan publik yang diverifikasi NASA dan komunitas ilmiah.</div></div>
+          <div class="time-row fragment"><div class="time">02:28–02:53</div><div class="time-copy"><strong>Sikap akhir:</strong> karena sinyal semacam itu belum ada, pembicara tetap agnostik-ateis dan mengaku siap mengikuti bukti mana pun.</div></div>
+        </div>
+        <footer class="source-link"><span>Sumber</span><a href="https://www.instagram.com/reel/DdpyiBjzikA/" target="_blank" rel="noopener">Instagram reel @callmeibraa</a></footer>
+      </section>
+
+      <section class="slide" data-title="Sembilan argumen dalam reel">
+        <header class="slide-head">
+          <h2>Sembilan argumen yang perlu dipisahkan</h2>
+          <span class="slide-no">04</span>
+        </header>
+        <div class="map">
+          <div class="map-item fragment" data-n="1"><h3>Mimpi yang bertentangan</h3><p>Pengalaman privat tidak menentukan agama yang benar.</p></div>
+          <div class="map-item fragment" data-n="2"><h3>Falsifiability</h3><p>Klaim yang kebal dari pembatal kehilangan daya bukti.</p></div>
+          <div class="map-item fragment" data-n="3"><h3>Eksklusivitas empiris</h3><p>Klaim Tuhan dianggap sah hanya dengan bukti saintifik.</p></div>
+          <div class="map-item fragment" data-n="4"><h3>Repeatability</h3><p>Pengalaman yang tidak dapat diulang dianggap bukan bukti.</p></div>
+          <div class="map-item fragment" data-n="5"><h3>Teori final fisika</h3><p>Pembuktian Tuhan dianggap menyelesaikan seluruh fisika.</p></div>
+          <div class="map-item fragment" data-n="6"><h3>Divine hiddenness</h3><p>Tuhan yang baik dianggap wajib menyediakan bukti yang jelas.</p></div>
+          <div class="map-item fragment" data-n="7"><h3>Penangguhan kepercayaan</h3><p>Ketiadaan bukti yang diterima dipakai untuk tetap agnostik.</p></div>
+          <div class="map-item fragment" data-n="8"><h3>Sinyal membuktikan Tuhan</h3><p>Pesan kosmik dianggap cukup untuk mengidentifikasi Tuhan.</p></div>
+          <div class="map-item fragment" data-n="9"><h3>Banyak konsep Tuhan</h3><p>Klaim religius yang bersaing memerlukan kriteria pembeda.</p></div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Cara membaca qiyās">
+        <header class="slide-head">
+          <h2>Cara membaca qiyās</h2>
+          <span class="slide-no">05</span>
+        </header>
+        <div class="logic-demo">
+          <div class="logic">
+            <span class="logic-label">Istithnāʾī muttaṣil</span>
+            <div class="premise fragment"><span class="symbol">1</span>Jika <strong>P</strong>, maka <strong>Q</strong>.</div>
+            <div class="premise fragment"><span class="symbol">2</span><strong>P</strong>.</div>
+            <div class="therefore fragment"></div>
+            <div class="conclusion fragment"><span class="symbol">∴</span>Maka <strong>Q</strong>.</div>
+          </div>
+          <div class="logic-note">
+            <div class="fragment"><strong>Ṣūrat al-qiyās</strong><p>Apakah bentuk inferensinya valid? Kesimpulan harus mengikuti premis.</p></div>
+            <div class="fragment"><strong>Māddat al-qiyās</strong><p>Apakah premisnya benar? Argumen valid tetap gagal jika salah satu premis keliru.</p></div>
+            <div class="fragment"><strong>Konsistensi proposisi</strong><p>P dan Q harus memakai kalimat yang sama setiap kali muncul. Negasi hanya menegasikan proposisi tersebut.</p></div>
+          </div>
+        </div>
+        <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/p/cacat-argumentasi-soal-keimanan" target="_blank" rel="noopener">Cacat Argumentasi soal Keimanan</a></footer>
+      </section>
+
+      <section class="slide argument-slide" data-title="Mimpi religius yang bertentangan">
+        <header class="slide-head"><h2>1. Mimpi religius yang bertentangan</h2><span class="slide-no">06</span></header>
+        <div class="argument-grid">
+          <div class="argument-intro fragment"><h3>Versi sederhana</h3><p>Mimpi mendukung agama yang berbeda. Karena hasilnya bertentangan dan tidak dapat diperiksa, mimpi tidak reliabel sebagai bukti agama yang benar.</p></div>
+          <div class="logic">
+            <span class="logic-label">Steelman · nafy al-tālī</span>
+            <div class="premise fragment"><span class="symbol">P→Q</span>Jika pengalaman mimpi religius yang berdiri sendiri merupakan metode yang cukup dan reliabel untuk mengidentifikasi agama yang benar, maka pengalaman mimpi religius tidak memberikan dukungan simetris kepada kesimpulan agama yang saling kontradiktif tanpa kriteria pembeda independen.</div>
+            <div class="premise fragment"><span class="symbol">¬Q</span>Pengalaman mimpi religius memberikan dukungan simetris kepada kesimpulan agama yang saling kontradiktif tanpa kriteria pembeda independen.</div>
+            <div class="therefore fragment"></div>
+            <div class="conclusion fragment"><span class="symbol">¬P</span>Pengalaman mimpi religius yang berdiri sendiri bukan metode yang cukup dan reliabel untuk mengidentifikasi agama yang benar.</div>
+          </div>
+          <div class="evaluation fragment"><span class="verdict accept">Diterima dengan batas</span><p>Argumen ini berhasil terhadap mimpi sebagai bukti mandiri. Ia tidak membatalkan:</p><ul><li>argumen metafisik,</li><li>testimoni mutawātir,</li><li>burhān kenabian.</li></ul></div>
+        </div>
+        <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/p/terjadinya-mujizat-bukti-kebenaran" target="_blank" rel="noopener">Terjadinya Mu‘jizat Bukti Kebenaran Suatu Agama?</a></footer>
+      </section>
+
+      <section class="slide argument-slide" data-title="Falsifiability">
+        <header class="slide-head"><h2>2. Falsifiability</h2><span class="slide-no">07</span></header>
+        <div class="argument-grid">
+          <div class="argument-intro fragment"><h3>Versi sederhana</h3><p>Pengalaman metafisik tidak dapat dibuktikan salah. Karena itu, ia tidak memenuhi standar pernyataan empiris.</p></div>
+          <div class="logic">
+            <span class="logic-label">Steelman · iqtirānī ḥamlī</span>
+            <div class="premise fragment"><span class="symbol">K</span>Setiap klaim yang kebal terhadap seluruh kemungkinan pembatal rasional tidak layak diterima sebagai pengetahuan publik.</div>
+            <div class="premise fragment"><span class="symbol">S</span>Klaim pengalaman metafisik X kebal terhadap seluruh kemungkinan pembatal rasional.</div>
+            <div class="therefore fragment"></div>
+            <div class="conclusion fragment"><span class="symbol">N</span>Klaim pengalaman metafisik X tidak layak diterima sebagai pengetahuan publik.</div>
+          </div>
+          <div class="evaluation fragment"><span class="verdict revise">Premis minor perlu diuji</span><p>Kubrā masuk akal setelah “pembatal” tidak dibatasi pada eksperimen. Ṣughrā keliru jika diterapkan kepada Islam secara keseluruhan. Burhān dapat dibatalkan dengan menunjukkan bentuk invalid atau premis salah.</p></div>
+        </div>
+        <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/p/agama-tak-valid-karena-bebas-falsifikasi" target="_blank" rel="noopener">Agama Tak Valid Karena Bebas Falsifikasi?</a></footer>
+      </section>
+
+      <section class="slide argument-slide" data-title="Eksklusivitas bukti empiris">
+        <header class="slide-head"><h2>3. Eksklusivitas bukti empiris</h2><span class="slide-no">08</span></header>
+        <div class="argument-grid">
+          <div class="argument-intro fragment"><h3>Versi sederhana</h3><p>Saya akan percaya Tuhan hanya jika tersedia bukti empiris yang dapat diuji.</p></div>
+          <div class="logic">
+            <span class="logic-label">Steelman · iqtirānī ḥamlī</span>
+            <div class="premise fragment"><span class="symbol">K</span>Setiap klaim eksistensial tanpa bukti publik, independen, dan diskriminatif yang cukup belum terjustifikasi secara rasional.</div>
+            <div class="premise fragment"><span class="symbol">S</span>Klaim bahwa Tuhan ada tidak memiliki bukti publik, independen, dan diskriminatif yang cukup.</div>
+            <div class="therefore fragment"></div>
+            <div class="conclusion fragment"><span class="symbol">N</span>Klaim bahwa Tuhan ada belum terjustifikasi secara rasional.</div>
+          </div>
+          <div class="evaluation fragment"><span class="verdict">Ṣughrā ditolak</span><p>“Bukti publik” tidak identik dengan eksperimen. Premis rasional yang dapat diperiksa bersama juga memberi bukti publik. Burhān ketuhanan bergerak dari fakta tentang alam menuju Wājib al-Wujūd.</p></div>
+        </div>
+        <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/p/kepastian-keberadaan-tuhan-perlu" target="_blank" rel="noopener">Kepastian Keberadaan Tuhan Perlu Bukti Empiris?</a></footer>
+      </section>
+
+      <section class="slide argument-slide" data-title="Repeatability">
+        <header class="slide-head"><h2>4. Repeatability</h2><span class="slide-no">09</span></header>
+        <div class="argument-grid">
+          <div class="argument-intro fragment"><h3>Versi sederhana</h3><p>Bukti empiris harus dapat diulang. Mimpi tidak dapat diulang. Maka mimpi bukan bukti empiris.</p></div>
+          <div class="logic">
+            <span class="logic-label">Steelman · iqtirānī ḥamlī</span>
+            <div class="premise fragment"><span class="symbol">K</span>Setiap pengalaman individual tanpa data dan metode pemeriksaan independen bukan bukti ilmiah publik.</div>
+            <div class="premise fragment"><span class="symbol">S</span>Mimpi religius merupakan pengalaman individual tanpa data dan metode pemeriksaan independen.</div>
+            <div class="therefore fragment"></div>
+            <div class="conclusion fragment"><span class="symbol">N</span>Mimpi religius bukan bukti ilmiah publik.</div>
+          </div>
+          <div class="evaluation fragment"><span class="verdict accept">Qiyās diterima</span><p>Kesimpulan hanya berbunyi “bukan bukti ilmiah publik”. Ia tidak berbunyi “bukan bukti atau pengetahuan dalam makna apa pun”. Metode pemeriksaan perlu dapat diulang, sedangkan peristiwa historisnya tidak selalu berulang.</p></div>
+        </div>
+        <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/p/yang-lebih-dari-sekedar-bukti-rasional" target="_blank" rel="noopener">Yang Lebih dari Sekadar Bukti Rasional Keberadaan Tuhan</a></footer>
+      </section>
+
+      <section class="slide argument-slide" data-title="Tuhan dan seluruh fisika">
+        <header class="slide-head"><h2>5. “Membuktikan Tuhan menyelesaikan fisika”</h2><span class="slide-no">10</span></header>
+        <div class="argument-grid">
+          <div class="argument-intro fragment"><h3>Versi sederhana</h3><p>Jika Tuhan dapat dijelaskan secara teoretis dan empiris, semua masalah fisika akan terjawab.</p></div>
+          <div class="logic">
+            <span class="logic-label">Steelman · iqtirānī syarṭī</span>
+            <div class="premise fragment"><span class="symbol">A→B</span>Jika Tuhan terbukti secara ilmiah, maka tersedia teori empiris lengkap tentang realitas fundamental yang menurunkan seluruh hukum, konstanta, kondisi awal, dan fenomena fisik.</div>
+            <div class="premise fragment"><span class="symbol">B→C</span>Jika tersedia teori empiris lengkap tentang realitas fundamental yang menurunkan seluruh hukum, konstanta, kondisi awal, dan fenomena fisik, maka seluruh persoalan fisika terjawab.</div>
+            <div class="therefore fragment"></div>
+            <div class="conclusion fragment"><span class="symbol">A→C</span>Jika Tuhan terbukti secara ilmiah, maka seluruh persoalan fisika terjawab.</div>
+          </div>
+          <div class="evaluation fragment"><span class="verdict">Premis pertama ditolak</span><p>Membuktikan sebab ontologis tidak memberi deskripsi seluruh mekanisme fisik. Tuhan bukan variabel terdalam dalam teori fisika. Wājib al-Wujūd menjelaskan mengapa realitas mumkin memerlukan sebab.</p></div>
+        </div>
+        <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/p/keberadaan-tuhan-lebih-tidak-mungkin" target="_blank" rel="noopener">Keberadaan Tuhan Lebih Tidak Mungkin daripada Naturalisme?</a></footer>
+      </section>
+
+      <section class="slide argument-slide" data-title="Divine hiddenness dan JWST">
+        <header class="slide-head"><h2>6. Divine hiddenness dan tuntutan sinyal JWST</h2><span class="slide-no">11</span></header>
+        <div class="argument-grid">
+          <div class="argument-intro fragment"><h3>Versi sederhana</h3><p>Tuhan yang baik dan ingin berhubungan dapat mengirim sinyal publik. Sinyal itu tidak ada. Maka bukti memadai juga tidak ada.</p></div>
+          <div class="logic">
+            <span class="logic-label">Steelman · nafy al-tālī</span>
+            <div class="premise fragment"><span class="symbol">P→Q</span>Jika Tuhan personal yang sempurna kasih-Nya ada, maka tidak terdapat manusia yang tidak menolak relasi dengan Tuhan tetapi tetap tidak percaya karena tidak menemukan bukti yang cukup.</div>
+            <div class="premise fragment"><span class="symbol">¬Q</span>Terdapat manusia yang tidak menolak relasi dengan Tuhan tetapi tetap tidak percaya karena tidak menemukan bukti yang cukup.</div>
+            <div class="therefore fragment"></div>
+            <div class="conclusion fragment"><span class="symbol">¬P</span>Tuhan personal yang sempurna kasih-Nya tidak ada.</div>
+          </div>
+          <div class="evaluation fragment"><span class="verdict">Kubrā belum terbukti</span><p>Argumen membutuhkan premis tambahan: kasih Tuhan mewajibkan tingkat, waktu, dan bentuk bukti yang dituntut manusia. Tidak ada alasan bahwa komunikasi itu wajib berupa sinyal astronomis.</p></div>
+        </div>
+        <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/p/mengapa-kita-tidak-melihat-tuhan" target="_blank" rel="noopener">Mengapa Kita Tidak Melihat Tuhan?</a><a href="https://logikakeimanan.substack.com/p/kasih-sayang-tuhan-mengharuskan-nya" target="_blank" rel="noopener">Kasih Sayang Tuhan Mengharuskan-Nya Selalu Berbuat yang Terbaik?</a></footer>
+      </section>
+
+      <section class="slide argument-slide" data-title="Ketiadaan bukti dan agnostisisme">
+        <header class="slide-head"><h2>7. Ketiadaan bukti dan penangguhan kepercayaan</h2><span class="slide-no">12</span></header>
+        <div class="argument-grid">
+          <div class="argument-intro fragment"><h3>Versi sederhana</h3><p>Karena saya belum menemukan bukti yang cukup, saya tetap agnostik-ateis.</p></div>
+          <div class="logic">
+            <span class="logic-label">Steelman · waḍ‘ al-muqaddam</span>
+            <div class="premise fragment"><span class="symbol">P→Q</span>Jika keberadaan Tuhan tidak memiliki justifikasi yang cukup setelah pencarian yang jujur, maka seseorang seharusnya menangguhkan afirmasi bahwa Tuhan ada.</div>
+            <div class="premise fragment"><span class="symbol">P</span>Keberadaan Tuhan tidak memiliki justifikasi yang cukup setelah pencarian yang jujur.</div>
+            <div class="therefore fragment"></div>
+            <div class="conclusion fragment"><span class="symbol">Q</span>Seseorang seharusnya menangguhkan afirmasi bahwa Tuhan ada.</div>
+          </div>
+          <div class="evaluation fragment"><span class="verdict">Premis P ditolak</span><p>Ketiadaan satu jenis bukti yang salah sasaran tidak sama dengan ketiadaan semua justifikasi. Burhān imkan atau ḥudūth harus diperiksa sebelum menyatakan justifikasi tidak ada.</p><p class="small muted">Menangguhkan G juga berbeda dari mengafirmasi tidak-G.</p></div>
+        </div>
+        <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/p/mengapa-kita-tidak-melihat-tuhan" target="_blank" rel="noopener">Mengapa Kita Tidak Melihat Tuhan?</a></footer>
+      </section>
+
+      <section class="slide argument-slide" data-title="Sinyal kosmik membuktikan Tuhan">
+        <header class="slide-head"><h2>8. “Sinyal kosmik membuktikan Tuhan”</h2><span class="slide-no">13</span></header>
+        <div class="argument-grid">
+          <div class="argument-intro fragment"><h3>Versi sederhana</h3><p>Jika JWST menerima pesan ilahiah dan komunitas ilmiah memverifikasinya, Tuhan terbukti ada.</p></div>
+          <div class="logic">
+            <span class="logic-label">Steelman · waḍ‘ al-muqaddam</span>
+            <div class="premise fragment"><span class="symbol">P→Q</span>Jika teramati suatu peristiwa publik yang memuat informasi spesifik, tidak dapat dihasilkan oleh sebab natural atau agen kontingen mana pun, dan secara unik diprediksi oleh tindakan Tuhan, maka terdapat bukti kuat bagi keberadaan Tuhan.</div>
+            <div class="premise fragment"><span class="symbol">P</span>Teramati suatu peristiwa publik yang memuat informasi spesifik, tidak dapat dihasilkan oleh sebab natural atau agen kontingen mana pun, dan secara unik diprediksi oleh tindakan Tuhan.</div>
+            <div class="therefore fragment"></div>
+            <div class="conclusion fragment"><span class="symbol">Q</span>Terdapat bukti kuat bagi keberadaan Tuhan.</div>
+          </div>
+          <div class="evaluation fragment"><span class="verdict">P tidak dapat ditetapkan secara empiris</span><p>Sinyal spektakuler paling langsung membuktikan pengirim cerdas dan kuat. Ia belum membuktikan pengirim itu Wājib al-Wujūd, nonmaterial, esa, atau pencipta alam.</p></div>
+        </div>
+        <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/p/bukti-apa-yang-bisa-mengubah-keimanan" target="_blank" rel="noopener">Bukti Apa yang Bisa Mengubah Keimanan?</a></footer>
+      </section>
+
+      <section class="slide argument-slide" data-title="Banyak konsep Tuhan">
+        <header class="slide-head"><h2>9. Banyaknya konsep Tuhan</h2><span class="slide-no">14</span></header>
+        <div class="argument-grid">
+          <div class="argument-intro fragment"><h3>Versi sederhana</h3><p>Pengalaman religius dapat mendukung banyak konsep Tuhan. Tanpa pembeda, pengalaman itu tidak menentukan konsep yang benar.</p></div>
+          <div class="logic">
+            <span class="logic-label">Steelman · iqtirānī ḥamlī</span>
+            <div class="premise fragment"><span class="symbol">K</span>Setiap metode yang mendukung banyak konsep Tuhan yang tidak kompatibel tanpa kriteria pembeda independen tidak cukup untuk menentukan konsep Tuhan yang benar.</div>
+            <div class="premise fragment"><span class="symbol">S</span>Pengalaman religius privat, jika berdiri sendiri, adalah metode yang mendukung banyak konsep Tuhan yang tidak kompatibel tanpa kriteria pembeda independen.</div>
+            <div class="therefore fragment"></div>
+            <div class="conclusion fragment"><span class="symbol">N</span>Pengalaman religius privat, jika berdiri sendiri, tidak cukup untuk menentukan konsep Tuhan yang benar.</div>
+          </div>
+          <div class="evaluation fragment"><span class="verdict accept">Bentuk dan materi diterima</span><p>Batasnya penting: banyak konsep Tuhan tidak membuat semuanya setara. Konsekuensi Wājib al-Wujūd memberi kriteria pembeda dan mengeliminasi entitas yang mumkin.</p></div>
+        </div>
+        <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/p/membuktikan-tuhan-yang-mana" target="_blank" rel="noopener">Membuktikan Tuhan yang Mana?</a></footer>
+      </section>
+
+      <section class="slide" data-title="Matriks evaluasi">
+        <header class="slide-head"><h2>Matriks evaluasi premis</h2><span class="slide-no">15</span></header>
+        <div class="matrix">
+          <div class="matrix-col fragment"><h3 class="green">Diterima</h3><ol><li>Mimpi privat tidak menentukan agama yang benar.</li><li>Klaim agama memerlukan burhān yang dapat diperiksa.</li><li>Bukti ilmiah publik memerlukan pemeriksaan independen.</li><li>Klaim kontradiktif tidak dapat semuanya benar.</li></ol></div>
+          <div class="matrix-col revise fragment"><h3 class="accent">Direvisi</h3><ol><li>Falsifiability empiris berlaku khusus untuk klaim saintifik.</li><li>Metode pemeriksaan perlu dapat diulang, peristiwanya tidak selalu.</li><li>Ketiadaan seluruh justifikasi dapat membenarkan penangguhan.</li><li>Pengalaman religius perlu ditempatkan setelah burhān.</li></ol></div>
+          <div class="matrix-col reject fragment"><h3 class="red">Ditolak</h3><ol><li>Hanya sains empiris menghasilkan pengetahuan.</li><li>Tuhan merupakan objek material atau hipotesis fisika.</li><li>Tiada sinyal JWST berarti tiada bukti Tuhan.</li><li>Sinyal kosmik cukup membuktikan Wājib al-Wujūd.</li><li>Pembuktian Tuhan menyelesaikan seluruh fisika.</li></ol></div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Indra, akal, dan burhān">
+        <header class="slide-head"><h2>Indra, akal, dan burhān</h2><span class="slide-no">16</span></header>
+        <p class="lede">Kerangka alternatif tidak membuang bukti empiris. Ia menempatkan bukti empiris sebagai data yang dinilai oleh akal.</p>
+        <div class="epistemic">
+          <div class="ep-step fragment"><div class="num">01</div><h3>Indra menghadirkan alam</h3><p>Kita mengetahui realitas yang berubah, bermula, atau mungkin ada dan tiada.</p></div>
+          <div class="ep-arrow fragment" aria-hidden="true">→</div>
+          <div class="ep-step fragment"><div class="num">02</div><h3>Akal menilai konsekuensinya</h3><p>Yang mumkin tidak menjelaskan wujudnya sendiri dan membutuhkan sebab.</p></div>
+          <div class="ep-arrow fragment" aria-hidden="true">→</div>
+          <div class="ep-step fragment"><div class="num">03</div><h3>Burhān mencapai Wājib</h3><p>Rantai penjelasan berujung pada realitas yang tidak menerima ketiadaan dan tidak membutuhkan sebab.</p></div>
+        </div>
+        <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/p/kepastian-keberadaan-tuhan-perlu" target="_blank" rel="noopener">Kepastian Keberadaan Tuhan Perlu Bukti Empiris?</a></footer>
+      </section>
+
+      <section class="slide closing" data-title="Kesimpulan">
+        <div class="closing-copy">
+          <p class="eyebrow">Kesimpulan</p>
+          <p class="big-statement">Tidak adanya sinyal JWST tidak menyentuh burhān ketuhanan. Jika sinyal itu ada, ia paling jauh menunjukkan <span class="accent">agen kontingen yang kuat</span>, bukan Wājib al-Wujūd.</p>
+          <div class="takeaway fragment"><strong>Tantangan yang tepat:</strong> bantah bentuk qiyās atau tunjukkan premis burhān yang salah.</div>
+          <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/about" target="_blank" rel="noopener">Mengapa Logika Keimanan?</a></footer>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Bacaan lanjutan">
+        <header class="slide-head"><h2>Bacaan lanjutan</h2><span class="slide-no">18</span></header>
+        <div class="reading-list">
+          <a href="https://logikakeimanan.substack.com/about" target="_blank" rel="noopener">Mengapa Logika Keimanan?</a>
+          <a href="https://logikakeimanan.substack.com/p/cacat-argumentasi-soal-keimanan" target="_blank" rel="noopener">Cacat Argumentasi soal Keimanan</a>
+          <a href="https://logikakeimanan.substack.com/p/kepastian-keberadaan-tuhan-perlu" target="_blank" rel="noopener">Kepastian Keberadaan Tuhan Perlu Bukti Empiris?</a>
+          <a href="https://logikakeimanan.substack.com/p/agama-tak-valid-karena-bebas-falsifikasi" target="_blank" rel="noopener">Agama Tak Valid Karena Bebas Falsifikasi?</a>
+          <a href="https://logikakeimanan.substack.com/p/bukti-apa-yang-bisa-mengubah-keimanan" target="_blank" rel="noopener">Bukti Apa yang Bisa Mengubah Keimanan?</a>
+          <a href="https://logikakeimanan.substack.com/p/mengapa-kita-tidak-melihat-tuhan" target="_blank" rel="noopener">Mengapa Kita Tidak Melihat Tuhan?</a>
+          <a href="https://logikakeimanan.substack.com/p/terjadinya-mujizat-bukti-kebenaran" target="_blank" rel="noopener">Terjadinya Mu‘jizat Bukti Kebenaran Suatu Agama?</a>
+          <a href="https://logikakeimanan.substack.com/p/membuktikan-tuhan-yang-mana" target="_blank" rel="noopener">Membuktikan Tuhan yang Mana?</a>
+          <a href="https://logikakeimanan.substack.com/p/keberadaan-tuhan-lebih-tidak-mungkin" target="_blank" rel="noopener">Keberadaan Tuhan Lebih Tidak Mungkin daripada Naturalisme?</a>
+          <a href="https://logikakeimanan.substack.com/p/yang-lebih-dari-sekedar-bukti-rasional" target="_blank" rel="noopener">Yang Lebih dari Sekadar Bukti Rasional Keberadaan Tuhan</a>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <div id="progress" aria-hidden="true"></div>
+  <nav id="chrome" aria-label="Navigasi slide">
+    <button id="prev" type="button" aria-label="Slide sebelumnya">←</button>
+    <span id="counter">1 / 19</span>
+    <button id="next" type="button" aria-label="Slide berikutnya">→</button>
+    <button id="overview-button" type="button" aria-label="Buka overview">▦</button>
+    <button id="fullscreen" type="button" aria-label="Layar penuh">⛶</button>
+  </nav>
+
+  <aside id="overview" aria-hidden="true">
+    <div class="overview-head"><h2>Overview</h2><button id="overview-close" type="button">Tutup</button></div>
+    <div id="overview-grid"></div>
+  </aside>
+
+  <aside id="help" class="help" aria-hidden="true">
+    <h2>Navigasi</h2>
+    <div class="help-grid">
+      <kbd>→</kbd><span>Tampilkan poin berikutnya atau lanjut slide</span>
+      <kbd>←</kbd><span>Kembali satu poin atau satu slide</span>
+      <kbd>O</kbd><span>Buka overview</span>
+      <kbd>F</kbd><span>Layar penuh</span>
+      <kbd>Home</kbd><span>Slide pertama</span>
+      <kbd>End</kbd><span>Slide terakhir</span>
+      <kbd>H</kbd><span>Buka atau tutup bantuan</span>
+    </div>
+    <button id="help-close" type="button">Tutup</button>
+  </aside>
+
+  <script>
+    (() => {
+      const deck = document.getElementById('deck');
+      const slides = [...document.querySelectorAll('.slide')];
+      const counter = document.getElementById('counter');
+      const progress = document.getElementById('progress');
+      const overview = document.getElementById('overview');
+      const overviewGrid = document.getElementById('overview-grid');
+      const help = document.getElementById('help');
+      let index = Math.max(0, Math.min(slides.length - 1, Number(location.hash.slice(1)) - 1 || 0));
+      let touchStartX = null;
+
+      const fragments = slide => [...slide.querySelectorAll('.fragment')];
+      const visibleCount = slide => fragments(slide).filter(el => el.classList.contains('visible')).length;
+
+      function scaleDeck() {
+        const scale = Math.min(innerWidth / 1600, innerHeight / 900);
+        deck.style.transform = `scale(${scale})`;
+      }
+
+      function showSlide(nextIndex, preserveFragments = false) {
+        index = Math.max(0, Math.min(slides.length - 1, nextIndex));
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === index);
+          slide.setAttribute('aria-hidden', i === index ? 'false' : 'true');
+          if (!preserveFragments && i === index) fragments(slide).forEach(el => el.classList.remove('visible'));
+        });
+        counter.textContent = `${index + 1} / ${slides.length}`;
+        progress.style.width = `${((index + 1) / slides.length) * 100}%`;
+        history.replaceState(null, '', `#${index + 1}`);
+        document.title = `${slides[index].dataset.title} · Keberadaan Tuhan Perlu Bukti Empiris?`;
+        refreshOverview();
+      }
+
+      function forward() {
+        const items = fragments(slides[index]);
+        const hidden = items.find(el => !el.classList.contains('visible'));
+        if (hidden) hidden.classList.add('visible');
+        else if (index < slides.length - 1) showSlide(index + 1);
+      }
+
+      function backward() {
+        const items = fragments(slides[index]);
+        const count = visibleCount(slides[index]);
+        if (count) items[count - 1].classList.remove('visible');
+        else if (index > 0) {
+          showSlide(index - 1, true);
+          fragments(slides[index]).forEach(el => el.classList.add('visible'));
+        }
+      }
+
+      function toggleOverview(force) {
+        const open = typeof force === 'boolean' ? force : !overview.classList.contains('open');
+        overview.classList.toggle('open', open);
+        overview.setAttribute('aria-hidden', String(!open));
+      }
+
+      function toggleHelp(force) {
+        const open = typeof force === 'boolean' ? force : !help.classList.contains('open');
+        help.classList.toggle('open', open);
+        help.setAttribute('aria-hidden', String(!open));
+      }
+
+      function refreshOverview() {
+        [...overviewGrid.children].forEach((card, i) => card.classList.toggle('current', i === index));
+      }
+
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+        else document.exitFullscreen?.();
+      }
+
+      slides.forEach((slide, i) => {
+        const card = document.createElement('button');
+        card.type = 'button';
+        card.className = 'overview-card';
+        card.innerHTML = `<small>${String(i + 1).padStart(2, '0')}</small><strong>${slide.dataset.title}</strong>`;
+        card.addEventListener('click', () => { showSlide(i); toggleOverview(false); });
+        overviewGrid.appendChild(card);
+      });
+
+      document.getElementById('next').addEventListener('click', forward);
+      document.getElementById('prev').addEventListener('click', backward);
+      document.getElementById('overview-button').addEventListener('click', () => toggleOverview());
+      document.getElementById('overview-close').addEventListener('click', () => toggleOverview(false));
+      document.getElementById('fullscreen').addEventListener('click', toggleFullscreen);
+      document.getElementById('help-close').addEventListener('click', () => toggleHelp(false));
+
+      document.addEventListener('keydown', event => {
+        if (event.target.closest('a, button, input, textarea')) return;
+        if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') { event.preventDefault(); forward(); }
+        if (event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); backward(); }
+        if (event.key === 'Home') { event.preventDefault(); showSlide(0); }
+        if (event.key === 'End') { event.preventDefault(); showSlide(slides.length - 1); }
+        if (event.key.toLowerCase() === 'o') toggleOverview();
+        if (event.key.toLowerCase() === 'f') toggleFullscreen();
+        if (event.key.toLowerCase() === 'h' || event.key === '?') toggleHelp();
+        if (event.key === 'Escape') { toggleOverview(false); toggleHelp(false); }
+      });
+
+      document.addEventListener('click', event => {
+        if (event.target.closest('a, button, #overview, #help')) return;
+        const midpoint = innerWidth / 2;
+        if (event.clientX > midpoint) forward();
+        else backward();
+      });
+
+      document.addEventListener('touchstart', event => { touchStartX = event.changedTouches[0].clientX; }, { passive: true });
+      document.addEventListener('touchend', event => {
+        if (touchStartX === null) return;
+        const delta = event.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(delta) > 55) delta < 0 ? forward() : backward();
+        touchStartX = null;
+      }, { passive: true });
+
+      addEventListener('resize', scaleDeck);
+      addEventListener('hashchange', () => {
+        const hashIndex = Number(location.hash.slice(1)) - 1;
+        if (Number.isFinite(hashIndex)) showSlide(hashIndex);
+      });
+
+      scaleDeck();
+      showSlide(index);
+    })();
+  </script>
+</body>
+</html>
