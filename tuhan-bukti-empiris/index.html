@@ -744,7 +744,7 @@
       *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
     }
 
-    @media (max-width: 900px) {
+    @media screen and (max-width: 900px) {
       #stage { display: block; }
       #deck {
         width: 100vw;
@@ -847,6 +847,7 @@
       .slide, .slide.active {
         position: relative;
         display: flex !important;
+        flex-direction: column;
         width: 1600px;
         height: 900px;
         break-after: page;
