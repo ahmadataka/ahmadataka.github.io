@@ -50,10 +50,12 @@
     }
 
     #deck {
-      position: relative;
+      position: absolute;
+      left: 0;
+      top: 0;
       width: 1600px;
       height: 900px;
-      transform-origin: center;
+      transform-origin: top left;
       background: var(--night);
       box-shadow: var(--shadow);
       overflow: hidden;
@@ -1181,7 +1183,15 @@
       const visibleCount = slide => fragments(slide).filter(el => el.classList.contains('visible')).length;
 
       function scaleDeck() {
+        if (innerWidth <= 900) {
+          deck.style.left = '0px';
+          deck.style.top = '0px';
+          deck.style.transform = 'none';
+          return;
+        }
         const scale = Math.min(innerWidth / 1600, innerHeight / 900);
+        deck.style.left = `${Math.max(0, (innerWidth - 1600 * scale) / 2)}px`;
+        deck.style.top = `${Math.max(0, (innerHeight - 900 * scale) / 2)}px`;
         deck.style.transform = `scale(${scale})`;
       }
 
