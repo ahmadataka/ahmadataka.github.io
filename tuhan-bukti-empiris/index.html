@@ -1051,6 +1051,94 @@
       letter-spacing: .08em;
     }
     .reading-list a:hover { color: var(--gold-2); }
+    .reading-cta {
+      margin-top: 18px;
+      padding: 16px 20px;
+      border-left: 4px solid var(--cyan);
+      background: rgba(99,216,209,.07);
+      color: #e2ddd5;
+      font-size: 20px;
+      line-height: 1.35;
+    }
+    .reading-cta a { color: var(--cyan); font-weight: 800; text-decoration: none; }
+
+    .verse-slide {
+      background-image:
+        linear-gradient(90deg, rgba(5,7,12,.96), rgba(5,7,12,.76)),
+        url("./assets/southern-ring.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+    .verse-stack {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      flex: 1;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .verse-block {
+      min-width: 0;
+      padding: 26px 30px 30px;
+      border-top: 4px solid var(--gold);
+      background: rgba(6,8,14,.76);
+    }
+    .verse-block:last-child { border-top-color: var(--cyan); }
+    .verse-arabic {
+      direction: rtl;
+      margin: 0 0 25px;
+      color: #fff5e5;
+      font-family: "Noto Naskh Arabic", "Geeza Pro", "Times New Roman", serif;
+      font-size: 42px;
+      line-height: 1.65;
+      text-align: center;
+    }
+    .verse-translation {
+      margin: 0;
+      color: #e0dad1;
+      font-family: var(--serif);
+      font-size: 24px;
+      line-height: 1.42;
+      text-align: center;
+    }
+    .verse-ref {
+      display: block;
+      margin-top: 18px;
+      color: var(--gold-2);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .references-slide .slide-head { margin-bottom: 24px; }
+    .reference-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 54px;
+      flex: 1;
+      min-height: 0;
+      margin-bottom: 16px;
+    }
+    .reference-group {
+      padding-top: 18px;
+      border-top: 4px solid var(--gold);
+    }
+    .reference-group:last-child { border-top-color: var(--cyan); }
+    .reference-group h3 { margin-bottom: 17px; }
+    .reference-list {
+      margin: 0;
+      padding-left: 27px;
+    }
+    .reference-list li {
+      padding-left: 8px;
+      color: #ded8d0;
+      font-size: 18px;
+      line-height: 1.34;
+    }
+    .reference-list li + li { margin-top: 13px; }
+    .reference-list em { color: #fff1d5; font-family: var(--serif); }
 
     .image-credit {
       position: absolute;
@@ -2330,11 +2418,57 @@
           <a href="https://logikakeimanan.substack.com/p/keberadaan-tuhan-lebih-tidak-mungkin" target="_blank" rel="noopener">Keberadaan Tuhan Lebih Tidak Mungkin daripada Naturalisme?</a>
           <a href="https://logikakeimanan.substack.com/p/yang-lebih-dari-sekedar-bukti-rasional" target="_blank" rel="noopener">Yang Lebih dari Sekadar Bukti Rasional Keberadaan Tuhan</a>
         </div>
+        <p class="reading-cta">Cek di <a href="https://logikakeimanan.substack.com" target="_blank" rel="noopener">logikakeimanan.substack.com</a>, berisi &gt;240 artikel gratis.</p>
       </section>
 
       <section class="slide book-promo-slide" data-title="Buku Logika Keimanan dan Tilka Hujjatuna">
         <img src="./assets/buku-logika-keimanan-tilka-hujjatuna.png" alt="Sampul buku Logika Keimanan dan Tilka Hujjatuna, dengan informasi pembelian melalui link di bio">
         <span class="slide-no">60</span>
+      </section>
+
+      <section class="slide verse-slide" data-title="Burhān dan kebenaran">
+        <header class="slide-head"><h2>Burhān dan kebenaran</h2><span class="slide-no">61</span></header>
+        <div class="verse-stack">
+          <article class="verse-block fragment">
+            <p class="verse-arabic" lang="ar">قُلْ هَاتُوا بُرْهَانَكُمْ إِنْ كُنْتُمْ صَادِقِينَ</p>
+            <p class="verse-translation">“Katakanlah, ‘Tunjukkan bukti kebenaranmu jika kamu orang-orang yang benar.’”</p>
+            <span class="verse-ref">Al-Baqarah · 111</span>
+          </article>
+          <article class="verse-block fragment">
+            <p class="verse-arabic" lang="ar">الْحَقُّ مِنْ رَبِّكَ فَلَا تَكُونَنَّ مِنَ الْمُمْتَرِينَ</p>
+            <p class="verse-translation">“Kebenaran itu dari Tuhanmu. Maka, janganlah sekali-kali engkau termasuk orang-orang yang ragu.”</p>
+            <span class="verse-ref">Al-Baqarah · 147</span>
+          </article>
+        </div>
+        <footer class="source-link"><span>Terjemahan</span><a href="https://quran.kemenag.go.id" target="_blank" rel="noopener">Al-Qur’an dan Terjemahannya, Kementerian Agama RI</a></footer>
+      </section>
+
+      <section class="slide references-slide" data-title="Daftar referensi">
+        <header class="slide-head"><h2>Daftar referensi</h2><span class="slide-no">62</span></header>
+        <div class="reference-columns">
+          <div class="reference-group fragment">
+            <h3>Kitab dan karya klasik</h3>
+            <ol class="reference-list">
+              <li>Al-Qur’an al-Karim.</li>
+              <li>Atsīr al-Dīn al-Abharī. <em>Īsāghūjī fī al-Manṭiq</em>.</li>
+              <li>Muḥammad ibn Yūsuf al-Sanūsī. <em>Umm al-Barāhīn</em> atau <em>al-ʿAqīdah al-Ṣughrā</em>, beserta syarahnya.</li>
+              <li>Saʿd al-Dīn al-Taftāzānī. <em>Sharḥ al-ʿAqāʾid al-Nasafiyyah</em>.</li>
+              <li>Aḥmad al-Damanhūrī. <em>Īḍāḥ al-Mubham min Maʿānī al-Sullam</em>.</li>
+              <li>ʿAbd al-Raḥmān al-Akhḍarī. <em>al-Sullam al-Munawraq</em>.</li>
+            </ol>
+          </div>
+          <div class="reference-group fragment">
+            <h3>Syarah dan bacaan modern</h3>
+            <ol class="reference-list" start="7">
+              <li>Zakariyyā al-Anṣārī. <em>al-Maṭlaʿ fī Sharḥ Īsāghūjī</em>.</li>
+              <li>Fakhr al-Dīn al-Rāzī. <em>Mafātīḥ al-Ghayb</em>.</li>
+              <li>Karl R. Popper. <em>The Logic of Scientific Discovery</em>.</li>
+              <li>Ahmad Ataka. <em>Logika Keimanan: Bukti Logis Kebenaran Akidah Islam dalam Sorotan Sains Modern</em>. Turos, 2024.</li>
+              <li>Artikel-artikel di <em>Logika Keimanan</em>, khususnya tulisan yang dicantumkan pada slide “Bacaan lanjutan”.</li>
+            </ol>
+          </div>
+        </div>
+        <footer class="source-link"><span>Catatan</span><span class="source-copy">Ejaan judul mengikuti bentuk yang lazim digunakan dalam artikel Logika Keimanan.</span></footer>
       </section>
       <div class="image-credit">JWST imagery: NASA, ESA, CSA, STScI</div>
     </article>
