@@ -528,6 +528,321 @@
     }
     .matrix-col li + li { margin-top: 13px; }
 
+    .challenge-slide {
+      justify-content: center;
+      background-image:
+        linear-gradient(96deg, rgba(5,7,12,.98) 0%, rgba(5,7,12,.88) 64%, rgba(5,7,12,.48) 100%),
+        url("./assets/pillars-of-creation.jpg");
+    }
+    .challenge-wrap { max-width: 1380px; }
+    .challenge-slide > .slide-no { position: absolute; top: 72px; right: 78px; }
+    .challenge-slide h2 {
+      max-width: 1180px;
+      margin-bottom: 24px;
+      font-size: 70px;
+    }
+    .challenge-slide .lede { max-width: 1120px; font-size: 30px; }
+    .epistemic-path {
+      display: grid;
+      grid-template-columns: 1.15fr 70px 1fr 70px 1.18fr;
+      gap: 16px;
+      align-items: center;
+      margin-top: 44px;
+    }
+    .path-node {
+      min-height: 168px;
+      padding: 25px 24px;
+      border-top: 4px solid var(--gold);
+      background: rgba(6,8,14,.76);
+    }
+    .path-node:nth-of-type(3) { border-color: var(--violet); }
+    .path-node:nth-of-type(5) { border-color: var(--cyan); }
+    .path-node strong {
+      display: block;
+      margin-bottom: 11px;
+      color: var(--ink);
+      font-size: 22px;
+    }
+    .path-node p { margin: 0; color: var(--muted); font-size: 18px; line-height: 1.38; }
+    .path-arrow { color: var(--gold-2); font-family: var(--serif); font-size: 45px; text-align: center; }
+    .dharuri-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 17px;
+    }
+    .dharuri-strip span,
+    .root-tag {
+      padding: 7px 10px;
+      border: 1px solid rgba(99,216,209,.28);
+      border-radius: 999px;
+      background: rgba(99,216,209,.07);
+      color: #b8f0ec;
+      font-size: 13px;
+      font-weight: 750;
+      letter-spacing: .02em;
+    }
+
+    .deeper-slide .slide-head { margin-bottom: 18px; }
+    .deeper-kicker {
+      margin-bottom: 8px;
+      color: var(--cyan);
+      font-size: 14px;
+      font-weight: 850;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .deeper-grid {
+      display: grid;
+      grid-template-columns: 345px minmax(0, 1fr) 360px;
+      gap: 24px;
+      flex: 1;
+      min-height: 0;
+      margin-bottom: 16px;
+    }
+    .premise-under-test,
+    .support-chain,
+    .foundation-verdict {
+      min-width: 0;
+      border: 1px solid rgba(255,255,255,.09);
+      background: rgba(7,9,15,.69);
+      backdrop-filter: blur(7px);
+    }
+    .premise-under-test,
+    .foundation-verdict { padding: 24px; }
+    .premise-under-test { border-top: 4px solid var(--gold); }
+    .premise-under-test blockquote {
+      margin: 24px 0 0;
+      color: #f1ebe2;
+      font-family: var(--serif);
+      font-size: 25px;
+      line-height: 1.3;
+    }
+    .status-pill {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 7px 10px;
+      border-left: 4px solid var(--violet);
+      background: rgba(183,162,255,.08);
+      color: #d4c9ff;
+      font-size: 14px;
+      font-weight: 850;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .status-pill.dharuri { border-color: var(--cyan); color: var(--cyan); background: rgba(99,216,209,.07); }
+    .support-chain {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+      padding: 50px 22px 22px;
+      position: relative;
+    }
+    .support-chain::before {
+      content: "QIYĀS PENDUKUNG";
+      position: absolute;
+      top: 17px;
+      left: 22px;
+      color: var(--dim);
+      font-size: 13px;
+      font-weight: 850;
+      letter-spacing: .12em;
+    }
+    .chain-line {
+      padding: 14px 16px;
+      border-left: 3px solid var(--violet);
+      background: rgba(183,162,255,.07);
+      color: #e9e3db;
+      font-size: 17px;
+      line-height: 1.31;
+    }
+    .chain-line.result { border-color: var(--cyan); background: rgba(99,216,209,.07); }
+    .chain-line.missing { border-color: var(--red); background: rgba(255,127,115,.07); }
+    .chain-arrow { height: 12px; color: var(--cyan); text-align: center; }
+    .foundation-verdict { border-top: 4px solid var(--red); }
+    .foundation-verdict.accept { border-top-color: var(--green); }
+    .foundation-verdict.revise { border-top-color: var(--gold); }
+    .foundation-verdict h3 { margin-bottom: 16px; }
+    .foundation-verdict p,
+    .foundation-verdict li { color: #d3cdc5; font-size: 18px; line-height: 1.38; }
+    .foundation-verdict ul { margin: 14px 0 0; padding-left: 20px; }
+    .foundation-verdict li + li { margin-top: 8px; }
+    .root-map {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0 20px;
+    }
+    .root-row {
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.32;
+    }
+    .root-row .root-tag { display: inline-block; margin: 0 7px 4px 0; }
+    .root-row.fail .root-tag { border-color: rgba(255,127,115,.32); color: #ffaaa2; background: rgba(255,127,115,.07); }
+    .deep-verdict {
+      display: block;
+      margin-top: 17px;
+      padding: 12px 14px;
+      border-left: 4px solid var(--red);
+      background: rgba(255,127,115,.07);
+      color: #ffaaa2;
+      font-size: 15px;
+      font-weight: 850;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .deep-verdict.accept { border-color: var(--green); color: var(--green); background: rgba(130,212,154,.07); }
+    .deep-verdict.revise { border-color: var(--gold); color: var(--gold-2); background: rgba(232,184,106,.07); }
+
+    .proof-section {
+      justify-content: center;
+      background-image:
+        linear-gradient(96deg, rgba(5,7,12,.98) 0%, rgba(5,7,12,.86) 58%, rgba(5,7,12,.38) 100%),
+        url("./assets/cosmic-cliffs.jpg");
+    }
+    .proof-section > .slide-no { position: absolute; top: 72px; right: 78px; }
+    .proof-section .eyebrow { margin-bottom: 18px; }
+    .proof-section h2 { max-width: 1180px; font-size: 69px; }
+    .proof-section .lede { max-width: 1120px; margin-top: 26px; font-size: 29px; }
+    .proof-route {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 42px;
+    }
+    .proof-route div {
+      min-height: 126px;
+      padding: 23px 22px;
+      border-top: 4px solid var(--gold);
+      background: rgba(7,9,15,.7);
+    }
+    .proof-route div:nth-child(2) { border-color: var(--violet); }
+    .proof-route div:nth-child(3) { border-color: var(--cyan); }
+    .proof-route div:nth-child(4) { border-color: var(--green); }
+    .proof-route strong { display: block; margin-bottom: 9px; color: var(--ink); font-size: 20px; }
+    .proof-route p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.35; }
+
+    .sanusi-grid {
+      display: grid;
+      grid-template-columns: .94fr 1.06fr;
+      gap: 38px;
+      flex: 1;
+      min-height: 0;
+      align-items: stretch;
+      margin-bottom: 18px;
+    }
+    .sanusi-text,
+    .sanusi-simple {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+      padding: 34px;
+      border: 1px solid rgba(255,255,255,.09);
+      background: rgba(7,9,15,.7);
+    }
+    .sanusi-text { border-top: 4px solid var(--gold); }
+    .sanusi-simple { border-top: 4px solid var(--cyan); }
+    .arabic {
+      direction: rtl;
+      margin: 4px 0 20px;
+      color: #fff5e4;
+      font-family: "Noto Naskh Arabic", "Geeza Pro", "Times New Roman", serif;
+      font-size: 35px;
+      line-height: 1.65;
+      text-align: right;
+    }
+    .translation { margin: 0; color: var(--muted); font-family: var(--serif); font-size: 20px; line-height: 1.42; }
+    .sanusi-simple .big-line { margin: 0 0 24px; color: var(--ink); font-family: var(--serif); font-size: 32px; line-height: 1.28; }
+    .sanusi-simple .plain-note { margin: 0; color: #d4cec5; font-size: 20px; line-height: 1.42; }
+
+    .proof-slide .slide-head { margin-bottom: 18px; }
+    .proof-slide .deeper-grid { grid-template-columns: 300px minmax(0, 1fr) 390px; }
+    .proof-slide .support-chain { gap: 10px; }
+    .proof-slide .chain-line { padding: 12px 15px; font-size: 16px; }
+    .proof-slide .foundation-verdict { padding: 22px; }
+    .proof-slide .foundation-verdict p,
+    .proof-slide .foundation-verdict li { font-size: 16px; }
+    .proof-slide .premise-under-test blockquote { font-size: 23px; }
+    .proof-slide .root-map { gap: 8px; margin: 14px 0 16px; }
+    .proof-slide .root-row { font-size: 15px; }
+    .proof-slide .root-tag { margin-right: 6px; }
+    .proof-slide .source-link { min-height: 38px; padding-top: 10px; font-size: 14px; }
+    .qiyas-type {
+      display: block;
+      margin-top: 14px;
+      padding: 10px 12px;
+      border-left: 3px solid var(--cyan);
+      background: rgba(99,216,209,.07);
+      color: #b8f0ec;
+      font-size: 13px;
+      font-weight: 760;
+      line-height: 1.35;
+    }
+    .qiyas-type strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--cyan);
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .arabic-mini {
+      direction: rtl;
+      margin: 18px 0 0;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,.09);
+      color: #fff0d4;
+      font-family: "Noto Naskh Arabic", "Geeza Pro", "Times New Roman", serif;
+      font-size: 21px;
+      line-height: 1.6;
+      text-align: right;
+    }
+    .premise-under-test .plain-small {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.4;
+    }
+    .source-link .source-copy {
+      color: var(--gold-2);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .corroboration {
+      margin-top: 12px;
+      padding: 11px 13px;
+      border-left: 3px solid var(--gold);
+      background: rgba(232,184,106,.06);
+      color: #d8d1c7;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+    .proof-summary {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
+      flex: 1;
+      align-content: center;
+      margin-bottom: 18px;
+    }
+    .proof-summary div {
+      min-height: 188px;
+      padding: 28px;
+      border-top: 4px solid var(--cyan);
+      background: rgba(7,9,15,.72);
+    }
+    .proof-summary div:nth-child(2) { border-color: var(--gold); }
+    .proof-summary div:nth-child(3) { border-color: var(--violet); }
+    .proof-summary div:nth-child(4) { border-color: var(--green); }
+    .proof-summary strong { display: block; margin-bottom: 12px; color: var(--ink); font-size: 24px; }
+    .proof-summary p { margin: 0; color: var(--muted); font-size: 18px; line-height: 1.4; }
+
     .epistemic {
       display: grid;
       grid-template-columns: 1fr 100px 1fr 100px 1fr;
@@ -780,6 +1095,11 @@
       .argument-grid.two,
       .logic-demo,
       .matrix,
+      .deeper-grid,
+      .sanusi-grid,
+      .proof-route,
+      .proof-summary,
+      .epistemic-path,
       .epistemic,
       .reading-list {
         grid-template-columns: 1fr;
@@ -820,6 +1140,15 @@
       .logic-note strong { font-size: 20px; }
       .logic-note p { font-size: 17px; }
       .matrix-col li { font-size: 17px; }
+      .challenge-slide { justify-content: flex-start; }
+      .challenge-slide h2 { font-size: 42px; }
+      .challenge-slide .lede { font-size: 22px; }
+      .path-node { min-height: 0; }
+      .path-arrow { transform: rotate(90deg); }
+      .premise-under-test blockquote { font-size: 22px; }
+      .support-chain { padding-top: 48px; }
+      .foundation-verdict p,
+      .foundation-verdict li { font-size: 17px; }
       .epistemic { align-items: stretch; }
       .ep-step { min-height: 0; padding: 26px 22px; }
       .ep-step .num { margin-bottom: 20px; }
@@ -931,7 +1260,7 @@
         </header>
         <div class="logic-demo">
           <div class="logic">
-            <span class="logic-label">Istithnāʾī muttaṣil</span>
+            <span class="logic-label">Istithnāʾī · istithnāʾ ʿayn al-muqaddam</span>
             <div class="premise fragment"><span class="symbol">1</span>Jika <strong>P</strong>, maka <strong>Q</strong>.</div>
             <div class="premise fragment"><span class="symbol">2</span><strong>P</strong>.</div>
             <div class="therefore fragment"></div>
@@ -951,7 +1280,7 @@
         <div class="argument-grid">
           <div class="argument-intro fragment"><h3>Versi sederhana</h3><p>Jika mimpi bisa mengarahkan orang kepada agama yang saling bertentangan, bagaimana mungkin mimpi menentukan agama mana yang benar?</p></div>
           <div class="logic">
-            <span class="logic-label">Steelman · nafy al-tālī</span>
+            <span class="logic-label">Steelman · istithnāʾ naqīḍ al-tālī</span>
             <div class="premise fragment"><span class="symbol">P→Q</span>Jika pengalaman mimpi religius yang berdiri sendiri merupakan metode yang cukup dan reliabel untuk mengidentifikasi agama yang benar, maka pengalaman mimpi religius tidak memberikan dukungan simetris kepada kesimpulan agama yang saling kontradiktif tanpa kriteria pembeda independen.</div>
             <div class="premise fragment"><span class="symbol">¬Q</span>Pengalaman mimpi religius memberikan dukungan simetris kepada kesimpulan agama yang saling kontradiktif tanpa kriteria pembeda independen.</div>
             <div class="therefore fragment"></div>
@@ -967,7 +1296,7 @@
         <div class="argument-grid">
           <div class="argument-intro fragment"><h3>Versi sederhana</h3><p>Suatu klaim hanya layak dipercaya jika bisa dibuktikan salah. Pengalaman metafisik tak memenuhi syarat ini. Benarkah demikian?</p></div>
           <div class="logic">
-            <span class="logic-label">Steelman · iqtirānī ḥamlī</span>
+            <span class="logic-label">Steelman · iqtirānī min ḥamliyyatayn</span>
             <div class="premise fragment"><span class="symbol">K</span>Setiap klaim yang kebal terhadap seluruh kemungkinan pembatal rasional tidak layak diterima sebagai pengetahuan publik.</div>
             <div class="premise fragment"><span class="symbol">S</span>Klaim pengalaman metafisik X kebal terhadap seluruh kemungkinan pembatal rasional.</div>
             <div class="therefore fragment"></div>
@@ -983,7 +1312,7 @@
         <div class="argument-grid">
           <div class="argument-intro fragment"><h3>Versi sederhana</h3><p>“Saya akan percaya Tuhan hanya jika ada bukti empiris yang bisa diuji.” Masalahnya: mengapa hanya bukti empiris?</p></div>
           <div class="logic">
-            <span class="logic-label">Steelman · iqtirānī ḥamlī</span>
+            <span class="logic-label">Steelman · iqtirānī min ḥamliyyatayn</span>
             <div class="premise fragment"><span class="symbol">K</span>Setiap klaim eksistensial tanpa bukti publik, independen, dan diskriminatif yang cukup belum terjustifikasi secara rasional.</div>
             <div class="premise fragment"><span class="symbol">S</span>Klaim bahwa Tuhan ada tidak memiliki bukti publik, independen, dan diskriminatif yang cukup.</div>
             <div class="therefore fragment"></div>
@@ -999,7 +1328,7 @@
         <div class="argument-grid">
           <div class="argument-intro fragment"><h3>Versi sederhana</h3><p>Bukti empiris harus dapat diulang. Mimpi tidak dapat diulang. Maka, mimpi bukan bukti ilmiah publik.</p></div>
           <div class="logic">
-            <span class="logic-label">Steelman · iqtirānī ḥamlī</span>
+            <span class="logic-label">Steelman · iqtirānī min ḥamliyyatayn</span>
             <div class="premise fragment"><span class="symbol">K</span>Setiap pengalaman individual tanpa data dan metode pemeriksaan independen bukan bukti ilmiah publik.</div>
             <div class="premise fragment"><span class="symbol">S</span>Mimpi religius merupakan pengalaman individual tanpa data dan metode pemeriksaan independen.</div>
             <div class="therefore fragment"></div>
@@ -1015,7 +1344,7 @@
         <div class="argument-grid">
           <div class="argument-intro fragment"><h3>Versi sederhana</h3><p>Jika Tuhan betul-betul berhasil dibuktikan secara ilmiah, bukankah seluruh persoalan fisika otomatis terjawab?</p></div>
           <div class="logic">
-            <span class="logic-label">Steelman · iqtirānī syarṭī</span>
+            <span class="logic-label">Steelman · iqtirānī min muttaṣilatayn</span>
             <div class="premise fragment"><span class="symbol">A→B</span>Jika Tuhan terbukti secara ilmiah, maka tersedia teori empiris lengkap tentang realitas fundamental yang menurunkan seluruh hukum, konstanta, kondisi awal, dan fenomena fisik.</div>
             <div class="premise fragment"><span class="symbol">B→C</span>Jika tersedia teori empiris lengkap tentang realitas fundamental yang menurunkan seluruh hukum, konstanta, kondisi awal, dan fenomena fisik, maka seluruh persoalan fisika terjawab.</div>
             <div class="therefore fragment"></div>
@@ -1031,7 +1360,7 @@
         <div class="argument-grid">
           <div class="argument-intro fragment"><h3>Versi sederhana</h3><p>Kalau Tuhan baik dan ingin manusia mengenal-Nya, mengapa Ia tak mengirim sinyal yang jelas melalui JWST?</p></div>
           <div class="logic">
-            <span class="logic-label">Steelman · nafy al-tālī</span>
+            <span class="logic-label">Steelman · istithnāʾ naqīḍ al-tālī</span>
             <div class="premise fragment"><span class="symbol">P→Q</span>Jika Tuhan personal yang sempurna kasih-Nya ada, maka tidak terdapat manusia yang tidak menolak relasi dengan Tuhan tetapi tetap tidak percaya karena tidak menemukan bukti yang cukup.</div>
             <div class="premise fragment"><span class="symbol">¬Q</span>Terdapat manusia yang tidak menolak relasi dengan Tuhan tetapi tetap tidak percaya karena tidak menemukan bukti yang cukup.</div>
             <div class="therefore fragment"></div>
@@ -1047,7 +1376,7 @@
         <div class="argument-grid">
           <div class="argument-intro fragment"><h3>Versi sederhana</h3><p>“Saya sudah mencari tapi belum menemukan bukti yang cukup. Maka, saya tetap agnostik-ateis.”</p></div>
           <div class="logic">
-            <span class="logic-label">Steelman · waḍ‘ al-muqaddam</span>
+            <span class="logic-label">Steelman · istithnāʾ ʿayn al-muqaddam</span>
             <div class="premise fragment"><span class="symbol">P→Q</span>Jika keberadaan Tuhan tidak memiliki justifikasi yang cukup setelah pencarian yang jujur, maka seseorang seharusnya menangguhkan afirmasi bahwa Tuhan ada.</div>
             <div class="premise fragment"><span class="symbol">P</span>Keberadaan Tuhan tidak memiliki justifikasi yang cukup setelah pencarian yang jujur.</div>
             <div class="therefore fragment"></div>
@@ -1063,7 +1392,7 @@
         <div class="argument-grid">
           <div class="argument-intro fragment"><h3>Versi sederhana</h3><p>Seandainya JWST menangkap pesan ilahiah dan komunitas ilmiah memverifikasinya, apakah Tuhan akhirnya terbukti?</p></div>
           <div class="logic">
-            <span class="logic-label">Steelman · waḍ‘ al-muqaddam</span>
+            <span class="logic-label">Steelman · istithnāʾ ʿayn al-muqaddam</span>
             <div class="premise fragment"><span class="symbol">P→Q</span>Jika teramati suatu peristiwa publik yang memuat informasi spesifik, tidak dapat dihasilkan oleh sebab natural atau agen kontingen mana pun, dan secara unik diprediksi oleh tindakan Tuhan, maka terdapat bukti kuat bagi keberadaan Tuhan.</div>
             <div class="premise fragment"><span class="symbol">P</span>Teramati suatu peristiwa publik yang memuat informasi spesifik, tidak dapat dihasilkan oleh sebab natural atau agen kontingen mana pun, dan secara unik diprediksi oleh tindakan Tuhan.</div>
             <div class="therefore fragment"></div>
@@ -1079,7 +1408,7 @@
         <div class="argument-grid">
           <div class="argument-intro fragment"><h3>Versi sederhana</h3><p>Pengalaman religius dipakai untuk mendukung banyak konsep Tuhan. Tidakkah ini berarti kita tak pernah tahu Tuhan yang mana?</p></div>
           <div class="logic">
-            <span class="logic-label">Steelman · iqtirānī ḥamlī</span>
+            <span class="logic-label">Steelman · iqtirānī min ḥamliyyatayn</span>
             <div class="premise fragment"><span class="symbol">K</span>Setiap metode yang mendukung banyak konsep Tuhan yang tidak kompatibel tanpa kriteria pembeda independen tidak cukup untuk menentukan konsep Tuhan yang benar.</div>
             <div class="premise fragment"><span class="symbol">S</span>Pengalaman religius privat, jika berdiri sendiri, adalah metode yang mendukung banyak konsep Tuhan yang tidak kompatibel tanpa kriteria pembeda independen.</div>
             <div class="therefore fragment"></div>
@@ -1099,8 +1428,161 @@
         </div>
       </section>
 
+      <section class="slide challenge-slide" data-title="Kok enak banget menolak premis?">
+        <div class="challenge-wrap">
+          <p class="eyebrow">Uji lapis kedua</p>
+          <h2>Kok enak banget <span class="accent">menolak premis?</span></h2>
+          <p class="lede">Menolak premis bukan soal selera. Jika premisnya naẓarī, tampilkan qiyās pendukungnya—lalu telusuri sampai berujung pada premis ḍarūrī.</p>
+          <div class="epistemic-path">
+            <div class="path-node fragment"><strong>1 · Tentukan status</strong><p>Apakah premis itu ḍarūrī atau naẓarī?</p></div>
+            <div class="path-arrow fragment" aria-hidden="true">→</div>
+            <div class="path-node fragment"><strong>2 · Buka qiyās-nya</strong><p>Jika naẓarī, apa kubrā, ṣughrā, dan natījah pendukungnya?</p></div>
+            <div class="path-arrow fragment" aria-hidden="true">→</div>
+            <div class="path-node fragment"><strong>3 · Cari fondasinya</strong><p>Apakah premis dasarnya benar-benar ḍarūrī—atau rantainya berhenti pada asumsi?</p><div class="dharuri-strip"><span>Awwaliyyāt</span><span>Musyāhadāt</span><span>Mujarrabāt</span><span>Ḥadsiyyāt</span><span>Mutawātirāt</span><span>Fiṭriyyāt</span></div></div>
+          </div>
+        </div>
+        <span class="slide-no">16</span>
+      </section>
+
+      <section class="slide deeper-slide" data-title="Deeper Look: mimpi religius">
+        <header class="slide-head"><div><p class="deeper-kicker">Deeper Look · 01</p><h2>Mimpi privat: apa yang benar-benar gugur?</h2></div><span class="slide-no">17</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Premis yang diuji</h3><blockquote>“Mimpi privat, jika berdiri sendiri, tidak cukup menentukan agama yang benar.”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>Kubrā:</strong> Setiap metode yang mendukung P dan bukan-P secara simetris tanpa kriteria pembeda tidak cukup menentukan mana yang benar.</div>
+            <div class="chain-line fragment"><strong>Ṣughrā:</strong> Mimpi privat dapat dipakai mendukung klaim agama yang saling bertentangan tanpa kriteria pembeda independen.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Mimpi privat saja tidak cukup menentukan agama yang benar.</div>
+          </div>
+          <div class="foundation-verdict accept fragment"><h3>Fondasi ḍarūrī</h3><div class="root-map"><div class="root-row"><span class="root-tag">Awwaliyyāt</span>P dan bukan-P tidak mungkin sama-sama benar pada aspek yang sama.</div><div class="root-row"><span class="root-tag">Musyāhadāt</span>Yang publik adalah adanya laporan yang bertentangan, bukan isi mimpi itu sendiri.</div><div class="root-row"><span class="root-tag">Fiṭriyyāt</span>Tanpa pembeda, suatu metode tidak menyeleksi salah satu hasil.</div></div><span class="deep-verdict accept">Diterima—tetapi hanya dalam batas ini</span></div>
+        </div>
+        <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/p/terjadinya-mujizat-bukti-kebenaran" target="_blank" rel="noopener">Terjadinya Mu‘jizat Bukti Kebenaran Suatu Agama?</a></footer>
+      </section>
+
+      <section class="slide deeper-slide" data-title="Deeper Look: falsifiability">
+        <header class="slide-head"><div><p class="deeper-kicker">Deeper Look · 02</p><h2>Apakah agama kebal dari pembatal rasional?</h2></div><span class="slide-no">18</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Premis yang ditolak</h3><blockquote>“Klaim Islam kebal terhadap seluruh kemungkinan pembatal rasional.”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>Kubrā:</strong> Setiap klaim yang dapat gugur karena bentuk qiyās invalid atau premisnya salah terbuka terhadap pembatal rasional.</div>
+            <div class="chain-line fragment"><strong>Ṣughrā:</strong> Burhān agama memiliki bentuk dan premis yang dapat diperiksa.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Burhān agama tidak kebal terhadap pembatal rasional.</div>
+          </div>
+          <div class="foundation-verdict fragment"><h3>Mengapa ditolak?</h3><div class="root-map"><div class="root-row"><span class="root-tag">Fiṭriyyāt</span>Bentuk invalid tidak mengharuskan natījah; premis palsu tidak menjamin kesimpulan benar.</div><div class="root-row"><span class="root-tag">Musyāhadāt</span>Argumen dan premis agama tersedia secara publik untuk diperiksa.</div></div><span class="deep-verdict">Ṣughrā kritik dibantah oleh counterexample</span></div>
+        </div>
+        <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/p/agama-tak-valid-karena-bebas-falsifikasi" target="_blank" rel="noopener">Agama Tak Valid Karena Bebas Falsifikasi?</a></footer>
+      </section>
+
+      <section class="slide deeper-slide" data-title="Deeper Look: empirisme eksklusif">
+        <header class="slide-head"><div><p class="deeper-kicker">Deeper Look · 03</p><h2>Dapatkah empirisme dibuktikan secara empiris?</h2></div><span class="slide-no">19</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Premis tersembunyi</h3><blockquote>“Hanya klaim yang dapat dibuktikan secara empiris yang layak disebut pengetahuan.”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>P:</strong> Hanya proposisi yang terbukti empiris yang boleh diterima.</div>
+            <div class="chain-line fragment"><strong>Implikasi P:</strong> P sendiri harus terbukti secara empiris.</div>
+            <div class="chain-line missing fragment"><strong>Fakta:</strong> Tidak ada observasi atau eksperimen yang membuktikan P.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Menurut kriterianya sendiri, P tidak boleh diterima.</div>
+          </div>
+          <div class="foundation-verdict fragment"><h3>Fondasi yang gagal</h3><div class="root-map"><div class="root-row fail"><span class="root-tag">Tidak ditemukan</span>Tidak ada musyāhadah atau tajribah yang menghasilkan eksklusivitas empirisme.</div><div class="root-row"><span class="root-tag">Awwaliyyāt</span>Prinsip nonkontradiksi justru dipakai untuk menunjukkan P membatalkan dirinya.</div></div><span class="deep-verdict">Self-defeating</span></div>
+        </div>
+        <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/p/kepastian-keberadaan-tuhan-perlu" target="_blank" rel="noopener">Kepastian Keberadaan Tuhan Perlu Bukti Empiris?</a></footer>
+      </section>
+
+      <section class="slide deeper-slide" data-title="Deeper Look: repeatability">
+        <header class="slide-head"><div><p class="deeper-kicker">Deeper Look · 04</p><h2>Repeatability: peristiwa atau metode?</h2></div><span class="slide-no">20</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Premis yang diuji</h3><blockquote>“Mimpi privat bukan bukti ilmiah publik.”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>Kubrā:</strong> Bukti ilmiah publik membutuhkan data atau metode pemeriksaan yang dapat diakses secara independen.</div>
+            <div class="chain-line fragment"><strong>Ṣughrā:</strong> Isi mimpi privat hanya diakses langsung oleh subjeknya dan tidak menyediakan pemeriksaan independen.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Mimpi privat bukan bukti ilmiah publik.</div>
+          </div>
+          <div class="foundation-verdict accept fragment"><h3>Fondasi ḍarūrī</h3><div class="root-map"><div class="root-row"><span class="root-tag">Fiṭriyyāt</span>“Publik” secara konseptual menuntut akses pemeriksaan di luar satu subjek.</div><div class="root-row"><span class="root-tag">Musyāhadāt</span>Mimpi dialami langsung hanya oleh orang yang bermimpi.</div></div><p>Yang tidak mengikuti: “bukan bukti ilmiah publik” berarti “bukan bukti dalam makna apa pun”.</p><span class="deep-verdict accept">Diterima dalam domain sains</span></div>
+        </div>
+        <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/p/yang-lebih-dari-sekedar-bukti-rasional" target="_blank" rel="noopener">Yang Lebih dari Sekadar Bukti Rasional</a></footer>
+      </section>
+
+      <section class="slide deeper-slide" data-title="Deeper Look: Tuhan dan teori fisika">
+        <header class="slide-head"><div><p class="deeper-kicker">Deeper Look · 05</p><h2>Sebab wujud bukan teori seluruh mekanisme</h2></div><span class="slide-no">21</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Premis yang ditolak</h3><blockquote>“Jika Tuhan terbukti, seluruh persoalan fisika otomatis terjawab.”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line missing fragment"><strong>Kubrā yang dibutuhkan:</strong> Setiap pengetahuan tentang sebab ontologis suatu realitas menghasilkan pengetahuan lengkap tentang seluruh mekanisme internalnya.</div>
+            <div class="chain-line fragment"><strong>Ṣughrā:</strong> Burhān Tuhan membuktikan sebab ontologis realitas mumkin.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah yang diklaim:</strong> Seluruh teori fisika menjadi lengkap.</div>
+          </div>
+          <div class="foundation-verdict fragment"><h3>Rantai terputus</h3><div class="root-map"><div class="root-row fail"><span class="root-tag">Tidak ditemukan</span>Kubrā tidak berasal dari satu pun jenis ḍarūrī.</div><div class="root-row"><span class="root-tag">Fiṭriyyāt</span>Mengetahui pembuat ada tidak identik dengan mengetahui seluruh cara kerja buatannya.</div></div><span class="deep-verdict">Tidak berdasar · category mistake</span></div>
+        </div>
+        <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/p/keberadaan-tuhan-lebih-tidak-mungkin" target="_blank" rel="noopener">Keberadaan Tuhan Lebih Tidak Mungkin daripada Naturalisme?</a></footer>
+      </section>
+
+      <section class="slide deeper-slide" data-title="Deeper Look: divine hiddenness">
+        <header class="slide-head"><div><p class="deeper-kicker">Deeper Look · 06</p><h2>Dari kasih menuju kewajiban: mana dalilnya?</h2></div><span class="slide-no">22</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Kubrā yang ditolak</h3><blockquote>“Jika Tuhan sempurna kasih-Nya, nonresistant nonbelief mustahil ada.”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line missing fragment"><strong>Premis jembatan:</strong> Setiap kasih sempurna wajib memastikan relasi eksplisit dengan semua pihak, sekarang, melalui bukti yang mereka tuntut.</div>
+            <div class="chain-line fragment"><strong>Premis teologis:</strong> Tuhan memiliki kasih yang sempurna.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah yang diklaim:</strong> Tidak mungkin ada orang tulus yang belum percaya.</div>
+          </div>
+          <div class="foundation-verdict fragment"><h3>Fondasi tidak ditemukan</h3><div class="root-map"><div class="root-row fail"><span class="root-tag">Bukan awwaliyyah</span>Mengingkari premis jembatan tidak menghasilkan kontradiksi.</div><div class="root-row fail"><span class="root-tag">Bukan musyāhadah</span>Kewajiban Tuhan tidak dapat diamati melalui kondisi psikologis manusia.</div></div><span class="deep-verdict">Kubrā belum menjadi burhān</span></div>
+        </div>
+        <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/p/mengapa-kita-tidak-melihat-tuhan" target="_blank" rel="noopener">Mengapa Kita Tidak Melihat Tuhan?</a><a href="https://logikakeimanan.substack.com/p/kasih-sayang-tuhan-mengharuskan-nya" target="_blank" rel="noopener">Kasih Sayang Tuhan Mengharuskan-Nya Berbuat yang Terbaik?</a></footer>
+      </section>
+
+      <section class="slide deeper-slide" data-title="Deeper Look: ketiadaan bukti">
+        <header class="slide-head"><div><p class="deeper-kicker">Deeper Look · 07</p><h2>Tidak menemukan bukan berarti tidak ada</h2></div><span class="slide-no">23</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Premis yang ditolak</h3><blockquote>“Keberadaan Tuhan tidak memiliki justifikasi yang cukup.”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line missing fragment"><strong>Kubrā tersembunyi:</strong> Jika saya belum menemukan justifikasi yang cukup bagi X, maka justifikasi yang cukup bagi X tidak tersedia.</div>
+            <div class="chain-line fragment"><strong>Ṣughrā:</strong> Saya belum menemukan bukti Tuhan yang saya anggap cukup.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah yang diklaim:</strong> Justifikasi yang cukup bagi keberadaan Tuhan tidak ada.</div>
+          </div>
+          <div class="foundation-verdict fragment"><h3>Lompatan epistemik</h3><div class="root-map"><div class="root-row"><span class="root-tag">Musyāhadāt batin</span>Ṣughrā hanya melaporkan keadaan pengetahuan subjek.</div><div class="root-row fail"><span class="root-tag">Tidak ditemukan</span>Kubrā mengubah “belum saya temukan” menjadi “tidak tersedia”.</div></div><span class="deep-verdict">Generalisasi tidak sah · bisa sirkular</span></div>
+        </div>
+        <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/p/mengapa-kita-tidak-melihat-tuhan" target="_blank" rel="noopener">Mengapa Kita Tidak Melihat Tuhan?</a></footer>
+      </section>
+
+      <section class="slide deeper-slide" data-title="Deeper Look: sinyal kosmik">
+        <header class="slide-head"><div><p class="deeper-kicker">Deeper Look · 08</p><h2>Sinyal membuktikan agen—atau Wājib al-Wujūd?</h2></div><span class="slide-no">24</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Premis yang diuji</h3><blockquote>“Sinyal publik dapat ditetapkan sebagai tindakan Tuhan, bukan agen kontingen.”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>Data:</strong> Instrumen menangkap sinyal terstruktur dan kaya informasi.</div>
+            <div class="chain-line fragment"><strong>Inferensi:</strong> Sinyal tersebut berasal dari suatu agen cerdas.</div>
+            <div class="chain-line missing fragment"><strong>Lompatan:</strong> Agen itu pasti nonmaterial, tidak bermula, esa, dan pencipta seluruh alam.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah yang diklaim:</strong> Tuhan terbukti.</div>
+          </div>
+          <div class="foundation-verdict revise fragment"><h3>Sejauh mana buktinya?</h3><div class="root-map"><div class="root-row"><span class="root-tag">Musyāhadāt</span>Adanya sinyal.</div><div class="root-row"><span class="root-tag">Ḥadsiyyāt</span>Adanya pengirim cerdas mungkin menjadi penjelasan terbaik.</div><div class="root-row fail"><span class="root-tag">Tidak tersedia</span>Sifat Wājib tidak dapat dibaca langsung dari sinyal.</div></div><span class="deep-verdict revise">Underdetermined: burhān lain tetap diperlukan</span></div>
+        </div>
+        <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/p/bukti-apa-yang-bisa-mengubah-keimanan" target="_blank" rel="noopener">Bukti Apa yang Bisa Mengubah Keimanan?</a></footer>
+      </section>
+
+      <section class="slide deeper-slide" data-title="Deeper Look: banyak konsep Tuhan">
+        <header class="slide-head"><div><p class="deeper-kicker">Deeper Look · 09</p><h2>Banyak kandidat tidak berarti tak ada jawaban</h2></div><span class="slide-no">25</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Premis yang diuji</h3><blockquote>“Pengalaman privat saja tidak cukup memilih konsep Tuhan yang benar.”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>Kubrā:</strong> Metode yang mendukung konsep-konsep inkompatibel tanpa pembeda tidak cukup memilih satu konsep.</div>
+            <div class="chain-line fragment"><strong>Ṣughrā:</strong> Pengalaman privat dipakai mendukung konsep Tuhan yang saling tidak kompatibel.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Pengalaman privat saja tidak cukup menentukan konsep Tuhan yang benar.</div>
+          </div>
+          <div class="foundation-verdict accept fragment"><h3>Fondasi ḍarūrī</h3><div class="root-map"><div class="root-row"><span class="root-tag">Awwaliyyāt</span>Konsep yang kontradiktif tidak mungkin seluruhnya benar sekaligus.</div><div class="root-row"><span class="root-tag">Musyāhadāt</span>Terdapat klaim pengalaman religius yang beragam dan saling bersaing.</div><div class="root-row"><span class="root-tag">Fiṭriyyāt</span>Tanpa pembeda, pluralitas kandidat tidak menentukan pemenang.</div></div><p>Namun “tidak semuanya benar” tidak berarti “semuanya salah”.</p><span class="deep-verdict accept">Diterima; skeptisisme total tidak mengikuti</span></div>
+        </div>
+        <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/p/membuktikan-tuhan-yang-mana" target="_blank" rel="noopener">Membuktikan Tuhan yang Mana?</a></footer>
+      </section>
+
       <section class="slide" data-title="Indra, akal, dan burhān">
-        <header class="slide-head"><h2>Indra, akal, dan burhān</h2><span class="slide-no">16</span></header>
+        <header class="slide-head"><h2>Indra, akal, dan burhān</h2><span class="slide-no">26</span></header>
         <p class="lede">Apakah ini berarti bukti empiris tidak berguna? Tentu tidak! Indra menghadirkan data tentang alam, sedangkan akal menilai konsekuensi logisnya.</p>
         <div class="epistemic">
           <div class="ep-step fragment"><div class="num">01</div><h3>Indra menghadirkan alam</h3><p>Kita mengamati realitas yang berubah, bermula, dan bisa memiliki beragam kemungkinan.</p></div>
@@ -1110,6 +1592,453 @@
           <div class="ep-step fragment"><div class="num">03</div><h3>Burhān mencapai Wājib</h3><p>Artinya, kita membutuhkan Realitas Yang Wajib, tak menerima ketiadaan, dan tak membutuhkan sebab.</p></div>
         </div>
         <footer class="source-link"><span>Bacaan</span><a href="https://logikakeimanan.substack.com/p/kepastian-keberadaan-tuhan-perlu" target="_blank" rel="noopener">Kepastian Keberadaan Tuhan Perlu Bukti Empiris?</a></footer>
+      </section>
+
+      <section class="slide proof-section" data-title="Dari alam menuju Tuhan">
+        <div>
+          <p class="eyebrow">Burhān keberadaan Tuhan</p>
+          <h2>Dari alam menuju <span class="accent">Wājib al-Wujūd</span> dan <span class="cyan">Fāʿil Mukhtār</span></h2>
+          <p class="lede">Sekarang kita uji argumennya premis demi premis. Setiap kesimpulan naẓarī harus memiliki qiyās pendukung yang akhirnya bertumpu pada premis ḍarūrī.</p>
+          <div class="proof-route">
+            <div class="fragment"><strong>Dalīl al-imkān</strong><p>Alam yang mumkin membutuhkan murajjiḥ.</p></div>
+            <div class="fragment"><strong>Dalīl al-ḥudūts</strong><p>Alam yang bermula membutuhkan muḥdits.</p></div>
+            <div class="fragment"><strong>Qudrah dan Irādah</strong><p>Pengadaan membutuhkan kuasa; penentuan membutuhkan kehendak.</p></div>
+            <div class="fragment"><strong>Fāʿil Mukhtār</strong><p>Pencipta bertindak dengan pilihan, bukan sebagai sebab yang terpaksa.</p></div>
+          </div>
+        </div>
+        <span class="slide-no">27</span>
+      </section>
+
+      <section class="slide" data-title="Burhān Imam Sanusi">
+        <header class="slide-head"><h2>Burhān Imam Sanusi dalam bentuk paling ringkas</h2><span class="slide-no">28</span></header>
+        <div class="sanusi-grid">
+          <div class="sanusi-text fragment">
+            <h3>Teks Umm al-Barāhīn</h3>
+            <p class="arabic" lang="ar">أما برهان وجوده تعالى فحدوثُ العالم لأنه لو لم يكن له مُحدِث بل حدث بنفسه لزم أن يكون أحدُ الأمرين المتساويين مساويا لصاحبه راجحا عليه بلا سبب وهو محال</p>
+            <p class="translation">Bukti keberadaan-Nya adalah bermulanya alam. Jika alam muncul sendiri, salah satu dari dua kemungkinan yang setara akan terunggulkan tanpa sebab. Ini mustahil.</p>
+          </div>
+          <div class="sanusi-simple fragment">
+            <h3>Versi sederhana</h3>
+            <p class="big-line">Alam bisa ada atau tidak ada. Faktanya, alam ada dan memiliki keadaan tertentu. Mengapa kemungkinan ini yang terwujud?</p>
+            <p class="plain-note">Jawaban “terjadi begitu saja” menerima <em>tarajjuḥ bilā murajjiḥ</em>: satu kemungkinan menang tanpa sesuatu yang menentukannya. Imam Sanusi menilainya mustahil secara rasional.</p>
+          </div>
+        </div>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Imam al-Sanūsī, Umm al-Barāhīn; Ngaji Sanusi #11–12</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Dalil imkan: alam bersifat mumkin">
+        <header class="slide-head"><div><p class="deeper-kicker">Dalīl al-imkān · 01</p><h2>Mengapa alam disebut mumkin?</h2></div><span class="slide-no">29</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Yang hendak dibuktikan</h3><blockquote>“Alam dan keadaan-keadaannya bersifat mumkin.”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>Kubrā:</strong> Sesuatu yang menerima keadaan alternatif tanpa kontradiksi tidak wajib karena dirinya.</div>
+            <div class="chain-line fragment"><strong>Ṣughrā:</strong> Benda dan sifat di alam berubah serta menerima keadaan alternatif.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Alam dan keadaan-keadaannya bersifat mumkin.</div>
+          </div>
+          <div class="foundation-verdict accept fragment"><h3>Akar ḍarūrī</h3><div class="root-map"><div class="root-row"><span class="root-tag">Awwaliyyāt</span>Yang bisa tidak ada atau berbeda tidak wajib karena dirinya.</div><div class="root-row"><span class="root-tag">Musyāhadāt</span>Kita menyaksikan gerak, diam, warna, bentuk, dan susunan berubah.</div></div><p>Kesimpulan “alam mumkin” bersifat naẓarī karena diperoleh melalui qiyās di samping.</p><span class="deep-verdict accept">Fondasinya tersedia</span></div>
+        </div>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Ngaji Sanusi #11, Dalīl al-Imkān</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Dalil imkan: mumkin membutuhkan murajjih">
+        <header class="slide-head"><div><p class="deeper-kicker">Dalīl al-imkān · 02</p><h2>Mengapa yang mumkin membutuhkan murajjiḥ?</h2></div><span class="slide-no">30</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Premis kunci</h3><blockquote>“Satu kemungkinan tidak terwujud sendiri di antara kemungkinan yang setara.”</blockquote><span class="status-pill dharuri">Ḍarūrī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>Kubrā:</strong> Terwujudnya satu dari dua kemungkinan yang setara tanpa murajjiḥ adalah mustahil.</div>
+            <div class="chain-line fragment"><strong>Ṣughrā:</strong> Alam terwujud dengan satu keadaan tertentu di antara alternatif yang mungkin.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Alam membutuhkan murajjiḥ yang menentukan aktualitasnya.</div>
+          </div>
+          <div class="foundation-verdict accept fragment"><h3>Akar ḍarūrī</h3><div class="root-map"><div class="root-row"><span class="root-tag">Awwaliyyāt</span><em>Tarajjuḥ bilā murajjiḥ</em> mustahil: yang sepenuhnya setara tidak mengunggulkan dirinya sendiri.</div><div class="root-row"><span class="root-tag">Musyāhadāt</span>Alam faktual ini ada dengan sifat tertentu.</div></div><p>Keberadaan murajjiḥ merupakan natījah naẓarī dari dua premis tersebut.</p><span class="deep-verdict accept">Bukan asumsi “semua butuh sebab”</span></div>
+        </div>
+        <footer class="source-link"><span>Catatan</span><span class="source-copy">Yang membutuhkan murajjiḥ adalah yang mumkin, bukan segala sesuatu tanpa pengecualian.</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Daur dan tasalsul">
+        <header class="slide-head"><div><p class="deeper-kicker">Dalīl al-imkān · 03</p><h2>Mengapa rantainya tidak berhenti pada mumkin lain?</h2></div><span class="slide-no">31</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Masalah lanjutan</h3><blockquote>Murajjiḥ pertama yang kita temukan bisa saja masih bersifat mumkin.</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>P1:</strong> Setiap murajjiḥ yang masih mumkin membutuhkan murajjiḥ lain.</div>
+            <div class="chain-line fragment"><strong>P2:</strong> Daur membuat sesuatu pada akhirnya menjadi syarat bagi aktualitas dirinya sendiri.</div>
+            <div class="chain-line fragment"><strong>P3:</strong> Rantai yang seluruh anggotanya meminjam aktualitas tidak memiliki dasar aktualitas pada dirinya.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Rantai ketergantungan harus berujung pada sesuatu yang tidak mumkin.</div>
+          </div>
+          <div class="foundation-verdict accept fragment"><h3>Akar ḍarūrī</h3><div class="root-map"><div class="root-row"><span class="root-tag">Qiyās sebelumnya</span>P1 mewarisi natījah bahwa setiap mumkin membutuhkan murajjiḥ.</div><div class="root-row"><span class="root-tag">Fiṭriyyāt</span>Sesuatu tidak dapat memberi dirinya aktualitas yang justru belum dimilikinya.</div><div class="root-row"><span class="root-tag">Awwaliyyāt</span>Ketergantungan yang tidak pernah mencapai dasar independen tidak menjelaskan aktualitas yang ada.</div></div><span class="deep-verdict accept">Daur gugur; tasalsul dependensi tidak mencukupi</span></div>
+        </div>
+        <footer class="source-link"><span>Konteks</span><span class="source-copy">Yang ditolak di sini ialah tasalsul dalam ketergantungan aktual, bukan sekadar deret bilangan tanpa akhir.</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Kesimpulan Wajib al-Wujud">
+        <header class="slide-head"><div><p class="deeper-kicker">Dalīl al-imkān · 04</p><h2>Ujungnya adalah Wājib al-Wujūd</h2></div><span class="slide-no">32</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Kesimpulan modal</h3><blockquote>“Ada sesuatu yang keberadaannya tidak dipinjam dari yang lain.”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>P1:</strong> Murajjiḥ terakhir tidak bersifat mumkin.</div>
+            <div class="chain-line fragment"><strong>P2:</strong> Yang faktual tidak mungkin bersifat mustaḥīl.</div>
+            <div class="chain-line fragment"><strong>P3:</strong> Yang ada hanya mungkin, wajib, atau mustahil secara rasional.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Murajjiḥ terakhir bersifat wajib: Wājib al-Wujūd.</div>
+          </div>
+          <div class="foundation-verdict accept fragment"><h3>Akar ḍarūrī</h3><div class="root-map"><div class="root-row"><span class="root-tag">Qiyās sebelumnya</span>Rantai murajjiḥ tidak berhenti pada mumkin.</div><div class="root-row"><span class="root-tag">Musyāhadāt</span>Aktualitas alam menunjukkan bahwa murajjiḥnya bukan sesuatu yang mustahil.</div><div class="root-row"><span class="root-tag">Awwaliyyāt</span>Trikotomi wajib–mumkin–mustahil dan hukum nonkontradiksi.</div></div><span class="deep-verdict accept">Terbukti minimal satu Wājib al-Wujūd</span></div>
+        </div>
+        <footer class="source-link"><span>Batas natījah</span><span class="source-copy">Sampai di sini baru terbukti Realitas Wajib, belum seluruh sifat Tuhan dalam Islam.</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Dalil huduts versi sederhana">
+        <header class="slide-head"><div><p class="deeper-kicker">Dalīl al-ḥudūts · 01</p><h2>Versi sederhana: alam yang bermula membutuhkan muḥdits</h2></div><span class="slide-no">33</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Qiyās utama</h3><blockquote>“Alam bermula. Setiap yang bermula membutuhkan pengada.”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>Kubrā:</strong> Setiap yang bermula dari ketiadaan membutuhkan muḥdits.</div>
+            <div class="chain-line fragment"><strong>Ṣughrā:</strong> Alam bermula dari ketiadaan.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Alam membutuhkan muḥdits yang mengadakannya.</div>
+          </div>
+          <div class="foundation-verdict revise fragment"><h3>Status premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Awwaliyyāt</span>Kubrā: yang belum ada tidak dapat mengadakan dirinya sendiri.</div><div class="root-row"><span class="root-tag">Naẓarī</span>Ṣughrā: kebermulaan seluruh alam membutuhkan burhān tambahan.</div></div><p>Karena itu, Imam Sanusi tidak berhenti di qiyās ini. Ia membuktikan ṣughrā melalui perubahan dan a‘rāḍ.</p><span class="deep-verdict revise">Ṣughrā harus dijabarkan</span></div>
+        </div>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Ngaji Sanusi #12, Dalīl al-Ḥudūts</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Dalil arad">
+        <header class="slide-head"><div><p class="deeper-kicker">Dalīl al-ḥudūts · 02</p><h2>Dalīl al-a‘rāḍ: perubahan menunjukkan kebermulaan</h2></div><span class="slide-no">34</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Teks sederhana</h3><blockquote>Benda alam tidak pernah lepas dari sifat yang muncul dan lenyap.</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>P1:</strong> Gerak, diam, warna, bentuk, dan keadaan lain berubah dari tiada menjadi ada atau sebaliknya.</div>
+            <div class="chain-line fragment"><strong>P2:</strong> Benda alam tidak pernah terlepas dari keadaan-keadaan tersebut.</div>
+            <div class="chain-line fragment"><strong>P3:</strong> Yang tidak pernah terlepas dari a‘rāḍ yang ḥādits tidak berdiri sebagai realitas azali yang tak berubah.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Alam material bersifat ḥādits.</div>
+          </div>
+          <div class="foundation-verdict revise fragment"><h3>Akar premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Musyāhadāt</span>Kemunculan, kelenyapan, dan perubahan a‘rāḍ disaksikan.</div><div class="root-row"><span class="root-tag">Musyāhadāt</span>Benda material selalu hadir dengan suatu keadaan.</div><div class="root-row"><span class="root-tag">Fiṭriyyāt</span>P3 memerlukan qiyās: penerima perubahan tidak wajib dan tidak bebas dari ḥudūts keadaan.</div></div><p>Keberatan tentang rangkaian perubahan tanpa awal belum selesai di sini.</p><span class="deep-verdict revise">Dilanjutkan dengan burhān al-taṭbīq</span></div>
+        </div>
+        <footer class="source-link"><span>Teks Sanusi</span><span class="source-copy">ودليل حدوث العالم ملازمته للأعراض الحادثة</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Burhan tatbiq dan sains modern">
+        <header class="slide-head"><div><p class="deeper-kicker">Dalīl al-ḥudūts · 03</p><h2>Burhān al-taṭbīq: dapatkah masa lampau aktual tak berhingga?</h2></div><span class="slide-no">35</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Hipotesis yang diuji</h3><blockquote>“Rangkaian perubahan telah berlangsung tanpa permulaan.”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>P1:</strong> Andaikan jumlah momen lampau sampai t benar-benar tak berhingga.</div>
+            <div class="chain-line fragment"><strong>P2:</strong> Sampai t+1, rangkaian itu memuat seluruh momen tadi ditambah satu momen.</div>
+            <div class="chain-line fragment"><strong>P3:</strong> Keseluruhan tidak dapat sekaligus sama dengan dan lebih besar daripada bagiannya dalam aspek yang sama.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Rangkaian momen lampau aktual tidak tak berhingga; alam memiliki permulaan.</div>
+          </div>
+          <div class="foundation-verdict revise fragment"><h3>Akar premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Awwaliyyāt</span>Kontradiksi tidak mungkin benar; keseluruhan melebihi bagian dalam perbandingan kuantitatif ini.</div><div class="root-row"><span class="root-tag">Qiyās</span>Kesimpulan tentang masa lampau bersifat naẓarī.</div></div><div class="corroboration"><strong>Kontekstualisasi modern:</strong> ekspansi kosmos, radiasi latar gelombang mikro, dan model Big Bang menguatkan kebermulaan alam, tetapi semuanya merupakan inferensi saintifik dari observasi, bukan premis ḍarūrī yang berdiri sendiri.</div><span class="deep-verdict revise">Sains menjadi penguat, bukan satu-satunya fondasi</span></div>
+        </div>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Ngaji Sanusi #12–13</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Pencipta yang tak bermula">
+        <header class="slide-head"><div><p class="deeper-kicker">Dalīl al-ḥudūts · 04</p><h2>Muḥdits alam tidak mungkin sama-sama bermula tanpa ujung</h2></div><span class="slide-no">36</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Kesimpulan lanjutan</h3><blockquote>“Pengada alam harus berujung pada Yang Tidak Bermula.”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>P1:</strong> Jika muḥdits alam juga bermula, ia membutuhkan muḥdits lain.</div>
+            <div class="chain-line fragment"><strong>P2:</strong> Daur membuat pengada bergantung pada sesuatu yang pada akhirnya bergantung kepadanya.</div>
+            <div class="chain-line fragment"><strong>P3:</strong> Tasalsul yang seluruh mata rantainya belum memiliki wujud dari dirinya tidak mengadakan apa pun.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Rangkaian berujung pada Muḥdits yang Qadīm dan tidak membutuhkan pengada.</div>
+          </div>
+          <div class="foundation-verdict accept fragment"><h3>Akar premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Awwaliyyāt</span>Yang bermula tidak mengadakan dirinya sebelum ada.</div><div class="root-row"><span class="root-tag">Fiṭriyyāt</span>Daur tidak menghasilkan asal aktualitas.</div><div class="root-row"><span class="root-tag">Qiyās sebelumnya</span>Rantai dependensi tanpa dasar independen tidak mencukupi.</div></div><span class="deep-verdict accept">Dalīl imkān dan ḥudūts bertemu</span></div>
+        </div>
+        <footer class="source-link"><span>Teks Sanusi</span><span class="source-copy">لو لم يكن قديما لكان حادثا فيفتقر إلى مُحدِث فيلزم الدور أو التسلسل</span></footer>
+      </section>
+
+      <section class="slide" data-title="Sanusi tentang Qudrah dan Iradah">
+        <header class="slide-head"><h2>Dari Pencipta menuju Qudrah dan Irādah</h2><span class="slide-no">37</span></header>
+        <div class="sanusi-grid">
+          <div class="sanusi-text fragment">
+            <h3>Teks Umm al-Barāhīn</h3>
+            <p class="arabic" lang="ar">وأما برهان وجوب اتصافه تعالى بالقدرة والإرادة والعلم والحياة فلأنه لو انتفى شىء منها لما وُجد شىء من الحوادث</p>
+            <p class="translation">Jika salah satu dari Qudrah, Irādah, Ilmu, dan Hayah tidak ada, tidak akan ada sesuatu pun dari segala yang ḥādits.</p>
+          </div>
+          <div class="sanusi-simple fragment">
+            <h3>Versi sederhana</h3>
+            <p class="big-line">Mengadakan sesuatu membutuhkan kemampuan. Menentukan satu dari berbagai kemungkinan membutuhkan kehendak.</p>
+            <p class="plain-note">Karena alam yang ḥādits benar-benar ada dengan keadaan tertentu, Penciptanya bukan sekadar “sebab pertama”, tetapi memiliki Qudrah dan Irādah.</p>
+          </div>
+        </div>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Imam al-Sanūsī, Umm al-Barāhīn; Ngaji Sanusi #16</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Bukti Qudrah">
+        <header class="slide-head"><div><p class="deeper-kicker">Fāʿil Mukhtār · 01</p><h2>Qudrah: pengadaan menuntut kemampuan</h2></div><span class="slide-no">38</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Sifat yang dibuktikan</h3><blockquote>“Pencipta alam memiliki Qudrah atas segala yang mumkin.”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>Kubrā:</strong> Sesuatu yang mengadakan mumkin dari ketiadaan memiliki kemampuan untuk mewujudkannya.</div>
+            <div class="chain-line fragment"><strong>Ṣughrā:</strong> Muḥdits mengadakan alam yang mumkin dari ketiadaan.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Muḥdits memiliki Qudrah.</div>
+          </div>
+          <div class="foundation-verdict accept fragment"><h3>Akar premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Fiṭriyyāt</span>Mengadakan sesuatu meniscayakan kemampuan atas pengadaan tersebut.</div><div class="root-row"><span class="root-tag">Qiyās ḥudūts</span>Muḥdits alam telah dibuktikan pada tahap sebelumnya.</div><div class="root-row"><span class="root-tag">Taʿrīf</span>Qudrah ialah sifat yang memungkinkan pengadaan atau peniadaan mumkin.</div></div><span class="deep-verdict accept">Qudrah mengikuti tindakan pengadaan</span></div>
+        </div>
+        <footer class="source-link"><span>Batas taʿalluq</span><span class="source-copy">Qudrah berkaitan dengan yang mumkin, bukan menjadikan yang mustahil secara rasional menjadi mungkin.</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Bukti Iradah">
+        <header class="slide-head"><div><p class="deeper-kicker">Fāʿil Mukhtār · 02</p><h2>Irādah: takhṣīṣ menuntut penentuan</h2></div><span class="slide-no">39</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Sifat yang dibuktikan</h3><blockquote>“Pencipta menentukan satu kemungkinan di antara alternatif lain.”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>P1:</strong> Alam bisa ada atau tidak ada dan bisa memiliki keadaan yang berbeda.</div>
+            <div class="chain-line fragment"><strong>P2:</strong> Alam faktual terwujud dengan waktu dan keadaan tertentu.</div>
+            <div class="chain-line fragment"><strong>P3:</strong> Takhṣīṣ satu kemungkinan yang setara membutuhkan mukhassiṣ.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Pencipta memiliki Irādah yang menentukan aktualitas alam.</div>
+          </div>
+          <div class="foundation-verdict accept fragment"><h3>Akar premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Qiyās imkān</span>Kemungkinan alam telah dibuktikan.</div><div class="root-row"><span class="root-tag">Musyāhadāt</span>Alam faktual hadir dengan keadaan tertentu.</div><div class="root-row"><span class="root-tag">Awwaliyyāt</span><em>Tarajjuḥ bilā murajjiḥ</em> mustahil.</div><div class="root-row"><span class="root-tag">Taʿrīf</span>Irādah ialah sifat yang menentukan salah satu kemungkinan.</div></div><span class="deep-verdict accept">Irādah mengikuti takhṣīṣ</span></div>
+        </div>
+        <footer class="source-link"><span>Kontekstualisasi</span><span class="source-copy">Yang dijelaskan bukan hanya “mengapa ada sesuatu”, tetapi “mengapa yang ada ialah konfigurasi ini”.</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Tuhan bukan sebab yang mati">
+        <header class="slide-head"><div><p class="deeper-kicker">Fāʿil Mukhtār · 03</p><h2>Mengapa Wājib al-Wujūd bukan sebab yang mati?</h2></div><span class="slide-no">40</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Hipotesis tandingan</h3><blockquote>“Alam keluar otomatis dari Wājib, seperti panas dari api.”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>P1:</strong> Jika sebab sempurna bertindak secara niscaya dan selalu lengkap, akibatnya tidak menunggu tanpa adanya perubahan kondisi.</div>
+            <div class="chain-line fragment"><strong>P2:</strong> Wājib al-Wujūd tidak bermula dan tidak memperoleh kondisi baru.</div>
+            <div class="chain-line fragment"><strong>P3:</strong> Alam bermula; ia tidak selalu menyertai Wājib al-Wujūd.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Alam bukan akibat otomatis dari sebab buta yang bekerja karena tabiat.</div>
+          </div>
+          <div class="foundation-verdict accept fragment"><h3>Akar premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Fiṭriyyāt</span>Sebab sempurna yang bekerja niscaya tidak menunda akibat tanpa pembeda baru.</div><div class="root-row"><span class="root-tag">Qiyās Wājib</span>Wājib tidak menerima ketiadaan atau perubahan yang membuatnya bergantung.</div><div class="root-row"><span class="root-tag">Qiyās ḥudūts</span>Alam memiliki permulaan.</div></div><span class="deep-verdict accept">Hipotesis sebab mekanis gugur</span></div>
+        </div>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Ngaji Sanusi #16, “Mengapa Tuhan Bukanlah Sebab yang Mati”</span></footer>
+      </section>
+
+      <section class="slide" data-title="Kebebasan Fāʿil Mukhtār">
+        <header class="slide-head"><h2>Fāʿil Mukhtār dapat melakukan atau meninggalkan yang mumkin</h2><span class="slide-no">41</span></header>
+        <div class="sanusi-grid">
+          <div class="sanusi-text fragment">
+            <h3>Teks Umm al-Barāhīn</h3>
+            <p class="arabic" lang="ar">وأما برهان كون فعل الممكنات أو تركها جائزا في حقه تعالى فلأنه لو وجب عليه تعالى شىء منها عقلا أو استحال عقلا لانقلب الممكن واجبا أو مستحيلا وذلك لا يُعقل</p>
+            <p class="translation">Melakukan atau meninggalkan segala yang mumkin itu jāʾiz bagi-Nya. Jika salah satunya wajib atau mustahil bagi-Nya secara rasional, yang mumkin akan berubah menjadi wajib atau mustahil.</p>
+          </div>
+          <div class="sanusi-simple fragment">
+            <h3>Versi sederhana</h3>
+            <p class="big-line">Jika Tuhan harus menciptakan alam, alam tidak lagi mumkin. Jika Tuhan mustahil menciptakannya, alam juga tidak lagi mumkin.</p>
+            <p class="plain-note">Karena alam sungguh mumkin, Pencipta bebas mengadakan atau meninggalkannya. Inilah makna tindakan Fāʿil Mukhtār.</p>
+          </div>
+        </div>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Imam al-Sanūsī, Umm al-Barāhīn; Ngaji Sanusi #20</span></footer>
+      </section>
+
+      <section class="slide" data-title="Kesimpulan burhan Wajib dan Fail Mukhtar">
+        <header class="slide-head"><h2>Satu rangkaian burhān, dua kesimpulan</h2><span class="slide-no">42</span></header>
+        <div class="proof-summary">
+          <div class="fragment"><strong>Alam bersifat mumkin</strong><p>Musyāhadah atas perubahan dipadukan dengan prinsip rasional tentang kemungkinan.</p></div>
+          <div class="fragment"><strong>Yang mumkin membutuhkan murajjiḥ</strong><p><em>Tarajjuḥ bilā murajjiḥ</em> mustahil; daur dan tasalsul dependensi tidak memberi dasar aktualitas.</p></div>
+          <div class="fragment"><strong>Murajjiḥ terakhir ialah Wājib</strong><p>Ia tidak meminjam keberadaan, tidak bermula, dan menjadi dasar bagi aktualitas alam.</p></div>
+          <div class="fragment"><strong>Wājib tersebut Fāʿil Mukhtār</strong><p>Qudrah mengadakan yang mumkin. Irādah menentukan salah satu alternatif tanpa paksaan.</p></div>
+        </div>
+        <div class="takeaway fragment"><strong>Natījah akhirnya:</strong> alam menunjuk kepada Wājib al-Wujūd yang berkuasa dan berkehendak, bukan sekadar hukum abstrak atau sebab mekanis yang mati.</div>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Tuhan bukan objek material">
+        <header class="slide-head"><div><p class="deeper-kicker">Implikasi Wājib · 01</p><h2>Tuhan bukan objek material</h2></div><span class="slide-no">43</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Pernyataan Sanusi</h3><blockquote>Jika Tuhan menyerupai sesuatu yang ḥādits, Ia juga akan menjadi ḥādits.</blockquote><p class="arabic-mini" lang="ar">لو ماثل شيئا منها لكان حادثا مثلها</p><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>P1:</strong> Jika Tuhan berupa objek material, Ia menerima dimensi, lokasi, susunan, dan keadaan tertentu.</div>
+            <div class="chain-line fragment"><strong>P2:</strong> Yang menerima penentuan, susunan, dan perubahan bersifat mumkin atau ḥādits.</div>
+            <div class="chain-line fragment"><strong>P3:</strong> Tuhan adalah Wājib al-Wujūd dan Qadīm, bukan mumkin atau ḥādits.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Tuhan bukan objek material.</div>
+            <div class="qiyas-type fragment"><strong>Jenis qiyās</strong>Istithnāʾī dari syarṭiyyah muttaṣilah, dengan istithnāʾ naqīḍ al-tālī</div>
+          </div>
+          <div class="foundation-verdict accept fragment"><h3>Status premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Musyāhadāt</span>Objek material hadir dengan ukuran, lokasi, susunan, dan keadaan tertentu.</div><div class="root-row"><span class="root-tag">Fiṭriyyāt</span>Yang tersusun bergantung pada bagian-bagian dan cara penyusunannya.</div><div class="root-row"><span class="root-tag">Qiyās sebelumnya</span>Wajib dan Qidam telah dibuktikan secara naẓarī.</div></div><span class="deep-verdict accept">Materialitas bertentangan dengan Wājib</span></div>
+        </div>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Ngaji Sanusi #10 dan #14</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Tuhan bukan objek observasi fisik">
+        <header class="slide-head"><div><p class="deeper-kicker">Implikasi Wājib · 02</p><h2>Tuhan bukan objek observasi fisik</h2></div><span class="slide-no">44</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Yang dinegasikan</h3><blockquote>“Tuhan harus dapat ditangkap teleskop atau alat ukur agar keberadaan-Nya dapat diketahui.”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>Kubrā:</strong> Setiap objek yang ditangkap langsung instrumen fisik berinteraksi secara fisik dan berada dalam tatanan ruang-waktu.</div>
+            <div class="chain-line fragment"><strong>Ṣughrā:</strong> Tuhan bukan entitas fisik dan tidak berada dalam tatanan ruang-waktu.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Tuhan bukan objek yang ditangkap langsung oleh instrumen fisik.</div>
+            <div class="qiyas-type fragment"><strong>Jenis qiyās</strong>Iqtirānī, murakkab min ḥamliyyatayn</div>
+          </div>
+          <div class="foundation-verdict accept fragment"><h3>Status premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Taʿrīf</span>Deteksi fisik berarti adanya interaksi yang menghasilkan data pada detektor.</div><div class="root-row"><span class="root-tag">Fiṭriyyāt</span>Tanpa relasi dengan detektor, tidak ada data fisik yang diterima alat.</div><div class="root-row"><span class="root-tag">Qiyās sebelumnya</span>Nonmaterialitas Tuhan merupakan natījah slide 43.</div></div><p>Taʿrīf menjelaskan istilah; ia bukan salah satu dari enam qaḍāyā yaqīniyyah.</p><span class="deep-verdict accept">Di luar domain observasi langsung</span></div>
+        </div>
+        <footer class="source-link"><span>Ketelitian</span><span class="source-copy">Ini membahas eksperimen fisik di dunia, bukan pembahasan ruʾyatullāh di akhirat.</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Tidak terindra bukan tanpa bukti">
+        <header class="slide-head"><div><p class="deeper-kicker">Indra dan akal · 01</p><h2>Tidak terindra langsung bukan berarti tanpa bukti</h2></div><span class="slide-no">45</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Kesalahan kategori</h3><blockquote>“Jika Tuhan tidak diamati langsung, tidak ada pengetahuan rasional tentang Tuhan.”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>Kubrā:</strong> Setiap natījah yang mengikuti qiyās valid dari premis yaqīnī menghasilkan pengetahuan naẓarī yang terjustifikasi.</div>
+            <div class="chain-line fragment"><strong>Ṣughrā:</strong> Keberadaan Wājib mengikuti qiyās valid dari musyāhadah atas alam dan premis rasional yang yaqīnī.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Keberadaan Tuhan dapat diketahui tanpa mengindra Tuhan secara langsung.</div>
+            <div class="qiyas-type fragment"><strong>Jenis qiyās</strong>Iqtirānī, murakkab min ḥamliyyatayn</div>
+          </div>
+          <div class="foundation-verdict accept fragment"><h3>Status premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Fiṭriyyāt</span>Konsekuensi yang mengikuti bentuk valid dari premis benar harus diterima.</div><div class="root-row"><span class="root-tag">Musyāhadāt</span>Indra menghadirkan fakta bahwa alam ada, berubah, dan memiliki keadaan tertentu.</div><div class="root-row"><span class="root-tag">Qiyās sebelumnya</span>Dalīl imkān dan ḥudūts mengolah fakta itu menuju Wājib.</div></div><span class="deep-verdict accept">Objek bukti berbeda dari objek observasi</span></div>
+        </div>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Ngaji Sanusi #4, #11, dan #14</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Alam sebagai sinyal rasional">
+        <header class="slide-head"><div><p class="deeper-kicker">Indra dan akal · 02</p><h2>Alam semesta adalah “sinyal” rasional</h2></div><span class="slide-no">46</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Makna sinyal</h3><blockquote>Alam menunjuk kepada Tuhan melalui sifat imkān dan ḥudūtsnya.</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>Kubrā:</strong> Setiap mumkin yang terwujud dalam satu keadaan tertentu menunjukkan adanya murajjiḥ.</div>
+            <div class="chain-line fragment"><strong>Ṣughrā:</strong> Alam yang teramati bersifat mumkin dan terwujud dalam keadaan tertentu.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Alam yang teramati menunjukkan adanya murajjiḥ yang berujung pada Wājib al-Wujūd.</div>
+            <div class="qiyas-type fragment"><strong>Jenis qiyās</strong>Iqtirānī, murakkab min ḥamliyyatayn</div>
+          </div>
+          <div class="foundation-verdict accept fragment"><h3>Status premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Awwaliyyāt</span><em>Tarajjuḥ bilā murajjiḥ</em> mustahil.</div><div class="root-row"><span class="root-tag">Musyāhadāt</span>Alam ada dengan perubahan dan keadaan tertentu.</div><div class="root-row"><span class="root-tag">Qiyās sebelumnya</span>Imkān alam dan ujung rantai pada Wājib telah dibuktikan.</div></div><p>“Sinyal” di sini berarti dalālah rasional, bukan tulisan atau gelombang radio.</p><span class="deep-verdict accept">Alam sendiri menjadi bukti publik</span></div>
+        </div>
+        <footer class="source-link"><span>Istilah</span><span class="source-copy">Alam sebagai āyah kauniyyah dalam Ngaji Sanusi #11</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Alam sebagai ayat yang disengaja">
+        <header class="slide-head"><div><p class="deeper-kicker">Indra dan akal · 03</p><h2>Kapan alam disebut pesan yang disengaja?</h2></div><span class="slide-no">47</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Dua tingkat klaim</h3><blockquote>Alam berfungsi sebagai bukti rasional. Wahyu menyebutnya āyah bagi manusia yang berpikir.</blockquote><span class="status-pill">Naẓarī + naqlī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>P→Q:</strong> Jika Al-Qur’an merupakan khabar ṣādiq dari Tuhan, penyebutan fenomena kosmis sebagai āyāt menetapkan bahwa Tuhan menghadirkannya sebagai tanda.</div>
+            <div class="chain-line fragment"><strong>P:</strong> Al-Qur’an merupakan khabar ṣādiq dari Tuhan.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Fenomena alam sengaja dihadirkan sebagai āyāt yang dapat direnungkan manusia.</div>
+            <div class="qiyas-type fragment"><strong>Jenis qiyās</strong>Istithnāʾī dari syarṭiyyah muttaṣilah, dengan istithnāʾ ʿayn al-muqaddam</div>
+          </div>
+          <div class="foundation-verdict revise fragment"><h3>Status premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Fiṭriyyāt</span>Jika sumber benar menyatakan X sebagai tanda, konsekuensi semantiknya harus diterima.</div><div class="root-row"><span class="root-tag">Mutawātirāt</span>Teks Al-Qur’an ditransmisikan secara mutawātir.</div><div class="root-row"><span class="root-tag">Qiyās kenabian</span>Statusnya sebagai firman Tuhan bersifat naẓarī dan menunggu bukti kenabian.</div></div><p>Dalīl rasional pada slide 46 tidak bergantung pada wahyu. Klaim tentang maksud komunikatif Tuhan datang sesudah otoritas wahyu dibuktikan.</p><span class="deep-verdict revise">Hindari argumen sirkular</span></div>
+        </div>
+        <footer class="source-link"><span>Contoh</span><span class="source-copy">Al-Baqarah 163–164 menyebut fenomena alam sebagai āyāt bagi kaum yang menggunakan akal.</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Tulisan di langit bukan bukti Wajib">
+        <header class="slide-head"><div><p class="deeper-kicker">Indra dan akal · 04</p><h2>Bintang menulis “Aku ada” belum membuktikan Tuhan</h2></div><span class="slide-no">48</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Eksperimen pikiran</h3><blockquote>Andaikan bintang tersusun membentuk tulisan: “Aku ada.” Apa yang benar-benar terbukti?</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>Kubrā:</strong> Bukti yang sama-sama kompatibel dengan agen kontingen dan Wājib al-Wujūd tidak secara unik membuktikan Wājib al-Wujūd.</div>
+            <div class="chain-line fragment"><strong>Ṣughrā:</strong> Susunan bintang yang informatif masih kompatibel dengan tindakan agen kontingen yang sangat kuat.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Tulisan tersebut paling jauh membuktikan agen cerdas, bukan Wājib al-Wujūd.</div>
+            <div class="qiyas-type fragment"><strong>Jenis qiyās</strong>Iqtirānī, murakkab min ḥamliyyatayn</div>
+          </div>
+          <div class="foundation-verdict revise fragment"><h3>Status premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Fiṭriyyāt</span>Bukti yang tidak membedakan dua kandidat tidak menentukan salah satunya.</div><div class="root-row"><span class="root-tag">Awwaliyyāt</span>Tidak ada kontradiksi dalam konsep agen kontingen yang mampu mengatur benda langit.</div><div class="root-row"><span class="root-tag">Qiyās imkān</span>Sifat Wājib diketahui dari ketergantungan ontologis, bukan bentuk visual sinyal.</div></div><span class="deep-verdict revise">Sinyal spektakuler justru underdetermined</span></div>
+        </div>
+        <footer class="source-link"><span>Jawaban ringkas</span><span class="source-copy">Kita tidak membutuhkan tulisan di langit karena imkān seluruh langit memberi dalālah yang lebih mendasar.</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Wajib al-Wujud tidak berbilang">
+        <header class="slide-head"><div><p class="deeper-kicker">Waḥdāniyyah · 01</p><h2>Dua Wājib membutuhkan pembeda</h2></div><span class="slide-no">49</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Hipotesis</h3><blockquote>“Mungkin terdapat dua Wājib al-Wujūd.”</blockquote><p class="arabic-mini" lang="ar">لو لم يكن واحدا لزم أن لا يوجد شىء من العالم</p><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>P1:</strong> Jika terdapat dua Wājib, harus ada pembeda nyata antara keduanya.</div>
+            <div class="chain-line fragment"><strong>P2:</strong> Pembeda membuat masing-masing mempunyai penentuan atau batas yang tidak dimiliki yang lain.</div>
+            <div class="chain-line fragment"><strong>P3:</strong> Yang tersusun dari unsur bersama dan unsur pembeda, atau dibatasi oleh penentuan, bersifat bergantung dan mumkin.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Dua entitas berbeda tidak dapat sama-sama Wājib al-Wujūd.</div>
+            <div class="qiyas-type fragment"><strong>Jenis qiyās</strong>Istithnāʾī dari syarṭiyyah muttaṣilah, dengan istithnāʾ naqīḍ al-tālī</div>
+          </div>
+          <div class="foundation-verdict accept fragment"><h3>Status premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Awwaliyyāt</span>Tanpa pembeda apa pun, tidak ada dasar menyebutnya dua.</div><div class="root-row"><span class="root-tag">Fiṭriyyāt</span>Yang dibatasi atau tersusun bergantung pada pembatas dan komponennya.</div><div class="root-row"><span class="root-tag">Qiyās imkān</span>Yang bergantung dan menerima penentuan bersifat mumkin.</div></div><span class="deep-verdict accept">Keberbilangan menegasikan Wājib</span></div>
+        </div>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Ngaji Sanusi #15, Qiyām bi Nafs dan Waḥdāniyyah</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Burhan tamanu">
+        <header class="slide-head"><div><p class="deeper-kicker">Waḥdāniyyah · 02</p><h2>Burhān al-tamānuʿ: dua kehendak universal</h2></div><span class="slide-no">50</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Kasus uji</h3><blockquote>Satu tuhan menghendaki X bergerak; yang lain menghendaki X diam pada waktu yang sama.</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>Munfaṣilah:</strong> Kedua kehendak terwujud, tidak satu pun terwujud, atau hanya salah satunya terwujud.</div>
+            <div class="chain-line fragment"><strong>Eliminasi 1:</strong> Keduanya terwujud menghasilkan kontradiksi: X bergerak sekaligus diam.</div>
+            <div class="chain-line fragment"><strong>Eliminasi 2:</strong> Tidak satu pun terwujud berarti keduanya tidak berkuasa.</div>
+            <div class="chain-line fragment"><strong>Eliminasi 3:</strong> Jika hanya satu terwujud, yang lain tidak berkuasa secara universal.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Dua kehendak yang sama-sama independen dan berkuasa universal mustahil.</div>
+            <div class="qiyas-type fragment"><strong>Jenis qiyās</strong>Istithnāʾī dari syarṭiyyah munfaṣilah ḥaqīqiyyah, dengan eliminasi seluruh alternatif</div>
+          </div>
+          <div class="foundation-verdict accept fragment"><h3>Status premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Awwaliyyāt</span>Gerak dan diam dalam aspek serta waktu yang sama tidak dapat berhimpun.</div><div class="root-row"><span class="root-tag">Awwaliyyāt</span>Alternatif hasilnya saling meniadakan dan mencakup seluruh kemungkinan.</div><div class="root-row"><span class="root-tag">Qiyās Qudrah</span>Ketidakmampuan atas mumkin bertentangan dengan Qudrah universal.</div></div><span class="deep-verdict accept">Tamānuʿ berakhir pada kontradiksi atau ʿajz</span></div>
+        </div>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Ngaji Sanusi #15; isyarat Al-Anbiyāʾ 22</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Keberatan dua Tuhan selalu sepakat">
+        <header class="slide-head"><div><p class="deeper-kicker">Waḥdāniyyah · 03</p><h2>Bagaimana jika dua Tuhan selalu sepakat?</h2></div><span class="slide-no">51</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Keberatan</h3><blockquote>“Konflik tidak pernah terjadi karena dua Tuhan selalu menghendaki hal yang sama.”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>Kubrā:</strong> Kesamaan tindakan tidak membuktikan adanya dua pelaku numerik tanpa pembeda nyata.</div>
+            <div class="chain-line fragment"><strong>Ṣughrā 1:</strong> Menetapkan dua Wājib tetap membutuhkan pembeda nyata di antara keduanya.</div>
+            <div class="chain-line fragment"><strong>Ṣughrā 2:</strong> Pembeda nyata pada Wājib telah terbukti menghasilkan penentuan, komposisi, atau keterbatasan.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> “Selalu sepakat” tidak menyelamatkan hipotesis dua Wājib.</div>
+            <div class="qiyas-type fragment"><strong>Jenis qiyās</strong>Iqtirānī, murakkab min ḥamliyyatayn</div>
+          </div>
+          <div class="foundation-verdict accept fragment"><h3>Status premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Awwaliyyāt</span>Dua klaim numerik membutuhkan dasar pembeda.</div><div class="root-row"><span class="root-tag">Fiṭriyyāt</span>Kesamaan efek tidak dengan sendirinya memperbanyak pelaku.</div><div class="root-row"><span class="root-tag">Qiyās sebelumnya</span>Kemustahilan pembeda pada dua Wājib dibuktikan pada slide 49.</div></div><span class="deep-verdict accept">Masalahnya kembali pada dasar keberbilangan</span></div>
+        </div>
+        <footer class="source-link"><span>Ketelitian</span><span class="source-copy">Argumen ini tidak mengasumsikan konflik aktual; ia mempertanyakan dasar ontologis untuk menyebut “dua”.</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Tuhan bebas melakukan yang mungkin">
+        <header class="slide-head"><div><p class="deeper-kicker">Kebebasan Tuhan · 01</p><h2>Melakukan dan meninggalkan yang mumkin sama-sama jāʾiz</h2></div><span class="slide-no">52</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Pernyataan Sanusi</h3><blockquote>Jika satu mumkin wajib atau mustahil dilakukan Tuhan, yang mumkin berubah menjadi wajib atau mustahil.</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>Qiyās A:</strong> Jika melakukan X wajib bagi Tuhan sebelum pilihan-Nya, ketiadaan X mustahil; X tidak lagi mumkin li-dzātihi.</div>
+            <div class="chain-line fragment"><strong>Qiyās B:</strong> Jika melakukan X mustahil bagi Tuhan, keberadaan X mustahil; X juga tidak lagi mumkin li-dzātihi.</div>
+            <div class="chain-line fragment"><strong>Premis:</strong> X tetap mumkin li-dzātihi.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Melakukan atau meninggalkan X sama-sama jāʾiz bagi Tuhan.</div>
+            <div class="qiyas-type fragment"><strong>Jenis qiyās</strong>Dua istithnāʾī dari muttaṣilah, masing-masing dengan istithnāʾ naqīḍ al-tālī</div>
+          </div>
+          <div class="foundation-verdict accept fragment"><h3>Status premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Taʿrīf</span>Mumkin li-dzātihi menerima wujud maupun ketiadaan tanpa kontradiksi.</div><div class="root-row"><span class="root-tag">Awwaliyyāt</span>Sesuatu tidak sekaligus mumkin dan wajib atau mustahil li-dzātihi.</div><div class="root-row"><span class="root-tag">Qiyās Irādah</span>Pencipta menentukan alternatif melalui kehendak, bukan paksaan.</div></div><p>Setelah Tuhan menghendaki X, X menjadi wajib li-ghayrihi, bukan wajib li-dzātihi.</p><span class="deep-verdict accept">Kehendak tidak dibebani kewajiban eksternal</span></div>
+        </div>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Ngaji Sanusi #20</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Batas kebebasan Tuhan">
+        <header class="slide-head"><div><p class="deeper-kicker">Kebebasan Tuhan · 02</p><h2>Kebebasan berkaitan dengan yang mumkin</h2></div><span class="slide-no">53</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Pertanyaan populer</h3><blockquote>“Jika Tuhan bebas dan Mahakuasa, bisakah Ia mewujudkan kontradiksi?”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>Kubrā:</strong> Qudrah dan Irādah berkaitan dengan segala yang mumkin.</div>
+            <div class="chain-line fragment"><strong>Ṣughrā:</strong> Kontradiksi, seperti lingkaran persegi atau Tuhan yang bukan Tuhan, bersifat mustaḥīl dan bukan mumkin.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Kontradiksi bukan objek Qudrah dan Irādah; ini tidak menunjukkan kelemahan.</div>
+            <div class="qiyas-type fragment"><strong>Jenis qiyās</strong>Iqtirānī, murakkab min ḥamliyyatayn</div>
+          </div>
+          <div class="foundation-verdict accept fragment"><h3>Status premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Taʿrīf</span>Qudrah ialah kemampuan mengadakan atau meniadakan yang mumkin.</div><div class="root-row"><span class="root-tag">Awwaliyyāt</span>Dua kontradiksi tidak dapat benar sekaligus.</div><div class="root-row"><span class="root-tag">Fiṭriyyāt</span>Ketiadaan relasi terhadap objek mustahil bukan kekurangan kemampuan.</div></div><span class="deep-verdict accept">“Apa pun” berarti setiap kemungkinan rasional</span></div>
+        </div>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Ngaji Sanusi #18 dan #20</span></footer>
+      </section>
+
+      <section class="slide deeper-slide proof-slide" data-title="Kesimpulan sifat Tuhan">
+        <header class="slide-head"><div><p class="deeper-kicker">Peta akhir burhān</p><h2>Kesimpulan tentang Tuhan yang telah dibuktikan</h2></div><span class="slide-no">54</span></header>
+        <div class="deeper-grid">
+          <div class="premise-under-test fragment"><h3>Batas kesimpulan</h3><blockquote>Burhān tidak berhenti pada “ada sesuatu di balik alam.”</blockquote><span class="status-pill">Naẓarī</span></div>
+          <div class="support-chain">
+            <div class="chain-line fragment"><strong>Kubrā:</strong> Setiap realitas yang Wajib, Qadīm, nonmaterial, Esa, ber-Qudrah, ber-Irādah, dan bebas atas mumkin adalah Tuhan dalam kesimpulan teologi rasional ini.</div>
+            <div class="chain-line fragment"><strong>Ṣughrā:</strong> Murajjiḥ terakhir telah dibuktikan memiliki seluruh sifat tersebut.</div>
+            <div class="chain-arrow fragment">▼</div>
+            <div class="chain-line result fragment"><strong>Natījah:</strong> Alam menunjuk kepada Tuhan Yang Esa dan Fāʿil Mukhtār, meskipun Dzat-Nya bukan objek material yang diobservasi.</div>
+            <div class="qiyas-type fragment"><strong>Jenis qiyās</strong>Iqtirānī, murakkab min ḥamliyyatayn</div>
+          </div>
+          <div class="foundation-verdict accept fragment"><h3>Sanad premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Taʿrīf</span>Kubrā merangkum konsep Tuhan yang sedang dibuktikan.</div><div class="root-row"><span class="root-tag">Qiyās berantai</span>Ṣughrā menghimpun natījah dalīl imkān, ḥudūts, Qudrah, Irādah, mukhālafah, dan waḥdāniyyah.</div><div class="root-row"><span class="root-tag">Ḍarūriyyāt</span>Rantai akhirnya bertumpu pada awwaliyyāt, musyāhadāt, dan fiṭriyyāt.</div></div><p>Identifikasi wahyu dan agama yang benar memerlukan rangkaian bukti kenabian tersendiri.</p><span class="deep-verdict accept">Kesimpulan melampaui “sebab pertama”</span></div>
+        </div>
+        <footer class="source-link"><span>Rangkaian sumber</span><span class="source-copy">Ngaji Sanusi #11–16, #18, dan #20</span></footer>
       </section>
 
       <section class="slide closing" data-title="Kesimpulan">
@@ -1122,7 +2051,7 @@
       </section>
 
       <section class="slide" data-title="Bacaan lanjutan">
-        <header class="slide-head"><h2>Bacaan lanjutan</h2><span class="slide-no">18</span></header>
+        <header class="slide-head"><h2>Bacaan lanjutan</h2><span class="slide-no">56</span></header>
         <div class="reading-list">
           <a href="https://logikakeimanan.substack.com/about" target="_blank" rel="noopener">Mengapa Logika Keimanan?</a>
           <a href="https://logikakeimanan.substack.com/p/cacat-argumentasi-soal-keimanan" target="_blank" rel="noopener">Cacat Argumentasi soal Keimanan</a>
@@ -1143,7 +2072,7 @@
   <div id="progress" aria-hidden="true"></div>
   <nav id="chrome" aria-label="Navigasi slide">
     <button id="prev" type="button" aria-label="Slide sebelumnya">←</button>
-    <span id="counter">1 / 19</span>
+    <span id="counter">1 / 29</span>
     <button id="next" type="button" aria-label="Slide berikutnya">→</button>
     <button id="overview-button" type="button" aria-label="Buka overview">▦</button>
     <button id="fullscreen" type="button" aria-label="Layar penuh">⛶</button>
