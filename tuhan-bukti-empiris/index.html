@@ -528,6 +528,136 @@
     }
     .matrix-col li + li { margin-top: 13px; }
 
+    .yaqini-slide .slide-head { margin-bottom: 20px; }
+    .yaqini-intro {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 34px;
+      flex: 1;
+      min-height: 0;
+      margin-bottom: 16px;
+    }
+    .yaqini-panel {
+      min-width: 0;
+      padding: 27px 30px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-top: 4px solid var(--gold);
+      background: rgba(7,9,15,.72);
+    }
+    .yaqini-panel.cyan { border-top-color: var(--cyan); }
+    .yaqini-panel h3 { margin-bottom: 16px; }
+    .yaqini-panel p { color: #d7d1c8; font-size: 19px; line-height: 1.4; }
+    .yaqini-panel p + p { margin-top: 14px; }
+    .yaqini-panel .arabic { margin: 0 0 13px; font-size: 28px; line-height: 1.55; }
+    .yaqini-panel .translation { font-size: 18px; }
+    .yaqini-flow {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .yaqini-step {
+      padding: 14px 16px;
+      border-left: 4px solid var(--violet);
+      background: rgba(183,162,255,.07);
+      color: #e7e1d8;
+      font-size: 17px;
+      line-height: 1.34;
+    }
+    .yaqini-step strong { color: var(--gold-2); }
+    .yaqini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      flex: 1;
+      min-height: 0;
+      margin-bottom: 16px;
+    }
+    .yaqini-card {
+      min-width: 0;
+      padding: 25px 24px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-top: 4px solid var(--gold);
+      background: rgba(7,9,15,.72);
+    }
+    .yaqini-card:nth-child(2) { border-top-color: var(--cyan); }
+    .yaqini-card:nth-child(3) { border-top-color: var(--violet); }
+    .yaqini-card h3 { margin-bottom: 12px; color: var(--ink); font-size: 24px; text-transform: none; letter-spacing: 0; }
+    .yaqini-card .definition { color: #ddd7cf; font-size: 18px; line-height: 1.38; }
+    .yaqini-card .example {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: var(--muted);
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.34;
+    }
+    .yaqini-card .mechanism {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--cyan);
+      font-size: 13px;
+      font-weight: 850;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .fitri-demo {
+      display: grid;
+      grid-template-columns: .84fr 1.16fr;
+      gap: 30px;
+      flex: 1;
+      min-height: 0;
+      margin-bottom: 16px;
+    }
+    .fitri-qiyas {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 13px;
+      padding: 28px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-top: 4px solid var(--cyan);
+      background: rgba(7,9,15,.72);
+    }
+    .fitri-qiyas .chain-line { font-size: 19px; }
+    .fitri-rule {
+      padding: 30px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-top: 4px solid var(--gold);
+      background: rgba(7,9,15,.72);
+    }
+    .fitri-rule .big-line { color: var(--ink); font-family: var(--serif); font-size: 31px; line-height: 1.3; }
+    .fitri-rule p { margin-top: 18px; color: #d6d0c7; font-size: 19px; line-height: 1.42; }
+    .book-promo-slide {
+      padding: 0;
+      background: #05070c;
+      overflow: hidden;
+    }
+    .book-promo-slide::before {
+      content: "";
+      position: absolute;
+      inset: -40px;
+      background: linear-gradient(rgba(4,6,11,.42), rgba(4,6,11,.68)), url("./assets/buku-logika-keimanan-tilka-hujjatuna.png") center / cover;
+      filter: blur(22px);
+      transform: scale(1.08);
+    }
+    .book-promo-slide img {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 45px rgba(0,0,0,.58));
+    }
+    .book-promo-slide .slide-no {
+      position: absolute;
+      z-index: 2;
+      top: 72px;
+      right: 78px;
+      text-shadow: 0 2px 10px rgba(0,0,0,.9);
+    }
+
     .challenge-slide {
       justify-content: center;
       background-image:
@@ -1425,6 +1555,67 @@
         </div>
       </section>
 
+      <section class="slide yaqini-slide" data-title="Mabādiʾ al-yaqīniyyāt">
+        <header class="slide-head"><div><p class="deeper-kicker">Fondasi penilaian premis</p><h2>Mabādiʾ al-yaqīniyyāt: dari mana burhān bermula?</h2></div><span class="slide-no">14A</span></header>
+        <div class="yaqini-intro">
+          <div class="yaqini-panel fragment">
+            <h3>Teks Isāghūjī</h3>
+            <p class="arabic" lang="ar">الْبُرْهَانُ هُوَ قِيَاسٌ مُؤَلَّفٌ مِنْ مُقَدِّمَاتٍ يَقِينِيَّةٍ لِإِنْتَاجِ الْيَقِينِ</p>
+            <p class="translation">“Burhān adalah qiyās yang tersusun dari premis-premis yaqīnī untuk menghasilkan keyakinan.”</p>
+            <p class="arabic" lang="ar">وَالْيَقِينِيَّاتُ أَقْسَامٌ سِتَّةٌ</p>
+            <p class="translation">“Yaqīniyyāt terbagi menjadi enam.”</p>
+          </div>
+          <div class="yaqini-panel cyan fragment">
+            <h3>Mengapa ini penting?</h3>
+            <div class="yaqini-flow">
+              <div class="yaqini-step"><strong>Naẓarī:</strong> kesimpulan yang diperoleh melalui qiyās; karena itu sanad premisnya masih perlu dibuka.</div>
+              <div class="yaqini-step"><strong>Mabādiʾ:</strong> bahan pertama tempat rangkaian qiyās berakhir, bukan kesimpulan yang terus meminjam kepastian dari qiyās lain.</div>
+              <div class="yaqini-step"><strong>Konsekuensi:</strong> setiap premis naẓarī harus diturunkan sampai salah satu dari enam sumber yaqīn berikut—atau ditandai belum memiliki dasar.</div>
+            </div>
+          </div>
+        </div>
+        <footer class="source-link"><span>Sumber</span><a href="https://ar.wikisource.org/wiki/%D9%83%D9%84%D9%86%D8%A8%D9%88%D9%8A_%D8%B9%D9%84%D9%89_%D8%A5%D9%8A%D8%B3%D8%A7%D8%BA%D9%88%D8%AC%D9%8A" target="_blank" rel="noopener">al-Abharī, Isāghūjī, Bāb al-Burhān</a></footer>
+      </section>
+
+      <section class="slide yaqini-slide" data-title="Yaqīniyyāt: awwaliyyāt, musyāhadāt, mujarrabāt">
+        <header class="slide-head"><div><p class="deeper-kicker">Mabādiʾ al-yaqīniyyāt · 01</p><h2>Tiga jalan pertama menuju kepastian</h2></div><span class="slide-no">14B</span></header>
+        <div class="yaqini-grid">
+          <article class="yaqini-card fragment"><span class="mechanism">Tanpa perantara tambahan</span><h3>1 · Awwaliyyāt</h3><p class="definition">Akal memastikan hukumnya cukup dengan memahami kedua sisi proposisi. Tidak perlu observasi atau ḥadd awsaṭ tambahan.</p><p class="example">Contoh Isāghūjī: satu adalah setengah dari dua; keseluruhan lebih besar daripada bagiannya.</p></article>
+          <article class="yaqini-card fragment"><span class="mechanism">Melalui indra</span><h3>2 · Musyāhadāt</h3><p class="definition">Akal menetapkan melalui indra lahir; atau melalui kesadaran batin, yang juga disebut wijdāniyyāt.</p><p class="example">Contoh: matahari bersinar, api membakar; atau kita mendapati rasa takut dan harap dalam diri.</p></article>
+          <article class="yaqini-card fragment"><span class="mechanism">Pengalaman berulang</span><h3>3 · Mujarrabāt</h3><p class="definition">Kepastian lahir dari pengulangan pengindraan. Ia memuat qiyās tersembunyi: keteraturan yang terus terjadi menunjukkan suatu sebab.</p><p class="example">Contoh klasik: konsumsi saqamūniyā berulang kali diikuti keluarnya empedu kuning.</p></article>
+        </div>
+        <footer class="source-link"><span>Catatan</span><span class="source-copy">Musyāhadah partikular berbeda dari generalisasi universal; generalisasi memerlukan kerja akal.</span></footer>
+      </section>
+
+      <section class="slide yaqini-slide" data-title="Yaqīniyyāt: ḥadsiyyāt, mutawātirāt, fiṭriyyāt">
+        <header class="slide-head"><div><p class="deeper-kicker">Mabādiʾ al-yaqīniyyāt · 02</p><h2>Tiga jalan berikutnya menuju kepastian</h2></div><span class="slide-no">14C</span></header>
+        <div class="yaqini-grid">
+          <article class="yaqini-card fragment"><span class="mechanism">Ḥadd awsaṭ hadir seketika</span><h3>4 · Ḥadsiyyāt</h3><p class="definition">Akal menangkap perantara penjelas sekaligus dengan natījah, melalui ḥads yang kuat—bukan tebakan tanpa alasan.</p><p class="example">Contoh klasik: cahaya bulan berasal dari matahari, disimpulkan dari perubahan bentuk terangnya menurut posisinya.</p></article>
+          <article class="yaqini-card fragment"><span class="mechanism">Laporan publik berlimpah</span><h3>5 · Mutawātirāt</h3><p class="definition">Berita indrawi dari banyak jalur menghasilkan yakin ketika kesepakatan mereka untuk berdusta tidak masuk akal.</p><p class="example">Contoh: adanya Makkah bagi orang yang belum pernah melihatnya. Ukurannya bukan angka baku, tetapi tercapainya yakin.</p></article>
+          <article class="yaqini-card fragment"><span class="mechanism">Qiyās menyertai proposisi</span><h3>6 · Fiṭriyyāt</h3><p class="definition">Akal menghukum melalui qiyās yang ḥadd awsaṭ-nya tidak menghilang ketika kedua sisi proposisi dipahami.</p><p class="example">“Empat adalah genap”—karena empat terbagi menjadi dua bagian sama; setiap yang demikian adalah genap.</p></article>
+        </div>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Ringkasan definisi dan contoh mengikuti urutan Isāghūjī dalam Bāb al-Burhān.</span></footer>
+      </section>
+
+      <section class="slide yaqini-slide" data-title="Cara menelusuri sanad premis">
+        <header class="slide-head"><div><p class="deeper-kicker">Mabādiʾ al-yaqīniyyāt · 03</p><h2>Bagaimana enam kategori ini menopang burhān?</h2></div><span class="slide-no">14D</span></header>
+        <div class="fitri-demo">
+          <div class="fitri-qiyas fragment">
+            <h3>Contoh fiṭriyyah Isāghūjī</h3>
+            <div class="chain-line"><strong>Ṣughrā:</strong> Empat terbagi menjadi dua bagian sama.</div>
+            <div class="chain-line"><strong>Kubrā:</strong> Setiap bilangan yang terbagi menjadi dua bagian sama adalah genap.</div>
+            <div class="chain-line result"><strong>Natījah:</strong> Empat adalah genap.</div>
+            <p class="small muted">Ḥadd awsaṭ: “terbagi menjadi dua bagian sama.”</p>
+          </div>
+          <div class="fitri-rule fragment">
+            <p class="big-line"><span class="accent">Ḍarūrī berarti tidak memerlukan qiyās baru</span> untuk diketahui.</p>
+            <p>Karena enam kategori di atas merupakan <em>mabādiʾ</em>, semuanya diperlakukan sebagai akar ḍarūrī. Fiṭriyyāt tetap memuat struktur qiyās, tetapi qiyās dan ḥadd awsaṭ-nya hadir bersama proposisi—bukan hasil pencarian inferensial baru.</p>
+            <p>Karena itu, setiap premis yang disebut fiṭriyyah harus memperlihatkan ḥadd awsaṭ-nya. Jika perantaranya masih perlu dicari atau diperdebatkan, premis itu naẓarī dan qiyās pendukungnya harus dibuka lagi.</p>
+          </div>
+        </div>
+        <footer class="source-link"><span>Metode</span><span class="source-copy">Naẓarī → buka qiyās → petakan setiap premis → berhenti pada mabādiʾ yang sah.</span></footer>
+      </section>
+
       <section class="slide challenge-slide" data-title="Kok enak banget menolak premis?">
         <div class="challenge-wrap">
           <p class="eyebrow">Uji lapis kedua</p>
@@ -1621,7 +1812,7 @@
             <div class="qiyas-type fragment"><strong>Jenis qiyās</strong>Istithnāʾī dari syarṭiyyah muttaṣilah, dengan istithnāʾ naqīḍ al-tālī</div>
           </div>
         </div>
-        <footer class="source-link"><span>Sumber</span><span class="source-copy">Imam al-Sanūsī, Umm al-Barāhīn; Ngaji Sanusi #11–12</span></footer>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Imam al-Sanūsī, Umm al-Barāhīn; Logika Keimanan, Ahmad Ataka, 2024</span></footer>
       </section>
 
       <section class="slide deeper-slide proof-slide" data-title="Dalil imkan: alam bersifat mumkin">
@@ -1637,7 +1828,7 @@
           </div>
           <div class="foundation-verdict accept fragment"><h3>Sanad setiap premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Kubrā · Awwaliyyāt</span>Yang menerima ada dan tiada, atau menerima keadaan alternatif tanpa kontradiksi, bukan wajib karena dirinya.</div><div class="root-row"><span class="root-tag">Ṣughrā · Musyāhadāt</span>Kita menyaksikan gerak, diam, warna, bentuk, dan susunan berubah.</div></div><p>Natījah “alam mumkin” bersifat naẓarī karena diperoleh melalui qiyās di samping.</p><span class="deep-verdict accept">Fondasinya tersedia</span></div>
         </div>
-        <footer class="source-link"><span>Sumber</span><span class="source-copy">Ngaji Sanusi #11, Dalīl al-Imkān</span></footer>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Logika Keimanan, Ahmad Ataka, 2024</span></footer>
       </section>
 
       <section class="slide deeper-slide proof-slide" data-title="Dalil imkan: mumkin membutuhkan murajjih">
@@ -1703,7 +1894,7 @@
           </div>
           <div class="foundation-verdict revise fragment"><h3>Sanad setiap premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Kubrā · Awwaliyyāt</span>Yang belum ada tidak dapat menjadi pengada bagi dirinya sendiri.</div><div class="root-row"><span class="root-tag">Ṣughrā · Naẓarī</span>Kebermulaan seluruh alam membutuhkan burhān melalui perubahan dan a‘rāḍ pada slide 33–34.</div></div><p>Karena itu, Imam Sanusi tidak berhenti pada qiyās ringkas ini.</p><span class="deep-verdict revise">Ṣughrā harus dijabarkan</span></div>
         </div>
-        <footer class="source-link"><span>Sumber</span><span class="source-copy">Ngaji Sanusi #12, Dalīl al-Ḥudūts</span></footer>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Logika Keimanan, Ahmad Ataka, 2024</span></footer>
       </section>
 
       <section class="slide deeper-slide proof-slide" data-title="Dalil arad">
@@ -1737,7 +1928,7 @@
           </div>
           <div class="foundation-verdict revise fragment"><h3>Sanad setiap premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">P1 · Farḍ taqdīrī</span>P1 merupakan asumsi yang diuji, bukan premis yaqīnī yang diterima.</div><div class="root-row"><span class="root-tag">P2 · Awwaliyyāt</span>Menambahkan satu anggota menghasilkan keseluruhan yang mencakup bagian semula dan satu tambahan.</div><div class="root-row"><span class="root-tag">P3 · Awwaliyyāt</span>Keseluruhan tidak sekaligus sama dengan dan lebih besar daripada bagiannya pada aspek yang sama.</div></div><div class="corroboration"><strong>Kontekstualisasi modern:</strong> ekspansi kosmos, radiasi latar gelombang mikro, dan model Big Bang menguatkan kebermulaan alam, tetapi semuanya merupakan inferensi saintifik dari observasi.</div><span class="deep-verdict revise">Natījah bersifat naẓarī</span></div>
         </div>
-        <footer class="source-link"><span>Sumber</span><span class="source-copy">Ngaji Sanusi #12–13</span></footer>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Logika Keimanan, Ahmad Ataka, 2024</span></footer>
       </section>
 
       <section class="slide deeper-slide proof-slide" data-title="Pencipta yang tak bermula">
@@ -1772,7 +1963,7 @@
             <div class="qiyas-type fragment"><strong>Jenis qiyās</strong>Istithnāʾī dari syarṭiyyah muttaṣilah, dengan istithnāʾ naqīḍ al-tālī</div>
           </div>
         </div>
-        <footer class="source-link"><span>Sumber</span><span class="source-copy">Imam al-Sanūsī, Umm al-Barāhīn; Ngaji Sanusi #16</span></footer>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Imam al-Sanūsī, Umm al-Barāhīn; Logika Keimanan, Ahmad Ataka, 2024</span></footer>
       </section>
 
       <section class="slide deeper-slide proof-slide" data-title="Bukti Qudrah">
@@ -1822,7 +2013,7 @@
           </div>
           <div class="foundation-verdict accept fragment"><h3>Sanad setiap premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">P1 · Fiṭriyyāt</span><strong>Ḥadd awsaṭ:</strong> penundaan menuntut pembeda baru. Sebab sempurna yang bekerja niscaya tidak menunda akibat tanpa perubahan kondisi.</div><div class="root-row"><span class="root-tag">P2 · Qiyās Wājib</span>Wājib tidak menerima ketiadaan atau kondisi baru yang membuatnya bergantung.</div><div class="root-row"><span class="root-tag">P3 · Qiyās ḥudūts</span>Alam memiliki permulaan.</div></div><span class="deep-verdict accept">Hipotesis sebab mekanis gugur</span></div>
         </div>
-        <footer class="source-link"><span>Sumber</span><span class="source-copy">Ngaji Sanusi #16, “Mengapa Tuhan Bukanlah Sebab yang Mati”</span></footer>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Logika Keimanan, Ahmad Ataka, 2024</span></footer>
       </section>
 
       <section class="slide" data-title="Kebebasan Fāʿil Mukhtār">
@@ -1840,7 +2031,7 @@
             <div class="qiyas-type fragment"><strong>Jenis qiyās</strong>Dua istithnāʾī dari syarṭiyyah muttaṣilah, masing-masing dengan istithnāʾ naqīḍ al-tālī</div>
           </div>
         </div>
-        <footer class="source-link"><span>Sumber</span><span class="source-copy">Imam al-Sanūsī, Umm al-Barāhīn; Ngaji Sanusi #20</span></footer>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Imam al-Sanūsī, Umm al-Barāhīn; Logika Keimanan, Ahmad Ataka, 2024</span></footer>
       </section>
 
       <section class="slide" data-title="Kesimpulan burhan Wajib dan Fail Mukhtar">
@@ -1868,7 +2059,7 @@
           </div>
           <div class="foundation-verdict accept fragment"><h3>Sanad setiap premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">P1 · Musyāhadāt</span>Objek material hadir dengan ukuran, lokasi, susunan, dan keadaan tertentu.</div><div class="root-row"><span class="root-tag">P2 · Fiṭriyyāt</span><strong>Ḥadd awsaṭ:</strong> kebutuhan kepada komponen dan penentu susunan. Yang tidak utuh tanpa keduanya bergantung dan bersifat mumkin.</div><div class="root-row"><span class="root-tag">P3 · Qiyās sebelumnya</span>Wājib dan Qidam telah dibuktikan secara naẓarī.</div></div><span class="deep-verdict accept">Materialitas bertentangan dengan Wājib</span></div>
         </div>
-        <footer class="source-link"><span>Sumber</span><span class="source-copy">Ngaji Sanusi #10 dan #14</span></footer>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Logika Keimanan, Ahmad Ataka, 2024</span></footer>
       </section>
 
       <section class="slide deeper-slide proof-slide" data-title="Tuhan bukan objek observasi fisik">
@@ -1882,7 +2073,7 @@
             <div class="chain-line result fragment"><strong>Natījah:</strong> Tuhan bukan objek yang ditangkap langsung oleh instrumen fisik.</div>
             <div class="qiyas-type fragment"><strong>Jenis qiyās</strong>Iqtirānī, murakkab min ḥamliyyatayn</div>
           </div>
-          <div class="foundation-verdict accept fragment"><h3>Sanad setiap premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Kubrā · Taʿrīf operasional</span>Deteksi langsung oleh instrumen berarti interaksi fisik yang menghasilkan data pada detektor. Pernyataan kedua mengikuti batas istilah yang sama, bukan fiṭriyyah terpisah.</div><div class="root-row"><span class="root-tag">Ṣughrā · Qiyās slide 42</span>Nonmaterialitas Tuhan merupakan natījah yang telah dibuktikan.</div></div><p>Taʿrīf menjelaskan domain instrumen; ia bukan salah satu dari enam qaḍāyā yaqīniyyah.</p><span class="deep-verdict accept">Di luar domain observasi langsung</span></div>
+          <div class="foundation-verdict accept fragment"><h3>Sanad setiap premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Kubrā · Taʿrīf iṣṭilāḥī</span>Deteksi langsung oleh instrumen berarti interaksi fisik yang menghasilkan data pada detektor. Pernyataan kedua mengikuti batas istilah yang sama, bukan fiṭriyyah terpisah.</div><div class="root-row"><span class="root-tag">Ṣughrā · Qiyās slide 42</span>Nonmaterialitas Tuhan merupakan natījah yang telah dibuktikan.</div></div><p>Taʿrīf menjelaskan domain instrumen; ia bukan salah satu dari enam qaḍāyā yaqīniyyah.</p><span class="deep-verdict accept">Di luar domain observasi langsung</span></div>
         </div>
         <footer class="source-link"><span>Ketelitian</span><span class="source-copy">Ini membahas eksperimen fisik di dunia, bukan pembahasan ruʾyatullāh di akhirat.</span></footer>
       </section>
@@ -1900,7 +2091,7 @@
           </div>
           <div class="foundation-verdict accept fragment"><h3>Sanad setiap premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Kubrā · Awwaliyyāt manṭiqiyyah</span>Qiyās yang valid dan berpremis benar tidak mungkin menghasilkan natījah yang salah.</div><div class="root-row"><span class="root-tag">Ṣughrā-a · Musyāhadāt</span>Indra menghadirkan fakta bahwa alam ada, berubah, dan memiliki keadaan tertentu.</div><div class="root-row"><span class="root-tag">Ṣughrā-b · Qiyās sebelumnya</span>Dalīl imkān dan ḥudūts mengolah fakta tersebut menuju Wājib.</div></div><span class="deep-verdict accept">Objek bukti berbeda dari objek observasi</span></div>
         </div>
-        <footer class="source-link"><span>Sumber</span><span class="source-copy">Ngaji Sanusi #4, #11, dan #14</span></footer>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Logika Keimanan, Ahmad Ataka, 2024</span></footer>
       </section>
 
       <section class="slide deeper-slide proof-slide" data-title="Alam sebagai sinyal rasional">
@@ -1916,7 +2107,7 @@
           </div>
           <div class="foundation-verdict accept fragment"><h3>Sanad setiap premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Kubrā · Awwaliyyāt</span><em>Tarajjuḥ bilā murajjiḥ</em> mustahil.</div><div class="root-row"><span class="root-tag">Ṣughrā-a · Musyāhadāt</span>Alam ada dengan perubahan dan keadaan tertentu.</div><div class="root-row"><span class="root-tag">Ṣughrā-b · Qiyās sebelumnya</span>Imkān alam dan ujung rantai pada Wājib telah dibuktikan.</div></div><p>“Sinyal” di sini berarti dalālah rasional, bukan tulisan atau gelombang radio.</p><span class="deep-verdict accept">Alam sendiri menjadi bukti publik</span></div>
         </div>
-        <footer class="source-link"><span>Istilah</span><span class="source-copy">Alam sebagai āyah kauniyyah dalam Ngaji Sanusi #11</span></footer>
+        <footer class="source-link"><span>Istilah</span><span class="source-copy">Alam sebagai āyah kauniyyah dalam Logika Keimanan, Ahmad Ataka, 2024</span></footer>
       </section>
 
       <section class="slide deeper-slide proof-slide" data-title="Akal dan indra merupakan sarana cukup">
@@ -1981,7 +2172,7 @@
           </div>
           <div class="foundation-verdict accept fragment"><h3>Sanad setiap premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">P1 · Awwaliyyāt</span>Tanpa pembeda apa pun, tidak ada dasar menyebut dua entitas numerik.</div><div class="root-row"><span class="root-tag">P2–P3 · Fiṭriyyāt</span><strong>Ḥadd awsaṭ:</strong> kebutuhan kepada pembatas atau komponen. Yang tidak utuh tanpa keduanya bergantung dan bersifat mumkin.</div><div class="root-row"><span class="root-tag">P3 · Qiyās imkān</span>Yang bergantung dan menerima penentuan bukan Wājib li-dzātihi.</div></div><span class="deep-verdict accept">Keberbilangan menegasikan Wājib</span></div>
         </div>
-        <footer class="source-link"><span>Sumber</span><span class="source-copy">Ngaji Sanusi #15, Qiyām bi Nafs dan Waḥdāniyyah</span></footer>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Logika Keimanan, Ahmad Ataka, 2024</span></footer>
       </section>
 
       <section class="slide deeper-slide proof-slide" data-title="Burhan tamanu">
@@ -1999,7 +2190,7 @@
           </div>
           <div class="foundation-verdict accept fragment"><h3>Sanad setiap langkah</h3><div class="root-map"><div class="root-row"><span class="root-tag">Munfaṣilah · Awwaliyyāt</span>Alternatif “keduanya, tidak satu pun, atau salah satu” saling meniadakan dan mencakup kemungkinan.</div><div class="root-row"><span class="root-tag">Eliminasi 1 · Awwaliyyāt</span>Gerak dan diam pada aspek serta waktu yang sama tidak dapat berhimpun.</div><div class="root-row"><span class="root-tag">Eliminasi 2–3 · Qiyās Qudrah</span>Gagal mewujudkan mumkin yang dikehendaki bertentangan dengan Qudrah universal.</div></div><span class="deep-verdict accept">Tamānuʿ berakhir pada kontradiksi atau ʿajz</span></div>
         </div>
-        <footer class="source-link"><span>Sumber</span><span class="source-copy">Ngaji Sanusi #15; isyarat Al-Anbiyāʾ 22</span></footer>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Logika Keimanan, Ahmad Ataka, 2024; isyarat Al-Anbiyāʾ 22</span></footer>
       </section>
 
       <section class="slide deeper-slide proof-slide" data-title="Keberatan dua Tuhan selalu sepakat">
@@ -2033,7 +2224,7 @@
           </div>
           <div class="foundation-verdict accept fragment"><h3>Sanad setiap premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Premis X · Taʿrīf</span>Mumkin li-dzātihi menerima wujud maupun ketiadaan tanpa kontradiksi.</div><div class="root-row"><span class="root-tag">Qiyās A–B · Awwaliyyāt</span>Sesuatu tidak sekaligus mumkin dan wajib atau mustahil li-dzātihi.</div><div class="root-row"><span class="root-tag">Takhṣīṣ · Qiyās Irādah</span>Pencipta menentukan alternatif melalui kehendak, bukan paksaan.</div></div><p>Setelah Tuhan menghendaki X, X menjadi wajib li-ghayrihi, bukan wajib li-dzātihi.</p><span class="deep-verdict accept">Kehendak tidak dibebani kewajiban eksternal</span></div>
         </div>
-        <footer class="source-link"><span>Sumber</span><span class="source-copy">Ngaji Sanusi #20</span></footer>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Logika Keimanan, Ahmad Ataka, 2024</span></footer>
       </section>
 
       <section class="slide deeper-slide proof-slide" data-title="Batas kebebasan Tuhan">
@@ -2049,7 +2240,7 @@
           </div>
           <div class="foundation-verdict accept fragment"><h3>Sanad setiap premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Kubrā · Taʿrīf Qudrah</span>Qudrah berkaitan dengan mengadakan atau meniadakan yang mumkin.</div><div class="root-row"><span class="root-tag">Ṣughrā · Awwaliyyāt</span>Kontradiksi tidak dapat benar dan karena itu bukan sesuatu yang mumkin.</div><div class="root-row"><span class="root-tag">Penilaian · Taʿrīf</span>ʿAjz berarti gagal atas objek yang mungkin. Tidak berkaitan dengan nonobjek yang mustahil bukanlah ʿajz.</div></div><span class="deep-verdict accept">“Apa pun” berarti setiap kemungkinan rasional</span></div>
         </div>
-        <footer class="source-link"><span>Sumber</span><span class="source-copy">Ngaji Sanusi #18 dan #20</span></footer>
+        <footer class="source-link"><span>Sumber</span><span class="source-copy">Logika Keimanan, Ahmad Ataka, 2024</span></footer>
       </section>
 
       <section class="slide deeper-slide proof-slide" data-title="Kesimpulan sifat Tuhan">
@@ -2065,7 +2256,7 @@
           </div>
           <div class="foundation-verdict accept fragment"><h3>Sanad setiap premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Kubrā · Taʿrīf</span>Kubrā merangkum konsep Tuhan yang sedang dibuktikan. Taʿrīf bukan premis ḍarūrī tambahan.</div><div class="root-row"><span class="root-tag">Ṣughrā · Qiyās berantai</span>Ṣughrā menghimpun natījah dalīl imkān, ḥudūts, Qudrah, Irādah, mukhālafah, dan waḥdāniyyah.</div><div class="root-row"><span class="root-tag">Akar rantai</span>Setiap qiyās sebelumnya telah ditautkan kepada premis ḍarūrīnya masing-masing.</div></div><p>Kesimpulan ini menetapkan konsep Tuhan secara rasional tanpa masuk ke pembuktian agama tertentu.</p><span class="deep-verdict accept">Kesimpulan melampaui “sebab pertama”</span></div>
         </div>
-        <footer class="source-link"><span>Rangkaian sumber</span><span class="source-copy">Ngaji Sanusi #11–16, #18, dan #20</span></footer>
+        <footer class="source-link"><span>Rangkaian sumber</span><span class="source-copy">Logika Keimanan, Ahmad Ataka, 2024</span></footer>
       </section>
 
       <section class="slide deeper-slide proof-slide" data-title="Burhan menyaring konsep Tuhan">
@@ -2111,9 +2302,9 @@
             <div class="chain-line result fragment"><strong>Natījah:</strong> Islam adalah agama yang benar.</div>
             <div class="qiyas-type fragment"><strong>Jenis qiyās</strong>Iqtirānī, murakkab min ḥamliyyatayn</div>
           </div>
-          <div class="foundation-verdict revise fragment"><h3>Sanad setiap premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Kubrā · Taʿrīf bersyarat</span>“Rasul yang benar” berarti utusan yang menyampaikan pesan Tuhan secara benar. Karena itu, agama yang benar-benar berasal dari Tuhan melalui rasul demikian benar. Ini bukan fiṭriyyah tambahan.</div><div class="root-row"><span class="root-tag">Ṣughrā-a · Mutawātirāt</span>Muhammad secara terbuka menyampaikan Islam dan mengaku sebagai rasul Tuhan.</div><div class="root-row fail"><span class="root-tag">Ṣughrā-b · Naẓarī</span>Kebenaran kerasulan Muhammad membutuhkan burhān kenabian tersendiri dan belum dibuktikan dalam deck ini.</div></div><p>Karena bagian naẓarī dari ṣughrā belum dijabarkan, natījah tentang seluruh kebenaran Islam tidak dipakai dalam burhān ketuhanan.</p><span class="deep-verdict revise">Premis kenabian ditunda, bukan diasumsikan</span></div>
+          <div class="foundation-verdict revise fragment"><h3>Sanad setiap premis</h3><div class="root-map"><div class="root-row"><span class="root-tag">Kubrā · Taʿrīf bersyarat</span>“Rasul yang benar” berarti utusan yang menyampaikan pesan Tuhan secara benar. Karena itu, agama yang benar-benar berasal dari Tuhan melalui rasul demikian benar. Ini bukan fiṭriyyah tambahan.</div><div class="root-row"><span class="root-tag">Ṣughrā-a · Mutawātirāt</span>Muhammad secara terbuka menyampaikan Islam dan mengaku sebagai rasul Tuhan.</div><div class="root-row fail"><span class="root-tag">Ṣughrā-b · Naẓarī</span>Kebenaran kerasulan Muhammad membutuhkan burhān kenabian tersendiri dan belum dibuktikan dalam rangkaian ini.</div></div><p>Karena bagian naẓarī dari ṣughrā belum dijabarkan, natījah tentang seluruh kebenaran Islam tidak dipakai dalam burhān ketuhanan.</p><span class="deep-verdict revise">Premis kenabian ditunda, bukan diasumsikan</span></div>
         </div>
-        <footer class="source-link"><span>Kelanjutan</span><span class="source-copy">Burhān kenabian dan validitas wahyu menjadi materi deck tersendiri.</span></footer>
+        <footer class="source-link"><span>Kelanjutan</span><span class="source-copy">Burhān kenabian dan validitas wahyu memerlukan pembahasan tersendiri.</span></footer>
       </section>
 
       <section class="slide closing" data-title="Kesimpulan">
@@ -2139,6 +2330,11 @@
           <a href="https://logikakeimanan.substack.com/p/keberadaan-tuhan-lebih-tidak-mungkin" target="_blank" rel="noopener">Keberadaan Tuhan Lebih Tidak Mungkin daripada Naturalisme?</a>
           <a href="https://logikakeimanan.substack.com/p/yang-lebih-dari-sekedar-bukti-rasional" target="_blank" rel="noopener">Yang Lebih dari Sekadar Bukti Rasional Keberadaan Tuhan</a>
         </div>
+      </section>
+
+      <section class="slide book-promo-slide" data-title="Buku Logika Keimanan dan Tilka Hujjatuna">
+        <img src="./assets/buku-logika-keimanan-tilka-hujjatuna.png" alt="Sampul buku Logika Keimanan dan Tilka Hujjatuna, dengan informasi pembelian melalui link di bio">
+        <span class="slide-no">60</span>
       </section>
       <div class="image-credit">JWST imagery: NASA, ESA, CSA, STScI</div>
     </article>
