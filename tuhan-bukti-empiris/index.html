@@ -480,6 +480,44 @@
     }
     .map-item p { color: var(--muted); font-size: 17px; line-height: 1.35; }
 
+    .outline-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px 58px;
+      flex: 1;
+      align-content: center;
+      min-height: 0;
+    }
+    .outline-item {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 18px;
+      min-height: 132px;
+      padding: 23px 8px 18px 0;
+      border-top: 2px solid var(--line);
+    }
+    .outline-item:nth-child(3n + 2) { border-top-color: rgba(103,205,218,.46); }
+    .outline-item:nth-child(3n) { border-top-color: rgba(177,151,222,.5); }
+    .outline-number {
+      color: var(--gold-2);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 39px;
+      line-height: 1;
+    }
+    .outline-item h3 {
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-size: 22px;
+      letter-spacing: 0;
+      line-height: 1.15;
+      text-transform: none;
+    }
+    .outline-item p {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.35;
+    }
+
     .logic-demo {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1328,6 +1366,8 @@
         gap: 24px;
         flex: none;
       }
+      .outline-grid { grid-template-columns: 1fr; gap: 14px; flex: none; }
+      .outline-item { min-height: 0; padding-top: 17px; }
       .argument-grid { margin-bottom: 24px; }
       .argument-intro p { font-size: 20px; }
       .evaluation p,
@@ -1432,6 +1472,39 @@
           <div class="time-row fragment"><div class="time">00:43–01:08</div><div class="time-copy"><strong>Dari sini, sains dijadikan standar:</strong> bukti harus bisa diulang, diperiksa, dan dibuktikan salah. Pengalaman metafisik dianggap gagal.</div></div>
         </div>
         <footer class="source-link"><span>Sumber</span><a href="https://www.instagram.com/reel/DdpyiBjzikA/" target="_blank" rel="noopener">Instagram reel @callmeibraa</a></footer>
+      </section>
+
+      <section class="slide" data-title="Peta pembahasan">
+        <header class="slide-head">
+          <h2>Peta Pembahasan</h2>
+          <span class="slide-no">01A</span>
+        </header>
+        <div class="outline-grid">
+          <article class="outline-item fragment">
+            <div class="outline-number">01</div>
+            <div><h3>Keberatan terhadap bukti ketuhanan</h3><p>Mimpi religius, falsifiabilitas, bukti empiris, dan tuntutan pesan melalui JWST.</p></div>
+          </article>
+          <article class="outline-item fragment">
+            <div class="outline-number">02</div>
+            <div><h3>Membedah struktur argumen</h3><p>Setiap klaim diuji sebagai qiyās: bentuk, premis, dan titik persoalannya.</p></div>
+          </article>
+          <article class="outline-item fragment">
+            <div class="outline-number">03</div>
+            <div><h3>Fondasi kepastian</h3><p>Premis ḍarūrī, premis naẓarī, dan enam mabādiʾ al-yaqīniyyāt.</p></div>
+          </article>
+          <article class="outline-item fragment">
+            <div class="outline-number">04</div>
+            <div><h3>Burhān keberadaan Tuhan</h3><p>Dalil imkān dan ḥudūts menuju kesimpulan Wājib al-Wujūd.</p></div>
+          </article>
+          <article class="outline-item fragment">
+            <div class="outline-number">05</div>
+            <div><h3>Sifat dan implikasi ketuhanan</h3><p>Fāʿil Mukhtār, nonmaterialitas, keesaan, dan kebebasan Tuhan.</p></div>
+          </article>
+          <article class="outline-item fragment">
+            <div class="outline-number">06</div>
+            <div><h3>Kembali ke pertanyaan awal</h3><p>Mengapa Tuhan tak terlihat, dan bagaimana alam menjadi bukti yang memadai?</p></div>
+          </article>
+        </div>
       </section>
 
       <section class="slide" data-title="Alur reel 01:08 sampai 02:53">
